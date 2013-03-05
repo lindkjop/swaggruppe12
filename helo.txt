@@ -1,2 +1,10 @@
 NEIN
+<<<<<<< HEAD
 HALO
+=======
+JOSH!
+Sie sind ein muffiger berliner Schüssel!!!!!
+
+
+JEDIPISSS
+>>>>>>> 47f3dabed70c29ccaef4317bb9c7e57e02ddf980
