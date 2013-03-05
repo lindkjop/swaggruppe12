@@ -11,4 +11,5 @@ $ git status #sjekk hva som skjer!
 $ git diff #hvilke endringer har jeg gjort?
 $ git commit -am 'MELDING' #lag et changeset lokalt
 $ git push #push alle changesets til origin/github
+$ git log --graph --decorate --pretty=oneline --abbrev-commit --color --all #pretty tre :)
 ```
