@@ -7,6 +7,5 @@ ava specific
 *.DS_Store
 *.swp
 *.out
-*.jar
 *.war
 *.ear
