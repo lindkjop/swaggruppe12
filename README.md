@@ -5,10 +5,10 @@ asd
 
 ##Git cheat sheet
 ```bash
-$ git clone git@github.com:lindkjop/swaggruppe12.git
+$ git clone git@github.com:lindkjop/swaggruppe12.git #cloner repo
 $ #do some shit!
-$ git status
-$ git diff
-$ git commit -am 'MELDING'
-$ git push
+$ git status #sjekk hva som skjer!
+$ git diff #hvilke endringer har jeg gjort?
+$ git commit -am 'MELDING' #lag et changeset lokalt
+$ git push #push alle changesets til origin/github
 ```
