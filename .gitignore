@@ -1,4 +1,4 @@
-#java specific
+ava specific
 *.class
 
 ## generic files to ignore
@@ -7,3 +7,5 @@
 *.DS_Store
 *.swp
 *.out
+*.war
+*.ear
