@@ -28,8 +28,8 @@ import java.awt.event.FocusEvent;
 public class Calandar extends JFrame {
 
 	private JPanel contentPane;
-	private static int JFRAME_WIDTH = 1260;
-	private static int JFRAME_HEIGHT = 780;
+	private static int JFRAME_WIDTH = 1440;
+	private static int JFRAME_HEIGHT = 900;
 	private JTextField txtTittel;
 	private JTextField txtDato;
 	private JTextField txtFra;
@@ -37,6 +37,10 @@ public class Calandar extends JFrame {
 	private JTextField txtNavn;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField txtTittel_1;
+	private JTextField txtDato_1;
+	private JTextField textField_2;
+	private JTextField txtNavn_1;
 
 	/**
 	 * Launch the application.
@@ -69,7 +73,7 @@ public class Calandar extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel.setBounds(10, 21, 320, 256);
+		panel.setBounds(10, 11, 320, 319);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -78,31 +82,68 @@ public class Calandar extends JFrame {
 		panel.add(lblAvsel);
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(10, 36, 300, 209);
+		tabbedPane_1.setBounds(10, 36, 300, 272);
 		panel.add(tabbedPane_1);
-		
-		JPanel panel_4 = new JPanel();
-		tabbedPane_1.addTab("sendt", (Icon) null, panel_4, null);
-		tabbedPane_1.setBackgroundAt(0, Color.WHITE);
 		
 		JPanel panel_5 = new JPanel();
 		tabbedPane_1.addTab("mottatt", null, panel_5, null);
 		
+		JPanel panel_4 = new JPanel();
+		tabbedPane_1.addTab("sendt", (Icon) null, panel_4, null);
+		tabbedPane_1.setBackgroundAt(1, Color.WHITE);
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel_2.setBounds(10, 288, 1224, 443);
+		panel_2.setBounds(10, 341, 1404, 510);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setBounds(10, 11, 300, 488);
+		panel_2.add(panel_8);
+		panel_8.setLayout(null);
+		
+		JLabel lblLeggTilPersoner = new JLabel("Legg til personer i kalenderen");
+		lblLeggTilPersoner.setBounds(10, 11, 195, 14);
+		panel_8.add(lblLeggTilPersoner);
+		
+		JButton btnNewButton = new JButton("Legg til");
+		btnNewButton.setBounds(180, 50, 89, 23);
+		panel_8.add(btnNewButton);
+		
+		txtNavn_1 = new JTextField();
+		txtNavn_1.setText("navn");
+		txtNavn_1.setBounds(10, 51, 145, 20);
+		panel_8.add(txtNavn_1);
+		txtNavn_1.setColumns(10);
+		
+		JLabel lblPersonerIKalenderen = new JLabel("Personer i kalenderen");
+		lblPersonerIKalenderen.setBounds(10, 119, 259, 14);
+		panel_8.add(lblPersonerIKalenderen);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(10, 144, 280, 300);
+		panel_8.add(scrollPane_4);
+		
+		JButton btnFjernPerson = new JButton("Fjern person");
+		btnFjernPerson.setBounds(10, 455, 108, 23);
+		panel_8.add(btnFjernPerson);
+		
+		JPanel panel_9 = new JPanel();
+		panel_9.setBounds(320, 11, 1074, 488);
+		panel_2.add(panel_9);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(340, 21, 894, 256);
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		panel_6.setBounds(334, 11, 1080, 320);
 		contentPane.add(panel_6);
 		panel_6.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 894, 256);
+		tabbedPane.setBounds(0, 0, 1080, 320);
 		panel_6.add(tabbedPane);
 		tabbedPane.setBackground(Color.WHITE);
-		tabbedPane.setToolTipText("lol");
+		tabbedPane.setToolTipText("");
 		tabbedPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		
 		JPanel panel_1 = new JPanel();
@@ -127,7 +168,7 @@ public class Calandar extends JFrame {
 			}
 		});
 		txtTittel.setText("tittel");
-		txtTittel.setBounds(126, 8, 132, 20);
+		txtTittel.setBounds(126, 8, 147, 20);
 		panel_1.add(txtTittel);
 		txtTittel.setColumns(10);
 		
@@ -150,7 +191,7 @@ public class Calandar extends JFrame {
 		});
 		txtDato.setText("dato");
 		txtDato.setColumns(10);
-		txtDato.setBounds(126, 39, 132, 20);
+		txtDato.setBounds(126, 39, 147, 20);
 		panel_1.add(txtDato);
 		
 		JLabel lblTidspunkt = new JLabel("Tidspunkt");
@@ -160,90 +201,203 @@ public class Calandar extends JFrame {
 		txtFra = new JTextField();
 		txtFra.setText("fra");
 		txtFra.setColumns(10);
-		txtFra.setBounds(126, 70, 56, 20);
+		txtFra.setBounds(126, 70, 64, 20);
 		panel_1.add(txtFra);
 		
 		txtTil = new JTextField();
 		txtTil.setText("til");
 		txtTil.setColumns(10);
-		txtTil.setBounds(202, 71, 56, 20);
+		txtTil.setBounds(210, 71, 63, 20);
 		panel_1.add(txtTil);
 		
 		JLabel lblInvitertePersoner = new JLabel("Inviterte personer");
-		lblInvitertePersoner.setBounds(10, 99, 97, 14);
+		lblInvitertePersoner.setBounds(10, 99, 106, 14);
 		panel_1.add(lblInvitertePersoner);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(126, 101, 132, 81);
+		scrollPane.setBounds(126, 105, 147, 95);
 		panel_1.add(scrollPane);
 		
 		JLabel lblLeggTilAnsatt = new JLabel("Legg til ansatt");
-		lblLeggTilAnsatt.setBounds(10, 201, 97, 14);
+		lblLeggTilAnsatt.setBounds(10, 216, 97, 14);
 		panel_1.add(lblLeggTilAnsatt);
 		
 		txtNavn = new JTextField();
+		txtNavn.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(txtNavn.getText().equals("navn"))
+					txtNavn.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtNavn.getText().equals(""))
+					txtNavn.setText("navn");
+			}
+		});
 		txtNavn.setText("navn");
-		txtNavn.setBounds(96, 198, 86, 20);
+		txtNavn.setBounds(106, 211, 94, 20);
 		panel_1.add(txtNavn);
 		txtNavn.setColumns(10);
 		
 		JButton btnLeggTil = new JButton("Legg til");
-		btnLeggTil.setBounds(192, 197, 73, 23);
+		btnLeggTil.setBounds(200, 210, 73, 23);
 		panel_1.add(btnLeggTil);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
-		lblLeggTilEkstern.setBounds(283, 201, 97, 14);
+		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
 		panel_1.add(lblLeggTilEkstern);
 		
 		textField = new JTextField();
+		textField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(textField.getText().equals("navn"))
+					textField.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(textField.getText().equals(""))
+					textField.setText("navn");
+			}
+		});
 		textField.setText("navn");
 		textField.setColumns(10);
-		textField.setBounds(373, 198, 86, 20);
+		textField.setBounds(106, 238, 94, 20);
 		panel_1.add(textField);
 		
 		JButton button = new JButton("Legg til");
-		button.setBounds(360, 127, 73, 23);
+		button.setBounds(442, 200, 73, 23);
 		panel_1.add(button);
 		
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
-		lblLedigeRom.setBounds(289, 11, 63, 14);
+		lblLedigeRom.setBounds(313, 11, 76, 14);
 		panel_1.add(lblLedigeRom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(360, 11, 132, 81);
+		scrollPane_1.setBounds(313, 38, 202, 95);
 		panel_1.add(scrollPane_1);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(283, 99, 63, 14);
+		lblLeggTilRom.setBounds(313, 183, 63, 14);
 		panel_1.add(lblLeggTilRom);
 		
 		textField_1 = new JTextField();
+		textField_1.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(textField_1.getText().equals("navn"))
+					textField_1.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(textField_1.getText().equals(""))
+					textField_1.setText("navn");
+			}
+		});
 		textField_1.setText("navn");
 		textField_1.setColumns(10);
-		textField_1.setBounds(360, 96, 132, 20);
+		textField_1.setBounds(383, 180, 132, 20);
 		panel_1.add(textField_1);
 		
 		JButton button_1 = new JButton("Legg til");
-		button_1.setBounds(474, 197, 73, 23);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button_1.setBounds(200, 237, 73, 23);
 		panel_1.add(button_1);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(512, 11, 63, 14);
+		lblBeskrivelse.setBounds(565, 11, 74, 14);
 		panel_1.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(585, 11, 292, 171);
+		scrollPane_2.setBounds(649, 11, 402, 214);
 		panel_1.add(scrollPane_2);
 		
 		JTextPane txtpnTekst = new JTextPane();
-		txtpnTekst.setText("tekst");
+		txtpnTekst.addFocusListener(new FocusAdapter() {
+		});
 		scrollPane_2.setViewportView(txtpnTekst);
+		txtpnTekst.setText("tekst");
+		
+		JButton btnEndre = new JButton("endre");
+		btnEndre.setBounds(907, 256, 73, 23);
+		panel_1.add(btnEndre);
+		
+		JButton btnLalala = new JButton("Ny Avtale");
+		btnLalala.setBounds(990, 256, 73, 23);
+		panel_1.add(btnLalala);
+		
+		JButton btnVelgRom = new JButton("Velg rom");
+		btnVelgRom.setBounds(442, 132, 73, 23);
+		panel_1.add(btnVelgRom);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("Alarm", null, panel_3, null);
+		panel_3.setLayout(null);
 		
-		JButton btnLol = new JButton("LOL");
-		panel_3.add(btnLol);
+		JLabel lblAlarmer = new JLabel("Alarmer");
+		lblAlarmer.setBounds(32, 37, 46, 14);
+		panel_3.add(lblAlarmer);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(32, 62, 123, 217);
+		panel_3.add(scrollPane_3);
+		
+		JLabel lblTittel = new JLabel("Tittel");
+		lblTittel.setBounds(185, 37, 46, 14);
+		panel_3.add(lblTittel);
+		
+		txtTittel_1 = new JTextField();
+		txtTittel_1.setText("tittel");
+		txtTittel_1.setBounds(257, 34, 86, 20);
+		panel_3.add(txtTittel_1);
+		txtTittel_1.setColumns(10);
+		
+		JLabel lblDato_1 = new JLabel("Dato");
+		lblDato_1.setBounds(185, 70, 46, 14);
+		panel_3.add(lblDato_1);
+		
+		txtDato_1 = new JTextField();
+		txtDato_1.setText("dato");
+		txtDato_1.setColumns(10);
+		txtDato_1.setBounds(257, 67, 86, 20);
+		panel_3.add(txtDato_1);
+		
+		JLabel lblTidspunkt_1 = new JLabel("Tidspunkt");
+		lblTidspunkt_1.setBounds(185, 107, 62, 14);
+		panel_3.add(lblTidspunkt_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setText("12:00");
+		textField_2.setColumns(10);
+		textField_2.setBounds(257, 104, 86, 20);
+		panel_3.add(textField_2);
+		
+		JLabel lblBeskrivelse_1 = new JLabel("Beskrivelse");
+		lblBeskrivelse_1.setBounds(185, 132, 62, 14);
+		panel_3.add(lblBeskrivelse_1);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_7.setBounds(257, 135, 203, 94);
+		panel_3.add(panel_7);
+		panel_7.setLayout(null);
+		
+		JTextPane txtpnTekst_1 = new JTextPane();
+		txtpnTekst_1.setBounds(6, 16, 191, 71);
+		panel_7.add(txtpnTekst_1);
+		txtpnTekst_1.setText("tekst");
+		
+		JButton btnEndreAlarm = new JButton("Endre Alarm");
+		btnEndreAlarm.setBounds(257, 240, 106, 23);
+		panel_3.add(btnEndreAlarm);
+		
+		JButton btnNyAlarm = new JButton("Ny Alarm");
+		btnNyAlarm.setBounds(373, 240, 89, 23);
+		panel_3.add(btnNyAlarm);
 		
 		
 		
