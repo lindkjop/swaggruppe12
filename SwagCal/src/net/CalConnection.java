@@ -8,10 +8,13 @@ import java.net.SocketTimeoutException;
 
 public class CalConnection implements Connection {
 
+	private int myAdress;
+	private int myPort;
+	
+	
 	@Override
 	public void connect(InetAddress remoteAddress, int remotePort) throws IOException, SocketTimeoutException {
-		
-		
+			
 	}
 
 	@Override
