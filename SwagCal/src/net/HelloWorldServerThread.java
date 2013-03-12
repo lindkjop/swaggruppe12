@@ -19,7 +19,7 @@ public class HelloWorldServerThread extends Thread{
     public void run() {
 
 	try {
-		
+		while(true) {
 		//This is commented in the HelloWorldClient class
 		InputStream clientInputStream = socket.getInputStream();
 		OutputStream clientOutputStream = socket.getOutputStream();
@@ -33,6 +33,7 @@ public class HelloWorldServerThread extends Thread{
 		outToClient.println("MESSAGE RECEIVED ON SERVER: "+fromClient);
 		System.out.println(socket.getLocalSocketAddress());
 	    }
+	}
 	catch (IOException e) {
 		e.printStackTrace();
 		}
