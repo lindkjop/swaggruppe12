@@ -12,6 +12,10 @@ public class dateTime {
 	
 	
 	//Konstruktører
+	public dateTime(){
+		this.pointInTime = dateTime.now().getCalendarObj();
+	}
+	
 	public dateTime(Calendar c){
 		this.pointInTime = c;
 	}
@@ -27,6 +31,11 @@ public class dateTime {
 		isTimeDelta = true;
 	}
 	
+	//Mulighet for å sette et sluttpunkt utenfor konstruktøren
+	public void setEnd(dateTime end){
+		this.endPoint = end.getCalendarObj();
+	}
+	
 	
 	//Funksjoner til endring av den underliggende objekttypen
 	private Calendar getCalendarObj(){
@@ -39,7 +48,7 @@ public class dateTime {
 	
 	
 	//Finn nåtid
-	public dateTime now(){
+	public static dateTime now(){
 		return new dateTime(Calendar.getInstance());
 	}
 	
@@ -51,34 +60,69 @@ public class dateTime {
 	
 	//Hente slutt punktet på en periode
 	public dateTime getDeltaEnd(){
-		dateTime result = new dateTime(this.pointInTime);
+		dateTime result = new dateTime();
 		if(this.isInterval()){
 			result = new dateTime(this.endPoint);
 			}
 		return result;
 	}
 	
+	//Hente en periodelengde
+	public dateTime getDelta(){
+		dateTime result = new dateTime(this.getDeltaEnd().getCalendarObj());
+		result.getCalendarObj().add(Calendar.DATE, -this.getCalendarObj().get(Calendar.DATE));
+		result.getCalendarObj().add(Calendar.MONTH, -this.getCalendarObj().get(Calendar.MONTH));
+		result.getCalendarObj().add(Calendar.YEAR, -this.getCalendarObj().get(Calendar.YEAR));
+		result.getCalendarObj().add(Calendar.MINUTE, -this.getCalendarObj().get(Calendar.MINUTE));
+		result.getCalendarObj().add(Calendar.HOUR, -this.getCalendarObj().get(Calendar.HOUR));
+		return result;
+	}
 	
-	//Data til kjente variabeltyper.
+	
+	//Hente/sette enkeltdata.
+	
+	public void setSec(int sec){
+		this.getCalendarObj().set(Calendar.SECOND, sec);
+	}
 	public int getSec(){
-		return pointInTime.get(Calendar.SECOND);
+		return this.getCalendarObj().get(Calendar.SECOND);
+	}
+	
+	public void setMin(int min){
+		this.getCalendarObj().set(Calendar.MINUTE, min);
 	}
 	public int getMin(){
-		return pointInTime.get(Calendar.MINUTE);
-	}
-	public int getHour(){
-		return pointInTime.get(Calendar.HOUR);
-	}
-	public int getDay(){
-		return pointInTime.get(Calendar.DATE);
-	}
-	public int getMonth(){
-		return pointInTime.get(Calendar.MONTH);
-	}
-	public int getYear(){
-		return pointInTime.get(Calendar.YEAR);
+		return this.getCalendarObj().get(Calendar.MINUTE);
 	}
 	
+	public void setHour(int hour){
+		this.getCalendarObj().set(Calendar.HOUR, hour);
+	}
+	public int getHour(){
+		return this.getCalendarObj().get(Calendar.HOUR);
+	}
+	
+	public void setDay(int day){
+		this.getCalendarObj().set(Calendar.DATE, day);
+	}
+	public int getDay(){
+		return this.getCalendarObj().get(Calendar.DATE);
+	}
+	
+	public void setMonth(int month){
+		this.getCalendarObj().set(Calendar.MONTH, month);
+	}
+	public int getMonth(){
+		return this.getCalendarObj().get(Calendar.MONTH);
+	}
+	
+	public void setYear(int year){
+		this.getCalendarObj().set(Calendar.YEAR, year);
+	}
+	public int getYear(){
+		return this.getCalendarObj().get(Calendar.YEAR);
+	}
+
 	
 //	//Sammenligning
 //	public boolean intersects(dateTime compareToDelta){

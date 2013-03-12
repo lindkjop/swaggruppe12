@@ -4,6 +4,8 @@ import gui.ServerGUI;
 
 import java.awt.EventQueue;
 
+import tools.dateTime;
+
 public class Server {
 
 	public static void main(String[] args) {
@@ -17,6 +19,22 @@ public class Server {
 				}
 			}
 		});
+		
+		dateTime now = dateTime.now();
+		dateTime soon = new dateTime();
+		soon.setDay(13);
+		soon.setHour(17);
+		soon.setMonth(3);
+		soon.setYear(2013);
+		soon.setMin(51);
+		
+		dateTime interval = new dateTime(now,soon);
+		
+		System.out.println(soon.getHour());
+		System.out.println(now.getHour());
+		
+		System.out.println(interval.getDelta().getHour());
+		
 	}
 	
 }

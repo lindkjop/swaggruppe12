@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-
 import tools.dateTime;
 
 public class Event {
@@ -83,10 +82,10 @@ public class Event {
 		this.declined = declined;
 	}
 	
-	//Konflikt med andre events-logikk
-	public boolean confictsWith(Event e) {
-		return this.getDuration().intersects(e.getDuration());
-	}
+//	//Konflikt med andre events-logikk
+//	public boolean confictsWith(Event e) {
+//		return this.getDuration().intersects(e.getDuration());
+//	}
 	
  
 }

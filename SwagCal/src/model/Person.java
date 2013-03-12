@@ -43,17 +43,17 @@ public class Person {
 	}
 	//
 	
-	public ArrayList<Event> getConflictingEvents(){
-		ArrayList<Event> result = new ArrayList<Event>();
-		for (Event a:events){
-			for(Event b: events){
-				if(!a.conflictsWith(b) && a!=b){
-					result.add(a);
-				}
-			}
-		}
-		return result;
-	}
+//	public ArrayList<Event> getConflictingEvents(){
+//		ArrayList<Event> result = new ArrayList<Event>();
+//		for (Event a:events){
+//			for(Event b: events){
+//				if(!a.conflictsWith(b) && a!=b){
+//					result.add(a);
+//				}
+//			}
+//		}
+//		return result;
+//	}
 	
 	public void deleteEvent(Event e) {
 		events.remove(e);
