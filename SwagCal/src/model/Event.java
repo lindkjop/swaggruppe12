@@ -62,8 +62,8 @@ public class Event {
 		this.room = room;
 	}
 	
-	public boolean isConflicting (Person p) {
-		return true;
+	public boolean confictsWith(Event e) {
+		//Logikk for sjekk av samtidige avtaler her plz
 	}
 	
  

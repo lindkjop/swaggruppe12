@@ -9,6 +9,8 @@ public class Person {
 	private ArrayList<Event> events;
 	private ArrayList<Notification> notifications;
 	
+	
+	//GET & Set
 	public int getPersonID() {
 		return personID;
 	}
@@ -38,6 +40,19 @@ public class Person {
 	}
 	public void setNotifications(ArrayList<Notification> notifications) {
 		this.notifications = notifications;
+	}
+	//
+	
+	public ArrayList<Event> getConflictingEvents(){
+		ArrayList<Event> result = new ArrayList<Event>();
+		for (Event a:events){
+			for(Event b: events){
+				if(!a.conflictsWith(b) && a!=b){
+					result.add(a);
+				}
+			}
+		}
+		return result;
 	}
 	
 	public void deleteEvent(Event e) {
