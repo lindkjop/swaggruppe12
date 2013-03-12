@@ -7,41 +7,92 @@ import java.util.Date;
 
 public class dateTime {
 	private Calendar pointInTime;
-	private dateTime endDelta;
-	private boolean timeDelta;
+	private Calendar endPoint;
+	private boolean isTimeDelta;
 	
-	public dateTime(int min, int hourOfDay ,int day, int month, int year){
-		pointInTime.set(year, month, day, hourOfDay, min);
-		timeDelta = false;
+	
+	//Konstruktører
+	public dateTime(Calendar c){
+		this.pointInTime = c;
+	}
+	
+	public dateTime(int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
+		pointInTime.set(year, monthOfYear, dayOfMonth, hourOfDay, minOfHour);
+		isTimeDelta = false;
 	}
 	
 	public dateTime(dateTime start, dateTime end){
-		this.endDelta = end;
+		this.endPoint = end.getCalendarObj();
 		this.pointInTime = start.getCalendarObj();
-		timeDelta = true;
+		isTimeDelta = true;
 	}
 	
-	public Calendar getCalendarObj(){
+	
+	//Funksjoner til endring av den underliggende objekttypen
+	private Calendar getCalendarObj(){
 		return pointInTime;
 	}
 	
+	private void setCalendarObj(Calendar c){
+		this.pointInTime = c;
+	}
+	
+	
+	//Finn nåtid
 	public dateTime now(){
-		//Finn nåtid
-		return now;
+		return new dateTime(Calendar.getInstance());
 	}
 	
+	//Sjekke om dette er et intervall
+	public boolean isInterval(){
+		return isTimeDelta;
+	}
+	
+	
+	//Hente slutt punktet på en periode
 	public dateTime getDeltaEnd(){
-		if (timePeriod){
-			return endDelta;
-		}
-		else return null;
+		dateTime result = new dateTime(this.pointInTime);
+		if(this.isInterval()){
+			result = new dateTime(this.endPoint);
+			}
+		return result;
 	}
 	
-	public boolean intersects(dateTime compareToDelta){
-		
+	
+	//Data til kjente variabeltyper.
+	public int getSec(){
+		return pointInTime.get(Calendar.SECOND);
+	}
+	public int getMin(){
+		return pointInTime.get(Calendar.MINUTE);
+	}
+	public int getHour(){
+		return pointInTime.get(Calendar.HOUR);
+	}
+	public int getDay(){
+		return pointInTime.get(Calendar.DATE);
+	}
+	public int getMonth(){
+		return pointInTime.get(Calendar.MONTH);
+	}
+	public int getYear(){
+		return pointInTime.get(Calendar.YEAR);
 	}
 	
-	public boolean isSimultanius(dateTime compareTo){
-		
-	}
+	
+//	//Sammenligning
+//	public boolean intersects(dateTime compareToDelta){
+//		if(compareToDelta.isInterval()){
+//			int result = this.getDeltaEnd().getCalendarObj().compareTo(compareToDelta.getCalendarObj());
+//			if(result == 0 && result)
+//		}
+//		else if(this.isInterval()){
+//			
+//		}
+//		else return false;
+//	}
+//	
+//	public boolean isSimultanius(dateTime compareTo){
+//		
+//	}
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import tools.dateTime;
 
 public class Event {
-	private dateTime period;
+	private dateTime duration;
 	private String description;
 	private String location;
 	private Person creator;
@@ -19,11 +19,11 @@ public class Event {
 	}
 	
 	//Tidspunkt
-	public dateTime getTime() {
-		return period;
+	public dateTime getDuration() {
+		return duration;
 	}
-	public void setTime(dateTime time) {
-		this.period = time;
+	public void setDuration(dateTime time) {
+		this.duration = time;
 	}
 	
 	//Tekstlig beskrivelse av eventen
@@ -85,7 +85,7 @@ public class Event {
 	
 	//Konflikt med andre events-logikk
 	public boolean confictsWith(Event e) {
-		//
+		return this.getDuration().intersects(e.getDuration());
 	}
 	
  
