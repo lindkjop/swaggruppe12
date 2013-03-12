@@ -13,17 +13,11 @@ public class Event {
 	private ArrayList<Person> declined;
 	private Room room;
 	
-	public Date getTime() {
+	public Date getDateTime() {
 		return dateTime;
 	}
-	public void setTime(Date time) {
+	public void setDateTime(Date time) {
 		this.dateTime = time;
-	}
-	public Date getDate() {
-		return dateTime;
-	}
-	public void setDate(Date date) {
-		this.dateTime = date;
 	}
 	public String getDescription() {
 		return description;
