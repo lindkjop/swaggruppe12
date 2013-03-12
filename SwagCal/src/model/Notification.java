@@ -1,13 +1,12 @@
 package model;
 
-import java.util.Calendar;
-import java.util.Date;
+import tools.dateTime;
 
 public class Notification {
 
 	private String message;
 	private boolean isActive;
-	private Date start;
+	private dateTime start;
 	private Person owner;
 	private Event event;
 	
@@ -23,10 +22,10 @@ public class Notification {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Date getStart() {
+	public dateTime getStart() {
 		return start;
 	}
-	public void setStart(Date start) {
+	public void setStart(dateTime start) {
 		this.start = start;
 	}
 	public Person getOwner() {
@@ -43,10 +42,7 @@ public class Notification {
 	}
 	
 	public boolean isDue() {
-		
-		
-		
-		
+		return this.start.hasPassed();
 	}
 	
 }

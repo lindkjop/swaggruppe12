@@ -7,9 +7,10 @@ import java.util.Date;
 
 
 /*
- * SWAGCODER TIB MADE THIS SHIT.
+ * SWAGCODER TIB MADE THIS SHEEiT. 
  * 
- * #YOLO
+ * #YOLO_JUSTIN_IS_A_HOMO
+ * 
  */
 public class dateTime {
 	private Calendar pointInTime;
@@ -20,10 +21,12 @@ public class dateTime {
 	//Konstruktører
 	public dateTime(){
 		this.pointInTime = dateTime.now().getCalendarObj();
+		this.endPoint = dateTime.now().getCalendarObj();
 	}
 	
 	public dateTime(Calendar c){
 		this.pointInTime = c;
+		this.endPoint = c;
 	}
 	
 	public dateTime(int secOfMinute, int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
@@ -33,6 +36,7 @@ public class dateTime {
 		this.getCalendarObj().set(Calendar.DATE, dayOfMonth);
 		this.getCalendarObj().set(Calendar.MONTH, monthOfYear);
 		this.getCalendarObj().set(Calendar.YEAR, year);
+		this.endPoint = this.pointInTime;
 		isTimeDelta = false;
 	}
 	
@@ -41,12 +45,7 @@ public class dateTime {
 		this.pointInTime = start.getCalendarObj();
 		isTimeDelta = true;
 	}
-	
-	//Mulighet for å sette et sluttpunkt utenfor konstruktøren
-	public void setEnd(dateTime end){
-		this.endPoint = end.getCalendarObj();
-	}
-	
+
 	
 	//Funksjoner til endring av den underliggende objekttypen
 	public Calendar getCalendarObj(){
@@ -68,8 +67,12 @@ public class dateTime {
 	}
 	
 	
-	//Hente slutt punktet på en periode
-	public dateTime getDeltaEnd(){
+	//Hente/sette sluttpunktet på en periode
+	public void setEnd(dateTime end){
+		this.endPoint = end.getCalendarObj();
+	}
+	
+	public dateTime getEnd(){
 		dateTime result = new dateTime();
 		if(this.isInterval()){
 			result = new dateTime(this.endPoint);
@@ -79,7 +82,7 @@ public class dateTime {
 	
 	//Hente en periodelengde
 	public dateTime getDelta(){
-		dateTime result = new dateTime(this.getDeltaEnd().getCalendarObj());
+		dateTime result = new dateTime(this.getEnd().getCalendarObj());
 		result.getCalendarObj().add(Calendar.DATE, -this.getCalendarObj().get(Calendar.DATE));
 		result.getCalendarObj().add(Calendar.MONTH, -this.getCalendarObj().get(Calendar.MONTH));
 		result.getCalendarObj().add(Calendar.YEAR, -this.getCalendarObj().get(Calendar.YEAR));
@@ -89,7 +92,7 @@ public class dateTime {
 	}
 	
 	
-	//Hente/sette enkeltdata.
+	//Hente/sette enkelt-ting.
 	
 	public void setSec(int sec){
 		this.getCalendarObj().set(Calendar.SECOND, sec);
@@ -137,25 +140,25 @@ public class dateTime {
 	//Sammenligning
 	public boolean intersects(dateTime compareToDelta){
 		//Sjekker om compareTo starter før this slutter
-		int temp1 = compareToDelta.getCalendarObj().compareTo(this.getDeltaEnd().getCalendarObj());
-		System.out.println(temp1);
+		boolean startsBefore = compareToDelta.getCalendarObj().before(this.getEnd().getCalendarObj());
 		
 		//Sjekker om compareTo slutter før this starter
-		int temp2 = compareToDelta.getDeltaEnd().getCalendarObj().compareTo(this.getCalendarObj());
-		System.out.println(temp2);
+		boolean endsAfter = compareToDelta.getEnd().getCalendarObj().after(this.getCalendarObj());
 		
-		return temp1<0 && temp2>0;
+		return startsBefore && endsAfter;
 	}
 	
-	public boolean isSimultanius(dateTime compareTo, boolean ingnoreSeconds){
-		if(ingnoreSeconds){
-			dateTime temp1 = new dateTime(this.getCalendarObj());
-			dateTime temp2 = new dateTime(compareTo.getCalendarObj());
-			temp1.setSec(0);
-			temp2.setSec(0);
-			return temp1.getCalendarObj().equals(temp2.getCalendarObj());
-		}
+	public boolean isSimultaneousWith(dateTime compareTo){
 		return this.getCalendarObj().equals(compareTo.getCalendarObj());
-		
+	}
+	
+	public boolean isBefore(dateTime dt){
+		return this.getCalendarObj().before(dt.getCalendarObj());
+	}
+	public boolean isAfter(dateTime dt){
+		return this.getCalendarObj().after(dt.getCalendarObj());
+	}
+	public boolean hasPassed(){
+		return this.getCalendarObj().before(dateTime.now());
 	}
 }
