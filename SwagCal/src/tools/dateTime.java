@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
+
+/*
+ * SWAGCODER TIB MADE THIS SHIT.
+ * 
+ * #YOLO
+ */
 public class dateTime {
 	private Calendar pointInTime;
 	private Calendar endPoint;
@@ -20,8 +26,13 @@ public class dateTime {
 		this.pointInTime = c;
 	}
 	
-	public dateTime(int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
-		pointInTime.set(year, monthOfYear, dayOfMonth, hourOfDay, minOfHour);
+	public dateTime(int secOfMinute, int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
+		this.getCalendarObj().set(Calendar.SECOND, secOfMinute);
+		this.getCalendarObj().set(Calendar.MINUTE, minOfHour);
+		this.getCalendarObj().set(Calendar.HOUR, hourOfDay);
+		this.getCalendarObj().set(Calendar.DATE, dayOfMonth);
+		this.getCalendarObj().set(Calendar.MONTH, monthOfYear);
+		this.getCalendarObj().set(Calendar.YEAR, year);
 		isTimeDelta = false;
 	}
 	
@@ -38,12 +49,11 @@ public class dateTime {
 	
 	
 	//Funksjoner til endring av den underliggende objekttypen
-	private Calendar getCalendarObj(){
+	public Calendar getCalendarObj(){
+		if (pointInTime == null){
+			pointInTime = Calendar.getInstance();
+		}
 		return pointInTime;
-	}
-	
-	private void setCalendarObj(Calendar c){
-		this.pointInTime = c;
 	}
 	
 	
@@ -124,19 +134,28 @@ public class dateTime {
 	}
 
 	
-//	//Sammenligning
-//	public boolean intersects(dateTime compareToDelta){
-//		if(compareToDelta.isInterval()){
-//			int result = this.getDeltaEnd().getCalendarObj().compareTo(compareToDelta.getCalendarObj());
-//			if(result == 0 && result)
-//		}
-//		else if(this.isInterval()){
-//			
-//		}
-//		else return false;
-//	}
-//	
-//	public boolean isSimultanius(dateTime compareTo){
-//		
-//	}
+	//Sammenligning
+	public boolean intersects(dateTime compareToDelta){
+		//Sjekker om compareTo starter før this slutter
+		int temp1 = compareToDelta.getCalendarObj().compareTo(this.getDeltaEnd().getCalendarObj());
+		System.out.println(temp1);
+		
+		//Sjekker om compareTo slutter før this starter
+		int temp2 = compareToDelta.getDeltaEnd().getCalendarObj().compareTo(this.getCalendarObj());
+		System.out.println(temp2);
+		
+		return temp1<0 && temp2>0;
+	}
+	
+	public boolean isSimultanius(dateTime compareTo, boolean ingnoreSeconds){
+		if(ingnoreSeconds){
+			dateTime temp1 = new dateTime(this.getCalendarObj());
+			dateTime temp2 = new dateTime(compareTo.getCalendarObj());
+			temp1.setSec(0);
+			temp2.setSec(0);
+			return temp1.getCalendarObj().equals(temp2.getCalendarObj());
+		}
+		return this.getCalendarObj().equals(compareTo.getCalendarObj());
+		
+	}
 }

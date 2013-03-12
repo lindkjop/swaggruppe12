@@ -20,20 +20,19 @@ public class Server {
 			}
 		});
 		
-		dateTime now = dateTime.now();
-		dateTime soon = new dateTime();
-		soon.setDay(13);
-		soon.setHour(17);
-		soon.setMonth(3);
-		soon.setYear(2013);
-		soon.setMin(51);
 		
-		dateTime interval = new dateTime(now,soon);
+		//Test
+		dateTime pont11 = dateTime();
+		dateTime point12 = dateTime();
 		
-		System.out.println(soon.getHour());
-		System.out.println(now.getHour());
+		dateTime point21 = dateTime();
+		dateTime point22 = dateTime(); 
 		
-		System.out.println(interval.getDelta().getHour());
+		dateTime interval1 = new dateTime(point11,point12);
+		dateTime interval2 = new dateTime(point21,point22);
+		
+		
+		System.out.println(interval.intersects(interval2));
 		
 	}
 	

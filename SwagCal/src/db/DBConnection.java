@@ -2,7 +2,6 @@ package db;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,41 +11,68 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-
-
+/**
+ * 
+ * This class tries to simplify the connection of the application to the
+ * database. All parameters that are dynamic are stored in a Properties File
+ * 
+ * @author orestis
+ * 
+ */
 public class DBConnection {
-	private Properties prop; // Filnavnet til properties filen
-	private String jdbcDriver; // Driverens klassenavn
-	private String url; // Adressen til databasen
-	private Connection conn; // Forbindelse
-	
-	public DBConnection(String propFilename) throws IOException{
-		//Laster inn properties filen
-		File file = new File(propFilename);
-		FileInputStream fip = new FileInputStream(file);
-		prop = new Properties();
-		prop.load(fip);
-		
-		//Laster inn info fra properties filen
-		jdbcDriver = prop.getProperty("jdbcDriver");
-		url = prop.getProperty("url");
+	private Properties properties; // file containing the connection properties
+	private String jdbcDriver; // String containing the driver Class name
+	private String url; // Address to the database
+	private Connection conn;
+
+	/**
+	 * 
+	 * Reads properties from a File
+	 * 
+	 * @param propertiesFilename
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public DBConnection(String propertiesFilename) throws IOException,
+			ClassNotFoundException, SQLException {
+		File f = new File(propertiesFilename);
+		properties = new Properties();
+		properties.load(new FileInputStream(f));
+		jdbcDriver = properties.getProperty("jdbcDriver");
+		url = properties.getProperty("url");
 	}
 
-	public void initConnetcion() throws ClassNotFoundException, SQLException{
+	public DBConnection(Properties properties) throws ClassNotFoundException,
+			SQLException {
+		jdbcDriver = properties.getProperty("jdbcDriver");
+		url = properties.getProperty("url");
+
+	}
+
+	/**
+	 * 
+	 * This method should be called before the first query and after we have
+	 * closed the connection in order to create a new one
+	 * 
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public void initialize() throws ClassNotFoundException, SQLException {
 		Class.forName(jdbcDriver);
-		Properties  info = new Properties();
-		
+		Properties info = new Properties();
+
 		/*
 		 * info is a different Properties object from the "properties" one.
 		 * "info" is used by the Driver Manager while properties is used by our
 		 * program
 		 */
-		
-		info.setProperty("user", prop.getProperty("user"));
-		info.setProperty("password", prop.getProperty("password"));
+
+		info.setProperty("user", properties.getProperty("user"));
+		info.setProperty("password", properties.getProperty("password"));
 		conn = DriverManager.getConnection(url, info);
 	}
-
 
 	/**
 	 * 
