@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 
+import controller.Controller;
+
 public class ServerSideConnection {
 	private String serverAdress;
 	private int serverPort;
 	private ServerSocket serverSocket;
+	private Controller serverController;
 	
-	public ServerSideConnection(String serverAdress, int serverPort) {
+	public ServerSideConnection(String serverAdress, int serverPort, Controller serverController) {
 		this.serverAdress = serverAdress;
 		this.serverPort = serverPort;
 		
@@ -19,7 +22,7 @@ public class ServerSideConnection {
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {
-				new ServerThread(serverSocket.accept()).start();		
+				new ServerThread(serverSocket.accept(), serverController).start();		
 			}
 		} 
 		catch (IOException e) 
