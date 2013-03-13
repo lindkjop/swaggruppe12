@@ -25,6 +25,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class ClientGUI extends JFrame {
 
@@ -56,7 +57,7 @@ public class ClientGUI extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel.setBounds(10, 11, 320, 319);
+		panel.setBounds(10, 11, 320, 320);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -118,81 +119,90 @@ public class ClientGUI extends JFrame {
 		panel_9.setLayout(null);
 		
 		JLabel lblMandag = new JLabel("Mandag");
-		lblMandag.setBounds(54, 6, 61, 16);
+		lblMandag.setBounds(50, 6, 61, 16);
 		panel_9.add(lblMandag);
 		
 		JLabel lblTirsdag = new JLabel("Tirsdag");
-		lblTirsdag.setBounds(188, 6, 61, 16);
+		lblTirsdag.setBounds(170, 6, 61, 16);
 		panel_9.add(lblTirsdag);
 		
 		JLabel lblOnsdag = new JLabel("Onsdag");
-		lblOnsdag.setBounds(331, 6, 61, 16);
+		lblOnsdag.setBounds(300, 6, 61, 16);
 		panel_9.add(lblOnsdag);
 		
 		JLabel lblTorsdag = new JLabel("Torsdag");
-		lblTorsdag.setBounds(483, 6, 61, 16);
+		lblTorsdag.setBounds(430, 6, 61, 16);
 		panel_9.add(lblTorsdag);
 		
 		JLabel lblFredag = new JLabel("Fredag");
-		lblFredag.setBounds(650, 6, 61, 16);
+		lblFredag.setBounds(560, 6, 61, 16);
 		panel_9.add(lblFredag);
 		
 		JLabel lblLrdag = new JLabel("L\u00F8rdag");
-		lblLrdag.setBounds(805, 6, 61, 16);
+		lblLrdag.setBounds(690, 6, 61, 16);
 		panel_9.add(lblLrdag);
 		
 		JLabel lblSndag = new JLabel("S\u00F8ndag");
-		lblSndag.setBounds(959, 6, 61, 16);
+		lblSndag.setBounds(820, 6, 61, 16);
 		panel_9.add(lblSndag);
 		
 		JScrollPane scrollMandag = new JScrollPane();
-		scrollMandag.setBounds(25, 47, 111, 409);
+		scrollMandag.setBounds(10, 50, 130, 400);
 		panel_9.add(scrollMandag);
 		
 		JList jLMandag = new JList();
 		scrollMandag.setViewportView(jLMandag);
 		
 		JScrollPane scrollTirsdag = new JScrollPane();
-		scrollTirsdag.setBounds(166, 47, 111, 407);
+		scrollTirsdag.setBounds(140, 50, 130, 400);
 		panel_9.add(scrollTirsdag);
 		
 		JList jLTirsdag = new JList();
 		scrollTirsdag.setViewportView(jLTirsdag);
 		
 		JScrollPane scrollOnsdag = new JScrollPane();
-		scrollOnsdag.setBounds(304, 47, 111, 407);
+		scrollOnsdag.setBounds(270, 50, 130, 400);
 		panel_9.add(scrollOnsdag);
 		
 		JList jLOnsdag = new JList();
 		scrollOnsdag.setViewportView(jLOnsdag);
 		
 		JScrollPane scrollTorsdag = new JScrollPane();
-		scrollTorsdag.setBounds(452, 49, 111, 407);
+		scrollTorsdag.setBounds(400, 50, 130, 400);
 		panel_9.add(scrollTorsdag);
 		
 		JList jLTorsdag = new JList();
 		scrollTorsdag.setViewportView(jLTorsdag);
 		
 		JScrollPane scrollFredag = new JScrollPane();
-		scrollFredag.setBounds(619, 49, 111, 407);
+		scrollFredag.setBounds(530, 50, 130, 400);
 		panel_9.add(scrollFredag);
 		
 		JList jLFredag = new JList();
 		scrollFredag.setViewportView(jLFredag);
 		
 		JScrollPane scrollLordag = new JScrollPane();
-		scrollLordag.setBounds(780, 49, 111, 407);
+		scrollLordag.setBounds(660, 50, 130, 400);
 		panel_9.add(scrollLordag);
 		
 		JList jLLordag = new JList();
 		scrollLordag.setViewportView(jLLordag);
 		
 		JScrollPane scrollSondag = new JScrollPane();
-		scrollSondag.setBounds(933, 47, 111, 407);
+		scrollSondag.setBounds(790, 50, 130, 400);
 		panel_9.add(scrollSondag);
 		
 		JList jLSondag = new JList();
 		scrollSondag.setViewportView(jLSondag);
+		
+		JLabel lblVelgUke = new JLabel("Velg Uke:");
+		lblVelgUke.setBounds(932, 52, 61, 16);
+		panel_9.add(lblVelgUke);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setToolTipText("Velg ukenummer");
+		comboBox.setBounds(993, 48, 75, 27);
+		panel_9.add(comboBox);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -302,7 +312,7 @@ public class ClientGUI extends JFrame {
 		txtNavn.setColumns(10);
 		
 		JButton btnLeggTil = new JButton("Legg til");
-		btnLeggTil.setBounds(200, 210, 73, 23);
+		btnLeggTil.setBounds(200, 211, 73, 23);
 		panel_1.add(btnLeggTil);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
@@ -383,12 +393,12 @@ public class ClientGUI extends JFrame {
 		scrollPane_2.setViewportView(txtpnTekst);
 		txtpnTekst.setText("tekst");
 		
-		JButton btnEndre = new JButton("endre");
-		btnEndre.setBounds(907, 256, 73, 23);
+		JButton btnEndre = new JButton("Endre avtale");
+		btnEndre.setBounds(777, 250, 130, 23);
 		panel_1.add(btnEndre);
 		
 		JButton btnLalala = new JButton("Ny Avtale");
-		btnLalala.setBounds(990, 256, 73, 23);
+		btnLalala.setBounds(931, 250, 130, 23);
 		panel_1.add(btnLalala);
 		
 		JButton btnVelgRom = new JButton("Velg rom");
