@@ -24,6 +24,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JList;
 
 public class ClientGUI extends JFrame {
 
@@ -112,8 +113,86 @@ public class ClientGUI extends JFrame {
 		panel_8.add(btnFjernPerson);
 		
 		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(320, 11, 1074, 488);
+		panel_9.setBounds(322, 11, 1074, 488);
 		panel_2.add(panel_9);
+		panel_9.setLayout(null);
+		
+		JLabel lblMandag = new JLabel("Mandag");
+		lblMandag.setBounds(54, 6, 61, 16);
+		panel_9.add(lblMandag);
+		
+		JLabel lblTirsdag = new JLabel("Tirsdag");
+		lblTirsdag.setBounds(188, 6, 61, 16);
+		panel_9.add(lblTirsdag);
+		
+		JLabel lblOnsdag = new JLabel("Onsdag");
+		lblOnsdag.setBounds(331, 6, 61, 16);
+		panel_9.add(lblOnsdag);
+		
+		JLabel lblTorsdag = new JLabel("Torsdag");
+		lblTorsdag.setBounds(483, 6, 61, 16);
+		panel_9.add(lblTorsdag);
+		
+		JLabel lblFredag = new JLabel("Fredag");
+		lblFredag.setBounds(650, 6, 61, 16);
+		panel_9.add(lblFredag);
+		
+		JLabel lblLrdag = new JLabel("L\u00F8rdag");
+		lblLrdag.setBounds(805, 6, 61, 16);
+		panel_9.add(lblLrdag);
+		
+		JLabel lblSndag = new JLabel("S\u00F8ndag");
+		lblSndag.setBounds(959, 6, 61, 16);
+		panel_9.add(lblSndag);
+		
+		JScrollPane scrollMandag = new JScrollPane();
+		scrollMandag.setBounds(25, 47, 111, 409);
+		panel_9.add(scrollMandag);
+		
+		JList jLMandag = new JList();
+		scrollMandag.setViewportView(jLMandag);
+		
+		JScrollPane scrollTirsdag = new JScrollPane();
+		scrollTirsdag.setBounds(166, 47, 111, 407);
+		panel_9.add(scrollTirsdag);
+		
+		JList jLTirsdag = new JList();
+		scrollTirsdag.setViewportView(jLTirsdag);
+		
+		JScrollPane scrollOnsdag = new JScrollPane();
+		scrollOnsdag.setBounds(304, 47, 111, 407);
+		panel_9.add(scrollOnsdag);
+		
+		JList jLOnsdag = new JList();
+		scrollOnsdag.setViewportView(jLOnsdag);
+		
+		JScrollPane scrollTorsdag = new JScrollPane();
+		scrollTorsdag.setBounds(452, 49, 111, 407);
+		panel_9.add(scrollTorsdag);
+		
+		JList jLTorsdag = new JList();
+		scrollTorsdag.setViewportView(jLTorsdag);
+		
+		JScrollPane scrollFredag = new JScrollPane();
+		scrollFredag.setBounds(619, 49, 111, 407);
+		panel_9.add(scrollFredag);
+		
+		JList jLFredag = new JList();
+		scrollFredag.setViewportView(jLFredag);
+		
+		JScrollPane scrollLordag = new JScrollPane();
+		scrollLordag.setBounds(780, 49, 111, 407);
+		panel_9.add(scrollLordag);
+		
+		JList jLLordag = new JList();
+		scrollLordag.setViewportView(jLLordag);
+		
+		JScrollPane scrollSondag = new JScrollPane();
+		scrollSondag.setBounds(933, 47, 111, 407);
+		panel_9.add(scrollSondag);
+		
+		JList jLSondag = new JList();
+		scrollSondag.setViewportView(jLSondag);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
