@@ -312,6 +312,10 @@ public class ClientGUI extends JFrame {
 		txtNavn.setColumns(10);
 		
 		JButton btnLeggTil = new JButton("Legg til");
+		btnLeggTil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnLeggTil.setBounds(200, 211, 73, 23);
 		panel_1.add(btnLeggTil);
 		
