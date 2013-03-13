@@ -22,20 +22,33 @@ public class ServerThread extends Thread{
 
     public void run() {
 
-		try {
-			fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			toClient = new PrintWriter(socket.getOutputStream(),true);
-			System.out.println("WAITING FOR MESSAGE FROM CLIENT");
-			while (true) {
-				String stringFromClient = fromClient.readLine();
-				controller.messageReceived(stringFromClient);
-				System.out.println("MESSAGE FROM CLIENT: "+stringFromClient);
-				toClient.println("MESSAGE RECEIVED ON SERVER: "+stringFromClient);
-				}
-			
-		    }
-		catch (IOException e) {
-			e.printStackTrace();
-			}
+//		try {
+//			fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//			toClient = new PrintWriter(socket.getOutputStream(),true);
+//			System.out.println("WAITING FOR MESSAGE FROM CLIENT");
+//			while (true) {
+//				String stringFromClient = fromClient.readLine();
+//				controller.messageReceived(stringFromClient);
+////				System.out.println("MESSAGE FROM CLIENT: "+stringFromClient);
+//				}
+//			
+//		    }
+    	
+//		catch (IOException e) {
+//			e.printStackTrace();
+//			}
+    	new ListenThread(socket, controller).start();
 	}
+    
+    public void send(String message) {
+    	if (toClient == null) {
+    		try {
+    			toClient = new PrintWriter(socket.getOutputStream(),true);
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
+    	toClient.println(message);
+    }
 }

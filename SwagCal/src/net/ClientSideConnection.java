@@ -26,13 +26,13 @@ public class ClientSideConnection {
 		this.serverAdress = serverAdress;
 		this.serverPort = serverPort;
 		this.clientController = clientController;
-		incomingQueue = new ArrayList<String>();
+		
 		try {
 			clientSocket = new Socket(InetAddress.getByName(this.serverAdress),this.serverPort);
 			System.out.println("CONNECTED TO SERVER");
-			fromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+//			fromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			toServer = new PrintWriter(clientSocket.getOutputStream(), true);
-			inFromUser = new BufferedReader(new InputStreamReader(System.in));
+//			inFromUser = new BufferedReader(new InputStreamReader(System.in));
 			
 			
 			new ClientThread(clientSocket, clientController).start();
@@ -56,13 +56,13 @@ public class ClientSideConnection {
 		toServer.println(message);
 	}
 		
-	public static void main(String[] args) {
-		ClientSideConnection a = new ClientSideConnection("127.0.0.1", 7899);
-		try {
-			a.send(a.inFromUser.readLine());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		ClientSideConnection a = new ClientSideConnection("127.0.0.1", 7899);
+//		try {
+//			a.send(a.inFromUser.readLine());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

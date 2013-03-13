@@ -25,7 +25,7 @@ public class ClientThread extends Thread{
 			while (true) {
 				String StringFromServer = fromServer.readLine();
 				controller.messageReceived(StringFromServer);
-				System.out.println("MESSAGE FROM SERVER: "+StringFromServer);
+//				System.out.println("MESSAGE FROM SERVER: "+StringFromServer);
 				}
 			
 		    }
