@@ -4,7 +4,7 @@ import gui.ClientGUI;
 
 import java.awt.EventQueue;
 
-public class Client {
+public class Client implements Controller {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -17,5 +17,17 @@ public class Client {
 				}
 			}
 		});
+	}
+
+	@Override
+	public void messageReceived(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void send(String message) {
+		// TODO Auto-generated method stub
+		
 	}
 }

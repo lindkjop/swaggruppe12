@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import controller.Controller;
 
 
 public class ClientSideConnection {
@@ -20,10 +20,12 @@ public class ClientSideConnection {
 	private BufferedReader fromServer;
 	private ArrayList<String> incomingQueue;
 	private BufferedReader inFromUser;
+	private Controller clientController;
 	
-	public ClientSideConnection(String serverAdress, int serverPort) {
+	public ClientSideConnection(String serverAdress, int serverPort, Controller clientController) {
 		this.serverAdress = serverAdress;
 		this.serverPort = serverPort;
+		this.clientController = clientController;
 		incomingQueue = new ArrayList<String>();
 		try {
 			clientSocket = new Socket(InetAddress.getByName(this.serverAdress),this.serverPort);
@@ -33,7 +35,7 @@ public class ClientSideConnection {
 			inFromUser = new BufferedReader(new InputStreamReader(System.in));
 			
 			
-			new ClientThread(clientSocket).start();
+			new ClientThread(clientSocket, clientController).start();
 		
 //				//respons fra server
 //				String responseFromServer = fromServer.readLine();
