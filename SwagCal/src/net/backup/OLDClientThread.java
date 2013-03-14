@@ -1,4 +1,4 @@
-package net;
+package net.backup;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,14 +7,15 @@ import java.net.Socket;
 
 import controller.Controller;
 
-public class ClientThread extends Thread{
+public class OLDClientThread extends Thread{
 	private Socket socket;
 	private BufferedReader fromServer;
 	private Controller controller;
 
-    public ClientThread(Socket socket, Controller clientController) {
+    public OLDClientThread(Socket socket, Controller clientController) {
     	super("ClientThread");
     	this.socket = socket;
+    	this.controller = clientController;
     }
 
     public void run() {

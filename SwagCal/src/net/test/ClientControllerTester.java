@@ -1,4 +1,6 @@
-package net;
+package net.test;
+
+import net.ClientSideConnection;
 
 public class ClientControllerTester {
 

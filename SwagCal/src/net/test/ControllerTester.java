@@ -1,4 +1,4 @@
-package net;
+package net.test;
 
 import controller.Controller;
 
@@ -10,7 +10,7 @@ public class ControllerTester implements Controller {
 	
 	@Override
 	public void messageReceived(String message) {
-		System.out.println("FROM "+name+": "+message);
+		System.out.println("RECEIVED AT "+name+": "+message);
 		
 	}
 
