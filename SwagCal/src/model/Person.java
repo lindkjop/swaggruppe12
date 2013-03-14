@@ -8,6 +8,7 @@ public class Person {
 	private int personID;
 	private String navn;
 	private int phoneNumber;
+	private String userName;
 	private String password;
 	private ArrayList<Event> events;
 	private ArrayList<Notification> notifications;
@@ -21,7 +22,7 @@ public class Person {
 	
 	//GET & Set
 	
-	public Person(int id, String navn, int phoneNumber, String password) {
+	public Person(int id, String navn, int phoneNumber,String userName, String password) {
 		this.navn = navn;
 		this.phoneNumber = phoneNumber;
 		this.password = password;

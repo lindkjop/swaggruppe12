@@ -4,25 +4,53 @@ import gui.ClientGUI;
 import gui.ServerGUI;
 
 import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import db.Factory;
 
 import tools.dateTime;
 
+
+
 public class Testing {
+
+
 	
 	
 	//Eksempel på strukturert måte å teste på.
 	
 	public static void main(String[] args) {
-		new Testing();
+		try {
+			new Testing();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 
 
-	public Testing(){
+	public Testing() throws FileNotFoundException, IOException{
 		testDateTime();
+		testDataBase();
+		
+
+		
+
 	}
 	
 	
-	private static void testDateTime(){
+	private void testDateTime(){
 		dateTime temp1= new dateTime(0,20,18,12,03,2013);
 		dateTime temp2 = new dateTime(30,20,19,12,03,2013);
 		System.out.println(temp1.isSimultaneousWith(temp2));
@@ -50,11 +78,34 @@ public class Testing {
 		System.out.println(interval2.intersects(interval3));
 	}
 	
-	
-	
-	
-	
-	
-	
+	public void testDataBase() {
+				
+		Factory f;
+		
+			try {
+				f = new Factory("./src/db/Properties.properties");
+				f.addPerson("Daniel", 48923838, "danielso", "Snazzylicious");
+				f.addPerson("Gunnar", 48923838, "gunnabo", "jegerteit");
+				f.addPerson("Bob", 48923838, "Robertdahl", "ForkortelserFTW");
+				f.addPerson("Lise", 48923838, "Lizzmizz", "Jegerjentegamerwtflmfao");
+				f.addPerson("Ole", 48923838, "Olliehaug", "Minonkelheterfjell");
+				f.addPerson("Frumfleik", 48923838, "Frumf", "Jeghartidenesteitestenavn");
+				f.addPerson("Osrælg", 48923838, "Osraelg", "allHailTh33mp3r0r");
+				f.addPerson("Høggbob", 48923838, "Bobbærn", "Traktor");
+				f.addPerson("Doktor Grev Von Baronen", 48923838, "Vampyrmann", "Blodblodblod");
+				f.addPerson("Sneak Bjarnesen", 48923838, "Bjarnesen", "Glaff");
+				System.out.println("Alt gikk vel!");
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 	
 }

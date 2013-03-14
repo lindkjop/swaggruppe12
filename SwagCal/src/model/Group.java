@@ -5,6 +5,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class Group {
+	private int id;
 	private ArrayList<Person> members;
 	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
@@ -45,4 +46,10 @@ public class Group {
 	public void addEvent(Event event) {
 		this.events.add(event);
 	}
+	
+	public Group(int id) {
+		this.id = id;
+	}
+	
+	
 }

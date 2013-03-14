@@ -68,6 +68,7 @@ public class DBConnection {
 		 * "info" is used by the Driver Manager while properties is used by our
 		 * program
 		 */
+		
 
 		info.setProperty("user", properties.getProperty("user"));
 		info.setProperty("password", properties.getProperty("password"));

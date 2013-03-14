@@ -1,5 +1,6 @@
 package db;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.Properties;
 import tools.dateTime;
 
 import model.Event;
+import model.Group;
 import model.Notification;
 import model.Person;
 import model.Room;
@@ -24,6 +26,11 @@ public class Factory {
 		 db = new DBConnection(properties);
 	}
 	
+	public Factory(String filename) throws ClassNotFoundException, IOException, SQLException
+	{
+		db = new DBConnection(filename);
+	}
+	
 	
 	public Person getPerson(int id) throws ClassNotFoundException, SQLException {
 		db.initialize();
@@ -33,19 +40,20 @@ public class Factory {
 		ResultSet rs = db.makeSingleQuery(query);
 		String name = null;
 		int telefon = -1;
-		String brukernavn = null;
+		String username = null;
 		String password = null;
 		
 		while(rs.next()) {
 			name = rs.getString(2);
 			telefon = rs.getInt(3);
-			password = rs.getString(4);
+			username = rs.getString(4);
+			password = rs.getString(5);
 		}
 		
 		rs.close();
 		db.close();
 		
-		return new Person(id, name,telefon,password);
+		return new Person(id, name,telefon, username,password);
 		
 
 		
@@ -171,6 +179,27 @@ public class Factory {
 		db.close();
 		
 		return new Notification(id, event, message, isRead, start, alarm, owner);
-		
-		}
+
 	}
+
+	
+	public Group getGroup(int id) throws SQLException, ClassNotFoundException {
+		
+		return new Group(id);
+		
+	}
+		
+		
+	
+
+	public void addPerson(String navn, int phoneNumber, String brukerNavn, String password) throws ClassNotFoundException, SQLException {
+		db.initialize();
+		
+		String statement;
+		statement = String.format("INSERT INTO Person VALUES (%s,%s,%s,%s)",navn,phoneNumber,brukerNavn, password);
+		
+		db.makeSingleUpdate(statement);
+		db.close();
+	}
+}
+
