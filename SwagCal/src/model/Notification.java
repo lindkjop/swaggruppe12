@@ -6,10 +6,11 @@ import java.beans.PropertyChangeSupport;
 import tools.dateTime;
 
 public class Notification {
-
+	private int id;
 	private String message;
 	private boolean isActive;
 	private dateTime start;
+	private dateTime alarm;
 	private Person owner;
 	private Event event;
 	
@@ -19,7 +20,7 @@ public class Notification {
 	}
 	
 	
-	public Notification(String message, Boolean isActive, dateTime start, Person owner, Event event) {
+	public Notification(int id, Event event, String message, Boolean isActive, dateTime start, dateTime alarm, Person owner) {
 		this.message = message;
 		this.isActive = isActive;
 		this.start = start;

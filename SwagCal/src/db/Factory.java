@@ -131,47 +131,46 @@ public class Factory {
 		ResultSet rs = db.makeSingleQuery(query);
 		
 		String message = null;
-		int date = -1;
 		int dateCreated = -1;
 		int timeCreated = -1;
 		dateTime created = null;
 		Boolean isRead = null;
-		String location = null;
-		Room room= null;
 		Person owner = null;
 		dateTime alarm = null;
 		int dateAlarm = -1;
 		int timeAlarm = -1;
 		
-		boolean isActive;
-		dateTime start;
-		Person owner;
-		Event event;
+		dateTime start = null;
+		Event event = null;
 		
 		while(rs.next()) {
-			message = rs.getString(2);
-			dateCreated = rs.getInt(3);
-			timeCreated = rs.getInt(4);
-			isRead = rs.getBoolean(5);
-			Person ownerID = getPerson(rs.getInt(6));
-			dateAlarm = rs.getInt(7);
-			timeAlarm = rs.getInt(8);
+			event = getEvent(rs.getInt(2));
+			message = rs.getString(3);
+			dateCreated = rs.getInt(4);
+			timeCreated = rs.getInt(5);
+			isRead = rs.getBoolean(6);
+			Person ownerID = getPerson(rs.getInt(7));
+			dateAlarm = rs.getInt(8);
+			timeAlarm = rs.getInt(9);
 		}
 		
 		
-		dateTime duration = new dateTime();
-		duration.setDate(date);
-		duration.setTime(startTime);
+		created = new dateTime();
+		
+		created.setDate(dateCreated);
+		created.setTime(timeCreated);
+		
+		alarm = new dateTime();
+		alarm.setDate(dateAlarm);
+		alarm.setTime(timeAlarm);
+		
+		
+		
 		
 		rs.close();
 		db.close();
 		
-		return null;
-		
-		return new Notification(id, isActive, description, location, creator, room);
-		
-		
-		
+		return new Notification(id, event, message, isRead, start, alarm, owner);
 		
 		}
 	}
