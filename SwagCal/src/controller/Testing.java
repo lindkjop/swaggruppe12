@@ -9,10 +9,18 @@ import tools.dateTime;
 
 public class Testing {
 	
+	
+	//Eksempel på strukturert måte å teste på.
+	
 	public static void main(String[] args) {
-		testDateTime();
+		new Testing();
 	}
 
+
+	public Testing(){
+		testDateTime();
+	}
+	
 	
 	private static void testDateTime(){
 		dateTime temp1= new dateTime(0,20,18,12,03,2013);
