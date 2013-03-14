@@ -22,8 +22,7 @@ public class ServerConnectionHub {
 		this.connectedClients = new ArrayList<ServerSideConnection>();
 		this.serverController = serverController;
 		
-		try 
-		{	
+		try {	
 			serverSocket = new ServerSocket(this.serverPort,50,InetAddress.getByName(this.serverAdress));
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
@@ -35,8 +34,7 @@ public class ServerConnectionHub {
 				System.out.println("New client connected, current client count: "+connectedClients.size());
 			}
 		} 
-		catch (IOException e) 
-		{
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
