@@ -14,5 +14,6 @@ public class RandomTesting {
 	 
 	 Person p2 = gson.fromJson(pAsString, Person.class);
 	 System.out.println(p2.getNavn());
+	 
 	}
 }
