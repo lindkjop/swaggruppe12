@@ -28,7 +28,7 @@ public class ServerConnectionHub {
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {
-				ServerSideConnection newClient = new ServerSideConnection(serverSocket.accept(), serverController);
+				ServerSideConnection newClient = new ServerSideConnection(serverSocket.accept(), this.serverController);
 				connectedClients.add(newClient);
 				newClient.start();
 				newClient.send("Connection successful, server is listening");
