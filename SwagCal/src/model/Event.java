@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import tools.dateTime;
 
 public class Event {
+	private int eventID;
 	private dateTime duration;
 	private String description;
 	private String location;
@@ -16,6 +17,8 @@ public class Event {
 	private Room room;
 	
 	
+	
+	
 	//Event listener support
 	private PropertyChangeSupport pcs;
 	
@@ -23,8 +26,15 @@ public class Event {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
-	public Event(){
-		//Konstrukør logikk her plz
+	public Event(int eventID, dateTime duration, String description, String location,Person creator, Room room){
+		this.eventID = eventID;
+		this.duration = duration;
+		this.description = description;
+		this.location = location;
+		this.creator = creator;
+		this.room = room;
+		
+		
 	}
 	
 	//Tidspunkt

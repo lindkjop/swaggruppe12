@@ -16,6 +16,12 @@ public class Room {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	public Room(int roomNumber, String roomName, int size) {
+		this.roomNumber = roomNumber;
+		this.roomName = roomName;
+		this.size = size;
+	}
+	
 	public int getRoomNumber() {
 		return roomNumber;
 	}

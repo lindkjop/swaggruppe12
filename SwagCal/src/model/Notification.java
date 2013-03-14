@@ -18,6 +18,16 @@ public class Notification {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	
+	public Notification(String message, Boolean isActive, dateTime start, Person owner, Event event) {
+		this.message = message;
+		this.isActive = isActive;
+		this.start = start;
+		this.owner = owner;
+		this.event = event;
+	}
+	
+	
 	public String getMessage() {
 		return message;
 	}

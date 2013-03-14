@@ -8,6 +8,7 @@ public class Person {
 	private int personID;
 	private String navn;
 	private int phoneNumber;
+	private String password;
 	private ArrayList<Event> events;
 	private ArrayList<Notification> notifications;
 	
@@ -16,7 +17,17 @@ public class Person {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	
+	
 	//GET & Set
+	
+	public Person(int id, String navn, int phoneNumber, String password) {
+		this.navn = navn;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+	}
+	
+	
 	public int getPersonID() {
 		return personID;
 	}
