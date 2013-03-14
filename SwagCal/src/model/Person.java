@@ -32,6 +32,16 @@ public class Person {
 	public int getPersonID() {
 		return personID;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}

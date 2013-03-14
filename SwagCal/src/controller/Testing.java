@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import model.Event;
+import model.Person;
+import model.Room;
+
 import db.Factory;
 
 import tools.dateTime;
@@ -84,17 +88,27 @@ public class Testing {
 		
 			try {
 				f = new Factory("./src/db/Properties.properties");
-				f.addPerson("Daniel", 48923838, "danielso", "Snazzylicious");
-				f.addPerson("Gunnar", 48923838, "gunnabo", "jegerteit");
-				f.addPerson("Bob", 48923838, "Robertdahl", "ForkortelserFTW");
-				f.addPerson("Lise", 48923838, "Lizzmizz", "Jegerjentegamerwtflmfao");
-				f.addPerson("Ole", 48923838, "Olliehaug", "Minonkelheterfjell");
-				f.addPerson("Frumfleik", 48923838, "Frumf", "Jeghartidenesteitestenavn");
-				f.addPerson("Osrælg", 48923838, "Osraelg", "allHailTh33mp3r0r");
-				f.addPerson("Høggbob", 48923838, "Bobbærn", "Traktor");
-				f.addPerson("Doktor Grev Von Baronen", 48923838, "Vampyrmann", "Blodblodblod");
-				f.addPerson("Sneak Bjarnesen", 48923838, "Bjarnesen", "Glaff");
-				System.out.println("Alt gikk vel!");
+				
+				Person p1 = f.getPerson(0);
+				Person p2 = f.getPerson(1);
+				Person p3 = f.getPerson(2);
+				
+				Event e1 = new Event(0, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e2 = new Event(1, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e3 = new Event(2, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e4 = new Event(3, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e5 = new Event(4, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e6 = new Event(5, null, "Hellige møteplass!", "Drepe!", p1, null);
+				Event e7 = new Event(6, null, "Hellige møteplass!", "Drepe!", p1, null);
+				
+				
+			
+				
+				
+				
+				
+				
+				
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
