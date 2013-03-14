@@ -26,6 +26,8 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class ClientGUI extends JFrame {
 
@@ -200,6 +202,12 @@ public class ClientGUI extends JFrame {
 		panel_9.add(lblVelgUke);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				
+				
+			}
+		});
 		comboBox.setToolTipText("Velg ukenummer");
 		comboBox.setBounds(993, 48, 75, 27);
 		panel_9.add(comboBox);

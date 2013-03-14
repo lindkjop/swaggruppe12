@@ -1,5 +1,8 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 import tools.dateTime;
 
 public class Notification {
@@ -9,6 +12,11 @@ public class Notification {
 	private dateTime start;
 	private Person owner;
 	private Event event;
+	
+	private PropertyChangeSupport pcs;
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
 	
 	public String getMessage() {
 		return message;

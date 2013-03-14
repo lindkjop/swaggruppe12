@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import tools.dateTime;
 
@@ -12,6 +14,14 @@ public class Event {
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
 	private Room room;
+	
+	
+	//Event listener support
+	private PropertyChangeSupport pcs;
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
 	
 	public Event(){
 		//Konstrukør logikk her plz

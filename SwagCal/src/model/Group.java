@@ -1,11 +1,19 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class Group {
 	private ArrayList<Person> members;
 	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
+	
+	private PropertyChangeSupport pcs;
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
 	
 	public ArrayList<Person> getMembers() {
 		return members;

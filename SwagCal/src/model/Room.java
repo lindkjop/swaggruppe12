@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,6 +10,11 @@ public class Room {
 	private String roomName;
 	private int size;
 	private ArrayList<Date> booked;
+	
+	private PropertyChangeSupport pcs;
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
 	
 	public int getRoomNumber() {
 		return roomNumber;

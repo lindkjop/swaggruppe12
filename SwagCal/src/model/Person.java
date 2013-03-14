@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class Person {
@@ -9,6 +11,10 @@ public class Person {
 	private ArrayList<Event> events;
 	private ArrayList<Notification> notifications;
 	
+	private PropertyChangeSupport pcs;
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
 	
 	//GET & Set
 	public int getPersonID() {

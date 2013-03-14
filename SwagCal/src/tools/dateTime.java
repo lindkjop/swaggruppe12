@@ -94,6 +94,20 @@ public class dateTime {
 	
 	//Hente/sette enkelt-ting.
 	
+	public void setTime(int ssmmhh){
+		String input = String.valueOf(ssmmhh);
+		this.setSec(Integer.parseInt(input.substring(0, 2)));
+		this.setMin(Integer.parseInt(input.substring(2, 4)));
+		this.setHour(Integer.parseInt(input.substring(4)));
+	}
+	public void setDate(int ddmmyyyy){
+		String input = String.valueOf(ddmmyyyy);
+		this.setDay(Integer.parseInt(input.substring(0, 2)));
+		this.setMonth(Integer.parseInt(input.substring(2, 4)));
+		this.setYear(Integer.parseInt(input.substring(4)));
+	}
+	
+	
 	public void setSec(int sec){
 		this.getCalendarObj().set(Calendar.SECOND, sec);
 	}
