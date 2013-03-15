@@ -26,6 +26,12 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+
+import model.Person;
+
+import controller.Client;
+import controller.Controller;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
@@ -45,9 +51,13 @@ public class ClientGUI extends JFrame {
 	private JTextField txtDato_1;
 	private JTextField textField_2;
 	private JTextField txtNavn_1;
+	private Person user;
 
 
-	public ClientGUI() {
+	public ClientGUI(Person user, Client client) {
+		this.user = user;
+		
+		
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, JFRAME_WIDTH, JFRAME_HEIGHT);

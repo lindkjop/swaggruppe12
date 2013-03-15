@@ -28,6 +28,7 @@ public class dateTime {
 		this.pointInTime = c;
 		this.endPoint = c;
 	}
+
 	
 	public dateTime(int secOfMinute, int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
 		this.getCalendarObj().set(Calendar.SECOND, secOfMinute);

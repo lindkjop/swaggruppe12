@@ -7,8 +7,8 @@ import model.Person;
 import model.Room;
 
 public interface Controller {
-
-	public void messageReceived(String message);
+	
+	public void connReceived(String message);
 	
 	public void sendMessage(String message);
 	

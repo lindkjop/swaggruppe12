@@ -33,6 +33,7 @@ public class Room {
 		this.size = size;
 	}
 	
+	//GET & SET
 	public int getRoomNumber() {
 		return roomNumber;
 	}
