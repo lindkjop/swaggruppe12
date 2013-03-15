@@ -4,6 +4,12 @@ import gui.ClientGUI;
 import gui.LoginGUI;
 
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.io.PrintStream;
 
 public class Client implements Controller {
 
@@ -15,6 +21,7 @@ public class Client implements Controller {
 					LoginGUI login = new LoginGUI();
 					frame.setVisible(false);
 					login.setVisible(true);
+					login.remove(login);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,4 +40,6 @@ public class Client implements Controller {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 }

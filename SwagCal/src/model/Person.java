@@ -4,6 +4,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+import controller.Controller;
+
 public class Person {
 	private int personID;
 	private String navn;
@@ -12,23 +14,28 @@ public class Person {
 	private String password;
 	private ArrayList<Event> events;
 	private ArrayList<Notification> notifications;
-	
 	private PropertyChangeSupport pcs;
+	private Controller contr;
+	
+	
+	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	//Setter kontroller
+	public void setController(Controller c){
+		this.contr = c;
+	}
 	
-	
-	//GET & Set
-	
+	//Konstruktør
 	public Person(int id, String navn, int phoneNumber,String userName, String password) {
 		this.navn = navn;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
 	
-	
+	//GET & Set
 	public int getPersonID() {
 		return personID;
 	}
@@ -40,7 +47,6 @@ public class Person {
 	public String getPassword() {
 		return password;
 	}
-	
 	
 	public void setPersonID(int personID) {
 		this.personID = personID;

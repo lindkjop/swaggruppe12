@@ -3,7 +3,9 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+
 import tools.dateTime;
+import controller.Controller;
 
 public class Event {
 	private int eventID;
@@ -15,8 +17,7 @@ public class Event {
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
 	private Room room;
-	
-	
+	private Controller contr;
 	
 	
 	//Event listener support
@@ -26,6 +27,7 @@ public class Event {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	//Konstruktør
 	public Event(int eventID, dateTime duration, String description, String location,Person creator, Room room){
 		this.eventID = eventID;
 		this.duration = duration;
@@ -33,7 +35,12 @@ public class Event {
 		this.location = location;
 		this.creator = creator;
 		this.room = room;
-		
+	}
+	
+	//GET & SET
+	//Setter kontroller
+	public void setController(Controller c){
+		this.contr = c;
 	}
 	
 	//Tidspunkt

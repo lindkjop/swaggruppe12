@@ -4,18 +4,28 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+import controller.Controller;
+
 public class Group {
 	private int id;
 	private ArrayList<Person> members;
 	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
-	
 	private PropertyChangeSupport pcs;
+	private Controller contr;
 	
+	
+	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	//Setter kontroller
+	public void setController(Controller c){
+		this.contr = c;
+	}
+	
+	//GET & SET
 	public ArrayList<Person> getMembers() {
 		return members;
 	}

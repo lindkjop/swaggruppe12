@@ -3,6 +3,8 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import controller.Controller;
+
 import tools.dateTime;
 
 public class Notification {
@@ -13,13 +15,19 @@ public class Notification {
 	private dateTime alarm;
 	private Person owner;
 	private Event event;
-	
 	private PropertyChangeSupport pcs;
+	private Controller contr;
+	
+	
+	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
-	
+	//Setter kontroller
+	public void setController(Controller c){
+		this.contr = c;
+	}
 	public Notification(int id, Event event, String message, Boolean isActive, dateTime start, dateTime alarm, Person owner) {
 		this.message = message;
 		this.isActive = isActive;

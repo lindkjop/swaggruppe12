@@ -25,9 +25,7 @@ public class Testing {
 	
 	public static void main(String[] args) {
 		new Testing();
-		
 	}
-
 
 	public Testing() {
 		testDateTime();
@@ -82,15 +80,6 @@ public class Testing {
 				Event e5 = new Event(4, null, "Hellige møteplass!", "Drepe!", p1, null);
 				Event e6 = new Event(5, null, "Hellige møteplass!", "Drepe!", p1, null);
 				Event e7 = new Event(6, null, "Hellige møteplass!", "Drepe!", p1, null);
-				
-				
-			
-				
-				
-				
-				
-				
-				
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

@@ -5,17 +5,28 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Date;
 
+import controller.Controller;
+
 public class Room {
 	private int roomNumber;
 	private String roomName;
 	private int size;
 	private ArrayList<Date> booked;
-	
 	private PropertyChangeSupport pcs;
+	private Controller contr;
+	
+	
+	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
+	//Setter kontroller
+	public void setController(Controller c){
+		this.contr = c;
+	}
+	
+	//Konstruktør
 	public Room(int roomNumber, String roomName, int size) {
 		this.roomNumber = roomNumber;
 		this.roomName = roomName;
