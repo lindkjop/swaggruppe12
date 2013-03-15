@@ -68,5 +68,5 @@ public class LoginGUI extends JFrame {
 		textField_2.setColumns(10);
 	}
 
-	}
 }
+

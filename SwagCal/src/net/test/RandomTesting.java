@@ -12,8 +12,17 @@ public class RandomTesting {
 	 String pAsString = gson.toJson(p);
 	 System.out.println(pAsString);
 	 
-	 PersonTest p2 = gson.fromJson(pAsString, PersonTest.class);
-	 System.out.println(p2.name);
+	 Object o = gson.fromJson(pAsString, Object.class);
+	 if (o instanceof String) {
+		 System.out.println("STRING!!");
+	 }
+	 else if (o instanceof PersonTest) {
+		 PersonTest p2 = (PersonTest)o;
+		 System.out.println(p2.name.getName());	 
+	 }
+	 else {
+		 System.out.println("ELSE");
+	 }
 	 
 	}
 }

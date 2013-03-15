@@ -2,7 +2,6 @@ package controller;
 
 import gui.ClientGUI;
 import gui.LoginGUI;
-import gui.ServerGUI;
 
 import java.awt.EventQueue;
 
@@ -13,7 +12,7 @@ public class Client implements Controller {
 			public void run() {
 				try {
 					ClientGUI frame = new ClientGUI();
-					ServerGUI login = new ServerGUI();
+					LoginGUI login = new LoginGUI();
 					frame.setVisible(false);
 					login.setVisible(true);
 				} catch (Exception e) {
