@@ -36,8 +36,8 @@ public class Factory {
 	public Person getPerson(int id) throws ClassNotFoundException, SQLException {
 		db.initialize();
 
-//		String query = String.format("SELECT * FROM PERSON WHERE ID=%a",String.valueOf(id));
-		String query = String.format("SELECT * FROM PERSON WHERE ID="+String.valueOf(id));
+		String query = String.format("SELECT * FROM PERSON WHERE ID=%a",String.valueOf(id));
+		
 
 		ResultSet rs = db.makeSingleQuery(query);
 		String name = null;
@@ -294,11 +294,31 @@ public class Factory {
 		try {
 			db.initialize();
 
-		String query = String.format("SELECT * FROM Person");
+		String query = String.format("SELECT * FROM PERSON");
+		ArrayList<Person> persons = new ArrayList<Person>();
 
 		ResultSet rs = db.makeSingleQuery(query);
 		
-		
+		int id;
+		String name;
+		int telefon;
+		String username;
+		String password;
+
+		while(rs.next()) {
+			id = rs.getInt(1);
+			name = rs.getString(2);
+			telefon = rs.getInt(3);
+			username = rs.getString(4);
+			password = rs.getString(5);
+			
+			persons.add(new Person(id, name, telefon, username, password));
+		}
+
+		rs.close();
+		db.close();
+
+		return persons;	
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -306,7 +326,7 @@ public class Factory {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;	
+		return null;
 	}
 	
 	public ArrayList<Notification> getNotifications() {
@@ -333,7 +353,7 @@ public class Factory {
 		Event event=null;
 
 		while(rs.next()) {
-			id = rs.getInt(0);
+			id = rs.getInt(1);
 			event = getEvent(rs.getInt(2));
 			message = rs.getString(3);
 			dateCreated = rs.getInt(4);
@@ -370,6 +390,7 @@ public class Factory {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public ArrayList<Room> getRooms() {
@@ -404,21 +425,7 @@ public class Factory {
 	}
 	
 	public ArrayList<Group> getGroups() {
-		try {
-			db.initialize();
-
-		String query = String.format("SELECT * FROM Group");
-
-		ResultSet rs = db.makeSingleQuery(query);
 		
-		
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return null;
 	}
 
