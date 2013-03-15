@@ -272,11 +272,11 @@ public class ClientGUI extends JFrame {
 		txtDato.setColumns(10);
 		txtDato.setBounds(126, 39, 147, 20);
 		panel_1.add(txtDato);
-		
+
 		JLabel lblTidspunkt = new JLabel("Tidspunkt");
 		lblTidspunkt.setBounds(10, 74, 63, 14);
 		panel_1.add(lblTidspunkt);
-		
+
 		txtFra = new JTextField();
 		txtFra.setText("fra");
 		txtFra.setColumns(10);

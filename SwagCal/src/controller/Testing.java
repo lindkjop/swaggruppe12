@@ -16,36 +16,18 @@ import tools.dateTime;
 
 
 
-public class Testing {
-
-
-	
-	
+public class Testing {	
 	//Eksempel på strukturert måte å teste på.
 	
 	public static void main(String[] args) {
-		try {
-			new Testing();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
+		new Testing();
 		
 	}
 
 
-	public Testing() throws FileNotFoundException, IOException{
+	public Testing() {
 		testDateTime();
 		testDataBase();
-		
-
-		
 
 	}
 	
@@ -79,9 +61,9 @@ public class Testing {
 	}
 	
 	public void testDataBase() {
-				
-		Factory f;
 		
+		//Prøver å legge til 
+		Factory f;
 			try {
 				f = new Factory("./src/db/Properties.properties");
 				f.addPerson("Daniel", 48923838, "danielso", "Snazzylicious");

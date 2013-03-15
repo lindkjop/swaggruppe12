@@ -32,7 +32,7 @@ public class dateTime {
 	public dateTime(int secOfMinute, int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
 		this.getCalendarObj().set(Calendar.SECOND, secOfMinute);
 		this.getCalendarObj().set(Calendar.MINUTE, minOfHour);
-		this.getCalendarObj().set(Calendar.HOUR, hourOfDay);
+		this.getCalendarObj().set(Calendar.HOUR_OF_DAY, hourOfDay);
 		this.getCalendarObj().set(Calendar.DATE, dayOfMonth);
 		this.getCalendarObj().set(Calendar.MONTH, monthOfYear);
 		this.getCalendarObj().set(Calendar.YEAR, year);
@@ -87,7 +87,7 @@ public class dateTime {
 		result.getCalendarObj().add(Calendar.MONTH, -this.getCalendarObj().get(Calendar.MONTH));
 		result.getCalendarObj().add(Calendar.YEAR, -this.getCalendarObj().get(Calendar.YEAR));
 		result.getCalendarObj().add(Calendar.MINUTE, -this.getCalendarObj().get(Calendar.MINUTE));
-		result.getCalendarObj().add(Calendar.HOUR, -this.getCalendarObj().get(Calendar.HOUR));
+		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, -this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
 		return result;
 	}
 	
@@ -123,10 +123,10 @@ public class dateTime {
 	}
 	
 	public void setHour(int hour){
-		this.getCalendarObj().set(Calendar.HOUR, hour);
+		this.getCalendarObj().set(Calendar.HOUR_OF_DAY, hour);
 	}
 	public int getHour(){
-		return this.getCalendarObj().get(Calendar.HOUR);
+		return this.getCalendarObj().get(Calendar.HOUR_OF_DAY);
 	}
 	
 	public void setDay(int day){

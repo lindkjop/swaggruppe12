@@ -34,7 +34,6 @@ public class Event {
 		this.creator = creator;
 		this.room = room;
 		
-		
 	}
 	
 	//Tidspunkt
