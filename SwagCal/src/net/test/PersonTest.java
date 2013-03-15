@@ -1,14 +1,20 @@
 package net.test;
 
+import java.util.ArrayList;
+
 public class PersonTest {
 
-	PersonTestName name;
-	int[] numbers;
+	String name;
+	ArrayList<PersonTest> friends;
 	
-	public PersonTest(PersonTestName name, int[] numbers) {
+	public PersonTest(String name) {
 		this.name = name;
-		this.numbers = numbers;
+		this.friends = new ArrayList<PersonTest>();
+		
 	}
 	
+	public void addFriend(PersonTest p) {
+		friends.add(p);
+	}
 	
 }

@@ -7,22 +7,24 @@ import com.google.gson.Gson;
 public class RandomTesting {
 	
 	public static void main(String[] args) {
-	 PersonTest p = new PersonTest(new PersonTestName("Per", "Olsen"), new int[5]);
 	 Gson gson = new Gson();
-	 String pAsString = gson.toJson(p);
-	 System.out.println(pAsString);
+	 PersonTest p1 = new PersonTest("per");
+	 PersonTest p2 = new PersonTest("tor");
+	
 	 
-	 Object o = gson.fromJson(pAsString, Object.class);
-	 if (o instanceof String) {
-		 System.out.println("STRING!!");
-	 }
-	 else if (o instanceof PersonTest) {
-		 PersonTest p2 = (PersonTest)o;
-		 System.out.println(p2.name.getName());	 
-	 }
-	 else {
-		 System.out.println("ELSE");
-	 }
+	 p1.addFriend(p2);
+	 System.out.println(p1.friends.get(0).name);
 	 
+	String ps1 = gson.toJson(p1);
+//	String ps2 = gson.toJson(p2);
+	System.out.println(ps1);
+	
+	PersonTest p1after = gson.fromJson(ps1, PersonTest.class);
+	System.out.println(p1after.friends.get(0).name);
+//	PersonTest p22 = gson.fromJson(ps2, PersonTest.class);
+	
+//	System.out.println(p12.friends);
+	
 	}
+	
 }
