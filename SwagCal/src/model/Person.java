@@ -32,6 +32,7 @@ public class Person {
 	public Person(int id, String navn, int phoneNumber,String userName, String password) {
 		this.navn = navn;
 		this.phoneNumber = phoneNumber;
+		this.userName = userName;
 		this.password = password;
 	}
 	

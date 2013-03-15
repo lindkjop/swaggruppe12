@@ -4,15 +4,12 @@ import gui.ClientGUI;
 import gui.LoginGUI;
 
 import java.awt.EventQueue;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
-import java.io.PrintStream;
+
+import db.Factory;
 
 import model.Event;
 import model.Group;
+import model.Model;
 import model.Notification;
 import model.Person;
 import model.Room;
@@ -21,6 +18,7 @@ public class Client implements Controller {
 	
 	private Person user;
 	private Client client;
+	private Model model;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,12 +35,17 @@ public class Client implements Controller {
 	public Client(){
 		//Ekstra innloggingsperson;
 		Person dude = new Person(99, "Tibor", 9999999, "tibor", "kul");
+		model = new Model();
+		model.addPerson(dude);
 		
 		LoginGUI login = new LoginGUI(user,this);
 		login.setVisible(true);
 	}
 	
-
+	public Model getModel(){
+		return model;
+	}
+	
 	public void setWorkFrame(){
 		ClientGUI frame = new ClientGUI(user,this);
 		frame.setVisible(true);

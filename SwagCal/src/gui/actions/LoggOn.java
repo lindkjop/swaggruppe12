@@ -1,6 +1,7 @@
 package gui.actions;
 
 import model.Person;
+import controller.Client;
 import controller.Controller;
 
 public class LoggOn {
@@ -8,10 +9,14 @@ public class LoggOn {
 	private boolean sucsess;
 	
 	
-	public LoggOn(String userName, String password, Person user){
-		this.user = user;
-		this.user = new Person(1, "Anus", 99999,"anis", "GEIR");
-		sucsess = true;
+	public LoggOn(String userName, String password, Person user, Client c){
+		sucsess = false;
+		for (Person p: c.getModel().getPersons()){
+			System.out.println(c.getModel().getPersons());
+			if (p.getPassword().equals(password) && p.getUserName().equals(userName)){
+				sucsess = true;
+			}
+		}
 	}
 	
 	public boolean getSucsess(){

@@ -15,11 +15,25 @@ public class Model {
 	private ArrayList<Person> persons;
 	private ArrayList<Room> rooms;
 	
-	public Model(Person p, Factory f) {
-		this.person = p;
+	public Model(Factory f) {
 		this.factory = f;
 		initialize();
 	}
+	public Model(){
+		events = new ArrayList<Event>(); 
+		groups = new ArrayList<Group>();
+		notifications = new ArrayList<Notification>();
+		rooms = new ArrayList<Room>();
+		persons = new ArrayList<Person> ();
+	}
+	public void addPerson(Person p){
+		persons.add(p);
+	}
+	
+	public ArrayList<Person> getPersons(){
+		return persons;
+	}
+	
 	
 	public void addEvent(Event e) {
 		events.add(e);
