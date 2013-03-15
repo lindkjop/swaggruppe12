@@ -41,5 +41,10 @@ public class ClientSideConnection {
 	public void send(String message) {
 		toServer.println(message);
 	}
+	
+	//steng connection
+	public void disconnect() {
+		
+	}
 		
 }
