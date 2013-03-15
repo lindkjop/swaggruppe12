@@ -1,22 +1,13 @@
 package controller;
 
-import gui.ClientGUI;
-import gui.ServerGUI;
-
-import java.awt.EventQueue;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Properties;
+import java.util.ArrayList;
 
 import model.Event;
 import model.Person;
-import model.Room;
-
-import db.Factory;
-
 import tools.dateTime;
+import db.Factory;
 
 
 
@@ -69,6 +60,7 @@ public class Testing {
 			try {
 				f = new Factory("./src/db/Properties.properties");
 				
+				
 				Person p1 = f.getPerson(0);
 				Person p2 = f.getPerson(1);
 				Person p3 = f.getPerson(2);
@@ -81,6 +73,11 @@ public class Testing {
 				Event e6 = new Event(5, null, "Hellige møteplass!", "Drepe!", p1, null);
 				Event e7 = new Event(6, null, "Hellige møteplass!", "Drepe!", p1, null);
 				
+				ArrayList<Event> events = f.getEvents();
+				for (Event e : events) {
+					System.out.println(e);
+				}
+				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -91,6 +88,7 @@ public class Testing {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 	}
 	
 }
