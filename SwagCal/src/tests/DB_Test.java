@@ -22,16 +22,23 @@ public class DB_Test {
 	private Person testPerson2;
 
 	@Test
+	
+	//Denne funksjoenn blir kjørt!!
+	//
 	public void test() throws ClassNotFoundException, SQLException, IOException {
 		DB_Factory();
 		
-		DB_Person();
 		DB_EmptyTable("Person");
+		DB_Person();
 		
-		DB_Event();
-		DB_EmptyTable("Event");
+//		DB_Event();
+//		DB_EmptyTable("Event");
 	}
 
+	
+	
+	
+	//Hjelpe ting som SLETTER HELE BÆSJEN
 	private void DB_EmptyTable(String tableName) throws ClassNotFoundException, SQLException {
 		db.initialize();
 		db.makeSingleUpdate(String.format("DELETE FROM %s",tableName));
@@ -47,9 +54,10 @@ public class DB_Test {
 	
 	//Prøver å sette inn en person i db og hente han ut etterpå
 	public void DB_Person() throws ClassNotFoundException, SQLException {
-
-		f.addPersonToDB(new Person(0, "Geir Anus", 999996, "giera", "penis"));
-		Person p1 = f.getPerson(1);
+		testPerson1 = new Person(1, "Geir Anus", 999996, "giera", "penis");
+		f.addPersonToDB(testPerson1);
+		Person result = f.getPerson(testPerson1.getPersonID());
+		assertEquals(result.getPersonID(), testPerson1.getPersonID());
 
 	}
 	

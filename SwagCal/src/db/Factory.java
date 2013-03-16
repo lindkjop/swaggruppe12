@@ -50,7 +50,7 @@ public class Factory {
 
 			return new Person(id, name,telefon, username,password);
 		}
-		throw new SQLException("Databasen returnerte et tomt resultat... Personen finnes ikke der?");
+		throw new SQLException("Databasen returnerte et tomt resultat... Personen med den idn finnes ikke der?");
 
 	}
 
@@ -84,7 +84,7 @@ public class Factory {
 			return new Event(id, duration, description, location, creator, room);
 		}
 
-		throw new SQLException("Databasen returnerte et tomt resultat... Eventen finnes ikke der?");
+		throw new SQLException("Databasen returnerte et tomt resultat... Eventen med den idn finnes ikke der?");
 
 	}
 
@@ -177,7 +177,8 @@ public class Factory {
 
 
 	public void addPersonToDB(Person p) throws ClassNotFoundException, SQLException {
-
+		
+		int id =p.getPersonID();
 		String navn = p.getNavn();
 		int phoneNumber = p.getPhoneNumber();
 		String brukerNavn = p.getUserName();
@@ -187,7 +188,7 @@ public class Factory {
 		db.initialize();
 
 		String statement;
-		statement = String.format("INSERT INTO Person VALUES (null,'%s',%s,'%s','%s')",navn,phoneNumber,brukerNavn, password);		
+		statement = String.format("INSERT INTO Person VALUES (%s,'%s',%s,'%s','%s')",id,navn,phoneNumber,brukerNavn, password);		
 		db.makeSingleUpdate(statement);
 		db.close();
 	}

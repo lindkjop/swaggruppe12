@@ -30,6 +30,7 @@ public class Person {
 	
 	//Konstruktør
 	public Person(int id, String navn, int phoneNumber,String userName, String password) {
+		this.personID = id;
 		this.navn = navn;
 		this.phoneNumber = phoneNumber;
 		this.userName = userName;
