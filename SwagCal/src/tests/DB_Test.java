@@ -51,6 +51,7 @@ public class DB_Test {
 		db = f.getDbConnection();
 	}
 	
+	
 	//Prøver å sette inn en person i db og hente han ut etterpå
 	public void DB_Person() throws ClassNotFoundException, SQLException {
 		testPerson1 = new Person(1, "Geir Anus", 999996, "giera", "penis");

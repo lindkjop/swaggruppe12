@@ -12,10 +12,12 @@ public class LoggOn {
 	public LoggOn(String userName, String password, Person user, Client c){
 		sucsess = false;
 		for (Person p: c.getModel().getPersons()){
-			System.out.println(c.getModel().getPersons());
 			if (p.getPassword().equals(password) && p.getUserName().equals(userName)){
 				sucsess = true;
 			}
+		}
+		if(!sucsess){
+			System.out.println("Feil brukernavn eller passord, du er dum");
 		}
 	}
 	

@@ -32,7 +32,7 @@ public class Factory {
 		db = new DBConnection(filename);
 	}
 
-
+	// Person GET & SET
 	public Person getPerson(int id) throws ClassNotFoundException, SQLException {
 		db.initialize();
 
@@ -51,13 +51,28 @@ public class Factory {
 			return new Person(id, name,telefon, username,password);
 		}
 		throw new SQLException("Databasen returnerte et tomt resultat... Personen med den idn finnes ikke der?");
-
 	}
+	
+	public void addPersonToDB(Person p) throws ClassNotFoundException, SQLException {
+		
+		int id =p.getPersonID();
+		String navn = p.getNavn();
+		int phoneNumber = p.getPhoneNumber();
+		String brukerNavn = p.getUserName();
+		String password = p.getPassword();
+		
+		db.initialize();
 
-
+		String statement;
+		statement = String.format("INSERT INTO Person VALUES (%s,'%s',%s,'%s','%s')",id,navn,phoneNumber,brukerNavn, password);		
+		db.makeSingleUpdate(statement);
+		db.close();
+	}
+	
+	/////////////
+	
 
 	public Event getEvent(int id) throws ClassNotFoundException, SQLException {
-
 		db.initialize();
 
 		String query = String.format("SELECT * FROM Event WHERE eventID=%s",String.valueOf(id));
@@ -88,38 +103,32 @@ public class Factory {
 
 	}
 
-
 	public Room getRoom(int id) throws SQLException, ClassNotFoundException {
-
 		db.initialize();
 
-		String query = String.format("SELECT * FROM Room WHERE ID=%a",id);
-
+		String query = String.format("SELECT * FROM Room WHERE ID=%s",id);
 		ResultSet rs = db.makeSingleQuery(query);
-		int roomNR = -1;
-		String roomName = null;
-		int roomSize = -1;
-
-		while(rs.next()) {
-			roomNR = rs.getInt(1);
-			roomName = rs.getString(2);
-			roomSize = rs.getInt(3);
+		
+		if(rs.next()) {
+			int roomNR = rs.getInt(1);
+			String roomName = rs.getString(2);
+			int roomSize = rs.getInt(3);
+			
+			rs.close();
+			db.close();
+			
+			return new Room(roomNR, roomName, roomSize);
 		}
-
-		rs.close();
-		db.close();
-
-		return new Room(roomNR, roomName, roomSize);
+		
+		throw new SQLException("Databasen returnerte et tomt resultat... Rommet med den idn finnes ikke der?");
 
 	}
 
 
 	public Notification getNotification(int id) throws SQLException, ClassNotFoundException {
-
 		db.initialize();
-
-		String query = String.format("SELECT * FROM Notification WHERE ID=%a",id);
-
+		
+		String query = String.format("SELECT * FROM Notification WHERE ID=%s",id);
 		ResultSet rs = db.makeSingleQuery(query);
 
 		String message = null;
@@ -172,27 +181,6 @@ public class Factory {
 		return new Group(id);
 
 	}
-
-
-
-
-	public void addPersonToDB(Person p) throws ClassNotFoundException, SQLException {
-		
-		int id =p.getPersonID();
-		String navn = p.getNavn();
-		int phoneNumber = p.getPhoneNumber();
-		String brukerNavn = p.getUserName();
-		String password = p.getPassword();
-
-
-		db.initialize();
-
-		String statement;
-		statement = String.format("INSERT INTO Person VALUES (%s,'%s',%s,'%s','%s')",id,navn,phoneNumber,brukerNavn, password);		
-		db.makeSingleUpdate(statement);
-		db.close();
-	}
-
 
 	public void addEventToDB(Event e) throws ClassNotFoundException, SQLException {
 		db.initialize();
