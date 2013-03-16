@@ -41,7 +41,6 @@ public class Factory {
 
 		if(rs.next()){
 			String name = rs.getString(2);
-			System.out.println(name);
 			int telefon = rs.getInt(3);
 			String username = rs.getString(4);
 			String password = rs.getString(5);
