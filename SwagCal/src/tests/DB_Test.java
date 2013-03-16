@@ -37,7 +37,6 @@ public class DB_Test {
 
 	
 	
-	
 	//Hjelpe ting som SLETTER HELE BÆSJEN
 	private void DB_EmptyTable(String tableName) throws ClassNotFoundException, SQLException {
 		db.initialize();

@@ -11,13 +11,12 @@ public class dateTime_Test {
 	@Test
 	public void test() {
 		testDateTime();
-		fail("Completed sucsessfully");
 	}
 
 	private void testDateTime(){
 		dateTime temp1= new dateTime(0,20,18,12,03,2013);
 		dateTime temp2 = new dateTime(30,20,19,12,03,2013);
-		System.out.println(temp1.isSimultaneousWith(temp2));
+		assertFalse(temp1.isSimultaneousWith(temp2));
 
 		dateTime point11 = new dateTime(0,20,18,12,03,2013);
 		dateTime point12 = new dateTime(0,30,18,12,03,2013);
@@ -29,17 +28,17 @@ public class dateTime_Test {
 		dateTime point32 = new dateTime(0,35,18,12,03,2013);
 
 
-		System.out.println(point11.isAfter(point12));
-		System.out.println(point11.isBefore(point12));
+		assertFalse(point11.isAfter(point12));
+		assertTrue(point11.isBefore(point12));
 
 
 		dateTime interval1 = new dateTime(point11,point12);
 		dateTime interval2 = new dateTime(point21,point22);
 		dateTime interval3 = new dateTime(point31,point32);
 
-		System.out.println(interval1.intersects(interval2));
-		System.out.println(interval1.intersects(interval3));
-		System.out.println(interval2.intersects(interval3));
+		assertFalse(interval1.intersects(interval2));
+		assertTrue(interval1.intersects(interval3));
+		assertTrue(interval2.intersects(interval3));
 	}
 	
 }
