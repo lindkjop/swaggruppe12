@@ -32,7 +32,8 @@ public class Factory {
 		db = new DBConnection(filename);
 	}
 
-	// Person GET & SET
+// Person GET & SET /////////////
+	
 	public Person getPerson(int id) throws ClassNotFoundException, SQLException {
 		db.initialize();
 
@@ -69,9 +70,10 @@ public class Factory {
 		db.close();
 	}
 	
-	/////////////
+//////////////////////////
 	
-
+// Event GET & SET /////////////
+	
 	public Event getEvent(int id) throws ClassNotFoundException, SQLException {
 		db.initialize();
 
@@ -100,8 +102,31 @@ public class Factory {
 		}
 
 		throw new SQLException("Databasen returnerte et tomt resultat... Eventen med den idn finnes ikke der?");
-
 	}
+	
+	public void addEventToDB(Event e) throws ClassNotFoundException, SQLException {
+		db.initialize();
+
+		int duration = 10;
+		String description = e.getDescription();
+		String location = e.getLocation();
+		int creator = e.getCreator().getPersonID(); 
+		int roomNumber = e.getRoom().getRoomNumber();
+
+		if(roomNumber != -1) {
+			location = null;
+		}
+
+
+		String statement;
+		statement = String.format("INSERT INTO Person VALUES (null,%s,'%s','%s',%s)",duration,description,location, creator, roomNumber);		
+		db.makeSingleUpdate(statement);
+		db.close();
+	}
+//////////////////////////
+	
+	
+	
 
 	public Room getRoom(int id) throws SQLException, ClassNotFoundException {
 		db.initialize();
@@ -181,28 +206,6 @@ public class Factory {
 		return new Group(id);
 
 	}
-
-	public void addEventToDB(Event e) throws ClassNotFoundException, SQLException {
-		db.initialize();
-
-		int duration = 10;
-		String description = e.getDescription();
-		String location = e.getLocation();
-		int creator = e.getCreator().getPersonID(); 
-		int roomNumber = e.getRoom().getRoomNumber();
-
-		if(roomNumber != -1) {
-			location = null;
-		}
-
-
-		String statement;
-		statement = String.format("INSERT INTO Person VALUES (null,%s,'%s','%s',%s)",duration,description,location, creator, roomNumber);		
-		db.makeSingleUpdate(statement);
-		db.close();
-	}
-
-
 
 	public int getCountOfModel(Object model) throws ClassNotFoundException, SQLException {
 
