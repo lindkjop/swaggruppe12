@@ -44,7 +44,6 @@ public class Server implements Controller {
 	
 	@Override
 	public void messageReceived(Message message) {
-<<<<<<< HEAD
 		String className = message.getClassName();
 		String queryEffect = message.getQuery();
 		Boolean isUpdate = message.isUpdate();
@@ -52,81 +51,9 @@ public class Server implements Controller {
 		
 		
 	}
-
-	@Override
-	public void send(String message) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendMessage(String message) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void personObjectReceived(Person person) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eventObjectReceived(Event event) {
-=======
->>>>>>> 0104f2b4b0bc45b9ad6ed6bcbec6df7e3e5ad20e
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
+	
 	public void sendMessage(Message message) {
-		// TODO Auto-generated method stub
 		
 	}
-
-<<<<<<< HEAD
-	@Override
-	public void roomObjectReceived(Room room) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendPersonObject(Person person) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendEventObject(Event event) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendGroupObject(Group group) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendNotificationObject(Notification notification) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendRoomObject(Room room) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public 
-=======
-	
->>>>>>> 0104f2b4b0bc45b9ad6ed6bcbec6df7e3e5ad20e
-
 	
 }
