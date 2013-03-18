@@ -79,6 +79,10 @@ public class dateTime {
 		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, -this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
 		return result;
 	}
+	public static dateTime getDuration(dateTime from, dateTime to){
+		return from.getDuration(to);
+	}
+	
 	
 	//Hente/sette enkelt-ting.
 	

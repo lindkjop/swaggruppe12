@@ -9,7 +9,8 @@ import controller.Controller;
 
 public class Event {
 	private int eventID;
-	private dateTime duration;
+	private dateTime from;
+	private dateTime to;
 	private String description;
 	private String location;
 	private Person creator;
@@ -17,7 +18,6 @@ public class Event {
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
 	private Room room;
-	private Controller contr;
 	
 	
 	
@@ -29,9 +29,9 @@ public class Event {
 	}
 	
 	//Konstruktør
-	public Event(int eventID, dateTime duration, String description, String location,Person creator, Room room){
-		this.eventID = eventID;
-		this.duration = duration;
+	public Event(dateTime from, dateTime to, String description, String location,Person creator, Room room){
+		this.from = from;
+		this.to = to;
 		this.description = description;
 		this.location = location;
 		this.creator = creator;
@@ -39,18 +39,25 @@ public class Event {
 	}
 	
 	//GET & SET
-	//Setter kontroller
-	public void setController(Controller c){
-		this.contr = c;
-	}
 	
 	//Tidspunkt
 	public dateTime getDuration() {
-		return duration;
+		return dateTime.getDuration(this.from, this.to);
 	}
-	public void setDuration(dateTime time) {
-		this.duration = time;
+	
+	public void setFrom(dateTime from){
+		this.from = from;
 	}
+	public void setTo(dateTime to){
+		this.from = to;
+	}
+	public dateTime getFrom(){
+		return this.from;
+	}
+	public dateTime getTo(){
+		return this.to;
+	}
+	
 	
 	//Tekstlig beskrivelse av eventen
 	public String getDescription() {
@@ -111,7 +118,7 @@ public class Event {
 	
 	//Konflikt med andre events-logikk
 	public boolean conflictsWith(Event e) {
-		return this.getDuration().intersects(e.getDuration());
+		return dateTime.intersects(from, to, e.getFrom(), e.getTo());
 	}
 	
  
