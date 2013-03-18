@@ -47,10 +47,10 @@ public class ClientGUI extends JFrame {
 	private JPanel contentPane;
 	private static int JFRAME_WIDTH = 1440;
 	private static int JFRAME_HEIGHT = 900;
-	private JTextField txtTittel;
-	private JTextField txtDato;
-	private JTextField txtFra;
-	private JTextField txtTil;
+	private JTextField txtEventTittel;
+	private JTextField txtEventDato;
+	private JTextField txtFraTid;
+	private JTextField txtTilTid;
 	private JTextField txtNavn;
 	private JTextField txtRomNavn_1;
 	private JTextField txtRomNavn;
@@ -307,60 +307,60 @@ public class ClientGUI extends JFrame {
 		lblAvtaletittel.setBounds(10, 11, 63, 14);
 		panel_1.add(lblAvtaletittel);
 		
-		txtTittel = new JTextField();
-		txtTittel.addFocusListener(new FocusAdapter() {
+		txtEventTittel = new JTextField();
+		txtEventTittel.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent arg0) {
-				if(txtTittel.getText().equals("tittel"))
-					txtTittel.setText(null);
+				if(txtEventTittel.getText().equals("tittel"))
+					txtEventTittel.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(txtTittel.getText().equals(""))
-					txtTittel.setText("tittel");
+				if(txtEventTittel.getText().equals(""))
+					txtEventTittel.setText("tittel");
 			}
 		});
-		txtTittel.setText("tittel");
-		txtTittel.setBounds(126, 8, 147, 20);
-		panel_1.add(txtTittel);
-		txtTittel.setColumns(10);
+		txtEventTittel.setText("tittel");
+		txtEventTittel.setBounds(126, 8, 147, 20);
+		panel_1.add(txtEventTittel);
+		txtEventTittel.setColumns(10);
 		
 		JLabel lblDato = new JLabel("Dato");
 		lblDato.setBounds(10, 38, 63, 14);
 		panel_1.add(lblDato);
 		
-		txtDato = new JTextField();
-		txtDato.addFocusListener(new FocusAdapter() {
+		txtEventDato = new JTextField();
+		txtEventDato.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtDato.getText().equals("dato"))
-					txtDato.setText(null);
+				if(txtEventDato.getText().equals("dato"))
+					txtEventDato.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(txtDato.getText().equals(""))
-					txtDato.setText("dato");
+				if(txtEventDato.getText().equals(""))
+					txtEventDato.setText("dato");
 			}
 		});
-		txtDato.setText("dato");
-		txtDato.setColumns(10);
-		txtDato.setBounds(126, 39, 147, 20);
-		panel_1.add(txtDato);
+		txtEventDato.setText("dato");
+		txtEventDato.setColumns(10);
+		txtEventDato.setBounds(126, 39, 147, 20);
+		panel_1.add(txtEventDato);
 
 		JLabel lblTidspunkt = new JLabel("Tidspunkt");
 		lblTidspunkt.setBounds(10, 74, 63, 14);
 		panel_1.add(lblTidspunkt);
 
-		txtFra = new JTextField();
-		txtFra.setText("fra");
-		txtFra.setColumns(10);
-		txtFra.setBounds(126, 70, 64, 20);
-		panel_1.add(txtFra);
+		txtFraTid = new JTextField();
+		txtFraTid.setText("fra");
+		txtFraTid.setColumns(10);
+		txtFraTid.setBounds(126, 70, 64, 20);
+		panel_1.add(txtFraTid);
 		
-		txtTil = new JTextField();
-		txtTil.setText("til");
-		txtTil.setColumns(10);
-		txtTil.setBounds(210, 71, 63, 20);
-		panel_1.add(txtTil);
+		txtTilTid = new JTextField();
+		txtTilTid.setText("til");
+		txtTilTid.setColumns(10);
+		txtTilTid.setBounds(210, 71, 63, 20);
+		panel_1.add(txtTilTid);
 		
 		JLabel lblInvitertePersoner = new JLabel("Inviterte personer");
 		lblInvitertePersoner.setBounds(10, 99, 106, 14);
@@ -392,13 +392,13 @@ public class ClientGUI extends JFrame {
 		panel_1.add(txtNavn);
 		txtNavn.setColumns(10);
 		
-		JButton btnLeggTilPersonTilAlarm = new JButton("Legg til");
-		btnLeggTilPersonTilAlarm.addActionListener(new ActionListener() {
+		JButton btnLeggTilPersonTilEvent = new JButton("Legg til");
+		btnLeggTilPersonTilEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLeggTilPersonTilAlarm.setBounds(200, 211, 73, 23);
-		panel_1.add(btnLeggTilPersonTilAlarm);
+		btnLeggTilPersonTilEvent.setBounds(200, 211, 73, 23);
+		panel_1.add(btnLeggTilPersonTilEvent);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
 		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
@@ -422,24 +422,24 @@ public class ClientGUI extends JFrame {
 		txtRomNavn_1.setBounds(106, 238, 94, 20);
 		panel_1.add(txtRomNavn_1);
 		
-		JButton button = new JButton("Legg til");
-		button.addActionListener(new ActionListener() {
+		JButton btnLeggTilRomTilEvent = new JButton("Legg til");
+		btnLeggTilRomTilEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		button.setBounds(442, 200, 73, 23);
-		panel_1.add(button);
+		btnLeggTilRomTilEvent.setBounds(442, 182, 73, 23);
+		panel_1.add(btnLeggTilRomTilEvent);
 		
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
 		lblLedigeRom.setBounds(313, 11, 76, 14);
 		panel_1.add(lblLedigeRom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(313, 38, 202, 95);
+		scrollPane_1.setBounds(383, 38, 202, 95);
 		panel_1.add(scrollPane_1);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(313, 183, 63, 14);
+		lblLeggTilRom.setBounds(313, 164, 63, 14);
 		panel_1.add(lblLeggTilRom);
 		
 		txtRomNavn = new JTextField();
@@ -457,19 +457,19 @@ public class ClientGUI extends JFrame {
 		});
 		txtRomNavn.setText("Rom navn");
 		txtRomNavn.setColumns(10);
-		txtRomNavn.setBounds(383, 180, 132, 20);
+		txtRomNavn.setBounds(383, 164, 132, 20);
 		panel_1.add(txtRomNavn);
 		
-		JButton button_1 = new JButton("Legg til");
-		button_1.addActionListener(new ActionListener() {
+		JButton btnLeggTilEksternTilEvent = new JButton("Legg til");
+		btnLeggTilEksternTilEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		button_1.setBounds(200, 237, 73, 23);
-		panel_1.add(button_1);
+		btnLeggTilEksternTilEvent.setBounds(200, 237, 73, 23);
+		panel_1.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(565, 11, 74, 14);
+		lblBeskrivelse.setBounds(586, 11, 74, 14);
 		panel_1.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -493,6 +493,10 @@ public class ClientGUI extends JFrame {
 		JButton btnVelgRom = new JButton("Velg rom");
 		btnVelgRom.setBounds(442, 132, 73, 23);
 		panel_1.add(btnVelgRom);
+		
+		JLabel lblValgtRom = new JLabel("Valgt rom");
+		lblValgtRom.setBounds(313, 216, 97, 14);
+		panel_1.add(lblValgtRom);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("Alarm", null, panel_3, null);

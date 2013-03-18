@@ -14,37 +14,30 @@ import java.util.Date;
  */
 public class dateTime {
 	private Calendar pointInTime;
-	private Calendar endPoint;
-	private boolean isTimeDelta;
 	
 	
 	//Konstruktører
 	public dateTime(){
 		this.pointInTime = dateTime.now().getCalendarObj();
-		this.endPoint = dateTime.now().getCalendarObj();
 	}
 	
 	public dateTime(Calendar c){
 		this.pointInTime = c;
-		this.endPoint = c;
 	}
 
-	
-	public dateTime(int secOfMinute, int minOfHour, int hourOfDay ,int dayOfMonth, int monthOfYear, int year){
-		this.getCalendarObj().set(Calendar.SECOND, secOfMinute);
-		this.getCalendarObj().set(Calendar.MINUTE, minOfHour);
-		this.getCalendarObj().set(Calendar.HOUR_OF_DAY, hourOfDay);
-		this.getCalendarObj().set(Calendar.DATE, dayOfMonth);
-		this.getCalendarObj().set(Calendar.MONTH, monthOfYear);
-		this.getCalendarObj().set(Calendar.YEAR, year);
-		this.endPoint = this.pointInTime;
-		isTimeDelta = false;
+	public dateTime(String ssmmhhddmmyyyy){
+		new dateTime(ssmmhhddmmyyyy.substring(0,6),ssmmhhddmmyyyy.substring(6));
 	}
 	
-	public dateTime(dateTime start, dateTime end){
-		this.endPoint = end.getCalendarObj();
-		this.pointInTime = start.getCalendarObj();
-		isTimeDelta = true;
+	public dateTime(String ssmmhh,String ddmmyyyy){
+		this.pointInTime = new dateTime().getCalendarObj();
+		this.pointInTime.set(Calendar.SECOND, Integer.parseInt(ssmmhh.substring(0, 2)));
+		this.pointInTime.set(Calendar.MINUTE, Integer.parseInt(ssmmhh.substring(2, 4)));
+		this.pointInTime.set(Calendar.HOUR_OF_DAY,  Integer.parseInt(ssmmhh.substring(4)));
+		this.pointInTime.set(Calendar.DATE, Integer.parseInt(ddmmyyyy.substring(0,2)));
+		this.pointInTime.set(Calendar.MONTH, Integer.parseInt(ddmmyyyy.substring(2,4)));
+		this.pointInTime.set(Calendar.YEAR, Integer.parseInt(ddmmyyyy.substring(4)));
+		
 	}
 
 	
@@ -62,36 +55,30 @@ public class dateTime {
 		return new dateTime(Calendar.getInstance());
 	}
 	
-	//Sjekke om dette er et intervall
-	public boolean isInterval(){
-		return isTimeDelta;
-	}
-	
-	
-	//Hente/sette sluttpunktet på en periode
-	public void setEnd(dateTime end){
-		this.endPoint = end.getCalendarObj();
-	}
-	
-	public dateTime getEnd(){
-		dateTime result = new dateTime();
-		if(this.isInterval()){
-			result = new dateTime(this.endPoint);
-			}
+	//Legge sammen to tidspunkt
+	public dateTime add(dateTime duration){
+		dateTime result = new dateTime(duration.getCalendarObj());
+		result.getCalendarObj().add(Calendar.DATE, this.getCalendarObj().get(Calendar.DATE));
+		result.getCalendarObj().add(Calendar.MONTH, this.getCalendarObj().get(Calendar.MONTH));
+		result.getCalendarObj().add(Calendar.YEAR, this.getCalendarObj().get(Calendar.YEAR));
+		result.getCalendarObj().add(Calendar.SECOND, this.getCalendarObj().get(Calendar.SECOND));
+		result.getCalendarObj().add(Calendar.MINUTE, this.getCalendarObj().get(Calendar.MINUTE));
+		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
 		return result;
 	}
 	
+	
 	//Hente en periodelengde
-	public dateTime getDelta(){
-		dateTime result = new dateTime(this.getEnd().getCalendarObj());
+	public dateTime getDuration(dateTime til){
+		dateTime result = new dateTime(til.getCalendarObj());
 		result.getCalendarObj().add(Calendar.DATE, -this.getCalendarObj().get(Calendar.DATE));
 		result.getCalendarObj().add(Calendar.MONTH, -this.getCalendarObj().get(Calendar.MONTH));
 		result.getCalendarObj().add(Calendar.YEAR, -this.getCalendarObj().get(Calendar.YEAR));
+		result.getCalendarObj().add(Calendar.SECOND, -this.getCalendarObj().get(Calendar.SECOND));
 		result.getCalendarObj().add(Calendar.MINUTE, -this.getCalendarObj().get(Calendar.MINUTE));
 		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, -this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
 		return result;
 	}
-	
 	
 	//Hente/sette enkelt-ting.
 	
@@ -153,15 +140,21 @@ public class dateTime {
 
 	
 	//Sammenligning
-	public boolean intersects(dateTime compareToDelta){
+	public boolean intersects(dateTime duration, dateTime compareToStart, dateTime compareToDuration){
 		//Sjekker om compareTo starter før this slutter
-		boolean startsBefore = compareToDelta.getCalendarObj().before(this.getEnd().getCalendarObj());
+		boolean startsBefore = compareToStart.getCalendarObj().before(this.add(duration).getCalendarObj());
 		
 		//Sjekker om compareTo slutter før this starter
-		boolean endsAfter = compareToDelta.getEnd().getCalendarObj().after(this.getCalendarObj());
+		boolean endsAfter = compareToStart.add(compareToDuration).getCalendarObj().after(this.getCalendarObj());
 		
 		return startsBefore && endsAfter;
 	}
+	
+	public static boolean intersects(dateTime from, dateTime to, dateTime compareFrom, dateTime compareTo){
+		return from.intersects(from.getDuration(to), compareFrom, compareTo);
+	}
+	
+	
 	
 	public boolean isSimultaneousWith(dateTime compareTo){
 		return this.getCalendarObj().equals(compareTo.getCalendarObj());
