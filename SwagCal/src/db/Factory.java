@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import db.DBConnection;
+
 import tools.dateTime;
 
 import model.Event;
@@ -21,16 +23,6 @@ public class Factory {
 
 	DBConnection db;
 
-
-	public Factory(Properties properties) throws ClassNotFoundException, SQLException
-	{
-		db = new DBConnection(properties);
-	}
-
-	public Factory(String filename) throws ClassNotFoundException, IOException, SQLException
-	{
-		db = new DBConnection(filename);
-	}	
 
 	
 	public ResultSet doQuery(String query) {
@@ -51,6 +43,17 @@ public class Factory {
 		}
 		
 		return null;
+	}
+	
+	
+	public Factory(Properties properties) throws ClassNotFoundException, SQLException
+	{
+		db = new DBConnection(properties);
+	}
+
+	public Factory(String filename) throws ClassNotFoundException, IOException, SQLException
+	{
+		db = new DBConnection(filename);
 	}
 		
 	

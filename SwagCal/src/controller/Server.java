@@ -11,12 +11,13 @@ import net.Message;
 
 import com.google.gson.Gson;
 
-import db.DBConnection;
+
+import db.Factory;
 
 import net.Message;
 
 public class Server implements Controller {
-	private DBConnection db;
+	private Factory factory;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -32,21 +33,21 @@ public class Server implements Controller {
 		
 	}
 	
-	public Server(Properties properties) throws ClassNotFoundException, SQLException
-	{
-		db = new DBConnection(properties);
+	
+	public Server() throws ClassNotFoundException, IOException, SQLException {
+	factory = new Factory("./src/db/Properties.properties");
 	}
-
-	public Server(String filename) throws ClassNotFoundException, IOException, SQLException
-	{
-		db = new DBConnection(filename);
-	}	
+	
 	
 	@Override
 	public void messageReceived(Message message) {
 		String className = message.getClassName();
 		String queryEffect = message.getQuery();
-		Boolean isUpdate = message.isUpdate();
+		Boolean isUpdate = message.isUpdateMessage();
+		
+		if(isUpdate) {
+			
+		}
 		
 		
 		
