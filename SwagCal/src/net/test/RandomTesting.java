@@ -23,6 +23,6 @@ public class RandomTesting {
 		System.out.println(p1after.friends.get(0).name);
 	//	PersonTest p22 = gson.fromJson(ps2, PersonTest.class);
 	//	System.out.println(p12.friends);
-	
+	 
 	}
 }
