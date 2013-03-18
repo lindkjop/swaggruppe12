@@ -13,13 +13,7 @@ import com.google.gson.Gson;
 
 import db.DBConnection;
 
-import model.Event;
-import model.Group;
-import model.Notification;
-import model.Person;
-import model.Room;
-
-import tools.dateTime;
+import net.Message;
 
 public class Server implements Controller {
 	private DBConnection db;
@@ -50,6 +44,7 @@ public class Server implements Controller {
 	
 	@Override
 	public void messageReceived(Message message) {
+<<<<<<< HEAD
 		String className = message.getClassName();
 		String queryEffect = message.getQuery();
 		Boolean isUpdate = message.isUpdate();
@@ -78,22 +73,20 @@ public class Server implements Controller {
 
 	@Override
 	public void eventObjectReceived(Event event) {
+=======
+>>>>>>> 0104f2b4b0bc45b9ad6ed6bcbec6df7e3e5ad20e
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
-	public void groupObjectReceived(Group group) {
+	public void sendMessage(Message message) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void notificationObjectReceived(Notification notification) {
-		// TODO Auto-generated method stub
-		
-	}
-
+<<<<<<< HEAD
 	@Override
 	public void roomObjectReceived(Room room) {
 		// TODO Auto-generated method stub
@@ -131,6 +124,9 @@ public class Server implements Controller {
 	}
 	
 	public 
+=======
+	
+>>>>>>> 0104f2b4b0bc45b9ad6ed6bcbec6df7e3e5ad20e
 
 	
 }

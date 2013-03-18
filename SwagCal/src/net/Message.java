@@ -4,10 +4,12 @@ public class Message {
 
 	private String className;
 	private String query;
+	boolean isUpdateMessage;
 	
-	public Message(String className, String query) {
+	public Message(String className, String query, boolean isUpdateMessage) {
 		this.className = className;
 		this.query = query;
+		this.isUpdateMessage = isUpdateMessage;
 	}
 
 	public String getClassName() {
@@ -16,6 +18,10 @@ public class Message {
 
 	public String getQuery() {
 		return query;
+	}
+	
+	public boolean isUpdateMessage() {
+		return isUpdateMessage;
 	}
 
 }
