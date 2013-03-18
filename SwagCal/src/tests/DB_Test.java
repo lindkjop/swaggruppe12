@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.Event;
 import model.Person;
+import model.Room;
 
 import org.junit.Test;
 
@@ -30,6 +31,9 @@ public class DB_Test {
 		
 		DB_EmptyTable("Person");
 		DB_Person();
+		
+		DB_getAllTest();
+		
 		
 //		DB_Event();
 //		DB_EmptyTable("Event");
@@ -67,6 +71,12 @@ public class DB_Test {
 		//Prøver å legge til event
 		Event e1 = new Event(0, null, "Hellige møteplass!", "Drepe!", testPerson1, null);
 		
+	}
+	public void DB_getAllTest() throws ClassNotFoundException, SQLException {
+		f.addEventToDB(new Event(99, new dateTime(), "hei", "hjmme", testPerson1, new Room(10, "hei", 10)));
+		f.addEventToDB(new Event(89, new dateTime(), "hei", "hjmme", testPerson1, new Room(11, "hei", 11)));
+		ArrayList<Event> events = f.getEvents();
+		System.out.println(events);
 	}
 
 }
