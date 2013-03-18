@@ -8,6 +8,7 @@ import controller.Controller;
 
 public class Group {
 	private int id;
+	private String groupName;
 	private ArrayList<Person> members;
 	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
@@ -57,8 +58,13 @@ public class Group {
 		this.events.add(event);
 	}
 	
-	public Group(int id) {
+	public int getID() {
+		return this.id;
+	}
+	
+	public Group(int id, String groupName) {
 		this.id = id;
+		this.groupName = groupName;
 	}
 	
 	

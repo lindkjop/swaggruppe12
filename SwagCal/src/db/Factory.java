@@ -202,8 +202,15 @@ public class Factory {
 
 
 	public Group getGroup(int id) throws SQLException, ClassNotFoundException {
-
-		return new Group(id);
+		db.initialize();
+		
+		String query = String.format("SELECT * FROM Group WHERE ID=%s",id);
+		ResultSet rs = db.makeSingleQuery(query);
+		
+		String groupName = rs.getString(2);
+		return new Group(id, groupName);
+		
+		
 
 	}
 
@@ -399,6 +406,19 @@ public class Factory {
 
 		return null;
 	}
+	
+	public connectPersonToGroup(Person p, Group g) {
+		int pID = p.getPersonID();
+		int gID = g.getID();
+		
+		db.initialize();
+		db.makeSingleUpdate();
+		
+		
+		
+		
+	}
+	
 	
 	//For testing purposes;
 	public DBConnection getDbConnection(){
