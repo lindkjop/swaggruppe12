@@ -8,8 +8,8 @@ import controller.Controller;
 
 public class Group {
 	private int id;
+	private String groupName;
 	private ArrayList<Person> members;
-	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
@@ -38,18 +38,7 @@ public class Group {
 	public void removeMember(Person member) {
 		this.members.remove(member);
 	}
-	public ArrayList<Group> getSubGroups() {
-		return subGroups;
-	}
-	public void setSubGroups(ArrayList<Group> subGroups) {
-		this.subGroups = subGroups;
-	}
-	public void addSubGroup(Group subgroup) {
-		this.subGroups.add(subgroup);
-	}
-	public void removeSubGroup(Group subGroup) {
-		this.subGroups.remove(subGroup);
-	}
+	
 	public ArrayList<Event> getEvents() {
 		return events;
 	}
@@ -57,8 +46,13 @@ public class Group {
 		this.events.add(event);
 	}
 	
-	public Group(int id) {
+	public int getID() {
+		return this.id;
+	}
+	
+	public Group(int id, String groupName) {
 		this.id = id;
+		this.groupName = groupName;
 	}
 	
 	
