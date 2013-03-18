@@ -27,7 +27,7 @@ public class ListenThread extends Thread {
 			fromConnection = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			while (true) {
 				String stringFromClient = fromConnection.readLine();
-				controller.messageReceived(stringFromClient);
+				controller.messageReceived(new Message());
 				}
 			
 		    }
