@@ -9,7 +9,6 @@ import controller.Controller;
 public class Group {
 	private int id;
 	private ArrayList<Person> members;
-	private ArrayList<Group> subGroups;
 	private ArrayList<Event> events;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
@@ -38,18 +37,7 @@ public class Group {
 	public void removeMember(Person member) {
 		this.members.remove(member);
 	}
-	public ArrayList<Group> getSubGroups() {
-		return subGroups;
-	}
-	public void setSubGroups(ArrayList<Group> subGroups) {
-		this.subGroups = subGroups;
-	}
-	public void addSubGroup(Group subgroup) {
-		this.subGroups.add(subgroup);
-	}
-	public void removeSubGroup(Group subGroup) {
-		this.subGroups.remove(subGroup);
-	}
+	
 	public ArrayList<Event> getEvents() {
 		return events;
 	}

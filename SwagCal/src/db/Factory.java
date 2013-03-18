@@ -119,7 +119,7 @@ public class Factory {
 
 
 		String statement;
-		statement = String.format("INSERT INTO Person VALUES (null,%s,'%s','%s',%s)",duration,description,location, creator, roomNumber);		
+		statement = String.format("INSERT INTO Event (EventID, dato, startTime, endTime  VALUES ('#',%s,'%s','%s',%s)",null,duration,description,location, creator, roomNumber);		
 		db.makeSingleUpdate(statement);
 		db.close();
 	}
@@ -265,7 +265,7 @@ public class Factory {
 		try {
 			db.initialize();
 
-			String query = String.format("SELECT * FROM PERSON");
+			String query = String.format("SELECT * FROM Person");
 			ArrayList<Person> persons = new ArrayList<Person>();
 
 			ResultSet rs = db.makeSingleQuery(query);
@@ -334,10 +334,7 @@ public class Factory {
 				dateAlarm = rs.getInt(8);
 				timeAlarm = rs.getInt(9);
 
-
-
 				created = new dateTime();
-
 				created.setDate(dateCreated);
 				created.setTime(timeCreated);
 
@@ -347,9 +344,6 @@ public class Factory {
 
 				notifications.add(new Notification(id, event, message, isRead, start, alarm, owner));
 			}
-
-
-
 			rs.close();
 			db.close();
 
