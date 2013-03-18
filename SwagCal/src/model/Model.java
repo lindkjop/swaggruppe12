@@ -17,7 +17,7 @@ public class Model {
 	
 	public Model(Factory f) {
 		this.factory = f;
-		initialize();
+//		initialize();
 	}
 	public Model(){
 		events = new ArrayList<Event>(); 
@@ -61,12 +61,12 @@ public class Model {
 		notifications.add(newN);
 	}
 	
-	public void initialize() {
-		events = factory.getEvents();
-		groups = factory.getGroups();
-		notifications = factory.getNotifications();
-		persons = factory.getPersons();
-		rooms = factory.getRooms();
-	}
+//	public void initialize() {
+//		events = factory.getEvents();
+//		groups = factory.getGroups();
+//		notifications = factory.getNotifications();
+//		persons = factory.getPersons();
+//		rooms = factory.getRooms();
+//	}
 	
 }

@@ -7,9 +7,8 @@ import java.awt.EventQueue;
 
 import model.Model;
 import model.Person;
-import net.Message;
 
-public class Client implements Controller {
+public class Client {
 	
 	private Person user;
 	private Client client;
@@ -19,7 +18,8 @@ public class Client implements Controller {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Client();
+					Model m = new Model();
+					new Client(m);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -27,12 +27,8 @@ public class Client implements Controller {
 		});
 	}
 	
-	public Client(){
-		//Ekstra innloggingsperson;
-		Person dude = new Person(99, "Tibor", 9999999, "tibor", "kul");
-		model = new Model();
-		model.addPerson(dude);
-		
+	public Client(Model model){
+		this.model =model;
 		LoginGUI login = new LoginGUI(user,this);
 		login.setVisible(true);
 	}
@@ -45,20 +41,6 @@ public class Client implements Controller {
 		ClientGUI frame = new ClientGUI(user,this);
 		frame.setVisible(true);
 	}
-
-	@Override
-	public void messageReceived(Message message) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sendMessage(Message message) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 	
 
 }
