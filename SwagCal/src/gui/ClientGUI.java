@@ -34,6 +34,13 @@ import controller.Controller;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.util.Calendar;
+
+import javax.swing.DefaultComboBoxModel;
+
+import tools.dateTime;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class ClientGUI extends JFrame {
 
@@ -45,13 +52,14 @@ public class ClientGUI extends JFrame {
 	private JTextField txtFra;
 	private JTextField txtTil;
 	private JTextField txtNavn;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtRomNavn_1;
+	private JTextField txtRomNavn;
 	private JTextField txtTittel_1;
 	private JTextField txtDato_1;
 	private JTextField textField_2;
 	private JTextField txtNavn_1;
 	private Person user;
+	private JTextField txtGruppeNavn;
 
 
 	public ClientGUI(Person user, Client client) {
@@ -104,114 +112,99 @@ public class ClientGUI extends JFrame {
 		panel_8.add(lblLeggTilPersoner);
 		
 		JButton btnNewButton = new JButton("Legg til");
-		btnNewButton.setBounds(180, 50, 89, 23);
+		btnNewButton.setBounds(178, 36, 89, 23);
 		panel_8.add(btnNewButton);
 		
 		txtNavn_1 = new JTextField();
-		txtNavn_1.setText("navn");
-		txtNavn_1.setBounds(10, 51, 145, 20);
+		txtNavn_1.setText("Person navn");
+		txtNavn_1.setBounds(10, 36, 145, 20);
 		panel_8.add(txtNavn_1);
 		txtNavn_1.setColumns(10);
 		
 		JLabel lblPersonerIKalenderen = new JLabel("Personer i kalenderen");
-		lblPersonerIKalenderen.setBounds(10, 119, 259, 14);
+		lblPersonerIKalenderen.setBounds(10, 234, 259, 14);
 		panel_8.add(lblPersonerIKalenderen);
 		
 		JScrollPane scrollPane_4 = new JScrollPane();
-		scrollPane_4.setBounds(10, 144, 280, 300);
+		scrollPane_4.setBounds(10, 259, 280, 185);
 		panel_8.add(scrollPane_4);
 		
 		JButton btnFjernPerson = new JButton("Fjern person");
 		btnFjernPerson.setBounds(10, 455, 108, 23);
 		panel_8.add(btnFjernPerson);
 		
+		JLabel label = new JLabel("Legg til en gruppe");
+		label.setBounds(10, 70, 195, 14);
+		panel_8.add(label);
+		
+		txtGruppeNavn = new JTextField();
+		txtGruppeNavn.setText("Gruppe navn");
+		txtGruppeNavn.setColumns(10);
+		txtGruppeNavn.setBounds(10, 95, 145, 20);
+		panel_8.add(txtGruppeNavn);
+		
+		JButton button_2 = new JButton("Legg til");
+		button_2.setBounds(178, 95, 89, 23);
+		panel_8.add(button_2);
+		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBounds(322, 11, 1074, 488);
 		panel_2.add(panel_9);
-		panel_9.setLayout(null);
 		
 		JLabel lblMandag = new JLabel("Mandag");
-		lblMandag.setBounds(50, 6, 61, 16);
-		panel_9.add(lblMandag);
 		
 		JLabel lblTirsdag = new JLabel("Tirsdag");
-		lblTirsdag.setBounds(170, 6, 61, 16);
-		panel_9.add(lblTirsdag);
 		
 		JLabel lblOnsdag = new JLabel("Onsdag");
-		lblOnsdag.setBounds(300, 6, 61, 16);
-		panel_9.add(lblOnsdag);
 		
 		JLabel lblTorsdag = new JLabel("Torsdag");
-		lblTorsdag.setBounds(430, 6, 61, 16);
-		panel_9.add(lblTorsdag);
 		
 		JLabel lblFredag = new JLabel("Fredag");
-		lblFredag.setBounds(560, 6, 61, 16);
-		panel_9.add(lblFredag);
 		
 		JLabel lblLrdag = new JLabel("L\u00F8rdag");
-		lblLrdag.setBounds(690, 6, 61, 16);
-		panel_9.add(lblLrdag);
 		
 		JLabel lblSndag = new JLabel("S\u00F8ndag");
-		lblSndag.setBounds(820, 6, 61, 16);
-		panel_9.add(lblSndag);
 		
 		JScrollPane scrollMandag = new JScrollPane();
-		scrollMandag.setBounds(10, 50, 130, 400);
-		panel_9.add(scrollMandag);
 		
 		JList jLMandag = new JList();
 		scrollMandag.setViewportView(jLMandag);
 		
 		JScrollPane scrollTirsdag = new JScrollPane();
-		scrollTirsdag.setBounds(140, 50, 130, 400);
-		panel_9.add(scrollTirsdag);
 		
 		JList jLTirsdag = new JList();
 		scrollTirsdag.setViewportView(jLTirsdag);
 		
 		JScrollPane scrollOnsdag = new JScrollPane();
-		scrollOnsdag.setBounds(270, 50, 130, 400);
-		panel_9.add(scrollOnsdag);
 		
 		JList jLOnsdag = new JList();
 		scrollOnsdag.setViewportView(jLOnsdag);
 		
 		JScrollPane scrollTorsdag = new JScrollPane();
-		scrollTorsdag.setBounds(400, 50, 130, 400);
-		panel_9.add(scrollTorsdag);
 		
 		JList jLTorsdag = new JList();
 		scrollTorsdag.setViewportView(jLTorsdag);
 		
 		JScrollPane scrollFredag = new JScrollPane();
-		scrollFredag.setBounds(530, 50, 130, 400);
-		panel_9.add(scrollFredag);
 		
 		JList jLFredag = new JList();
 		scrollFredag.setViewportView(jLFredag);
 		
 		JScrollPane scrollLordag = new JScrollPane();
-		scrollLordag.setBounds(660, 50, 130, 400);
-		panel_9.add(scrollLordag);
 		
 		JList jLLordag = new JList();
 		scrollLordag.setViewportView(jLLordag);
 		
 		JScrollPane scrollSondag = new JScrollPane();
-		scrollSondag.setBounds(790, 50, 130, 400);
-		panel_9.add(scrollSondag);
 		
 		JList jLSondag = new JList();
 		scrollSondag.setViewportView(jLSondag);
 		
 		JLabel lblVelgUke = new JLabel("Velg Uke:");
-		lblVelgUke.setBounds(932, 52, 61, 16);
-		panel_9.add(lblVelgUke);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"}));
+		comboBox.setSelectedItem(String.valueOf(dateTime.now().getCalendarObj().get(Calendar.WEEK_OF_YEAR)));
 		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 				
@@ -219,8 +212,78 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		comboBox.setToolTipText("Velg ukenummer");
-		comboBox.setBounds(993, 48, 75, 27);
-		panel_9.add(comboBox);
+		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
+		gl_panel_9.setHorizontalGroup(
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addGap(50)
+					.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(59)
+					.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(69)
+					.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(69)
+					.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(69)
+					.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(69)
+					.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(69)
+					.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addGap(10)
+					.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_panel_9.setVerticalGroup(
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+					.addGap(26)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(2)
+							.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_9.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+		);
+		panel_9.setLayout(gl_panel_9);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -307,7 +370,7 @@ public class ClientGUI extends JFrame {
 		scrollPane.setBounds(126, 105, 147, 95);
 		panel_1.add(scrollPane);
 		
-		JLabel lblLeggTilAnsatt = new JLabel("Legg til ansatt");
+		JLabel lblLeggTilAnsatt = new JLabel("Legg til person");
 		lblLeggTilAnsatt.setBounds(10, 216, 97, 14);
 		panel_1.add(lblLeggTilAnsatt);
 		
@@ -324,42 +387,46 @@ public class ClientGUI extends JFrame {
 					txtNavn.setText("navn");
 			}
 		});
-		txtNavn.setText("navn");
+		txtNavn.setText("Person navn");
 		txtNavn.setBounds(106, 211, 94, 20);
 		panel_1.add(txtNavn);
 		txtNavn.setColumns(10);
 		
-		JButton btnLeggTil = new JButton("Legg til");
-		btnLeggTil.addActionListener(new ActionListener() {
+		JButton btnLeggTilPersonTilAlarm = new JButton("Legg til");
+		btnLeggTilPersonTilAlarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLeggTil.setBounds(200, 211, 73, 23);
-		panel_1.add(btnLeggTil);
+		btnLeggTilPersonTilAlarm.setBounds(200, 211, 73, 23);
+		panel_1.add(btnLeggTilPersonTilAlarm);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
 		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
 		panel_1.add(lblLeggTilEkstern);
 		
-		textField = new JTextField();
-		textField.addFocusListener(new FocusAdapter() {
+		txtRomNavn_1 = new JTextField();
+		txtRomNavn_1.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(textField.getText().equals("navn"))
-					textField.setText(null);
+				if(txtRomNavn_1.getText().equals("navn"))
+					txtRomNavn_1.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(textField.getText().equals(""))
-					textField.setText("navn");
+				if(txtRomNavn_1.getText().equals(""))
+					txtRomNavn_1.setText("navn");
 			}
 		});
-		textField.setText("navn");
-		textField.setColumns(10);
-		textField.setBounds(106, 238, 94, 20);
-		panel_1.add(textField);
+		txtRomNavn_1.setText("Rom navn");
+		txtRomNavn_1.setColumns(10);
+		txtRomNavn_1.setBounds(106, 238, 94, 20);
+		panel_1.add(txtRomNavn_1);
 		
 		JButton button = new JButton("Legg til");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button.setBounds(442, 200, 73, 23);
 		panel_1.add(button);
 		
@@ -375,23 +442,23 @@ public class ClientGUI extends JFrame {
 		lblLeggTilRom.setBounds(313, 183, 63, 14);
 		panel_1.add(lblLeggTilRom);
 		
-		textField_1 = new JTextField();
-		textField_1.addFocusListener(new FocusAdapter() {
+		txtRomNavn = new JTextField();
+		txtRomNavn.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(textField_1.getText().equals("navn"))
-					textField_1.setText(null);
+				if(txtRomNavn.getText().equals("navn"))
+					txtRomNavn.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(textField_1.getText().equals(""))
-					textField_1.setText("navn");
+				if(txtRomNavn.getText().equals(""))
+					txtRomNavn.setText("navn");
 			}
 		});
-		textField_1.setText("navn");
-		textField_1.setColumns(10);
-		textField_1.setBounds(383, 180, 132, 20);
-		panel_1.add(textField_1);
+		txtRomNavn.setText("Rom navn");
+		txtRomNavn.setColumns(10);
+		txtRomNavn.setBounds(383, 180, 132, 20);
+		panel_1.add(txtRomNavn);
 		
 		JButton button_1 = new JButton("Legg til");
 		button_1.addActionListener(new ActionListener() {
