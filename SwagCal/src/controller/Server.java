@@ -3,6 +3,15 @@ package controller;
 import gui.ServerGUI;
 
 import java.awt.EventQueue;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import net.Message;
+
+import com.google.gson.Gson;
+
+import db.DBConnection;
 
 import model.Event;
 import model.Group;
@@ -13,6 +22,7 @@ import model.Room;
 import tools.dateTime;
 
 public class Server implements Controller {
+	private DBConnection db;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -27,10 +37,24 @@ public class Server implements Controller {
 		});
 		
 	}
+	
+	public Server(Properties properties) throws ClassNotFoundException, SQLException
+	{
+		db = new DBConnection(properties);
+	}
 
+	public Server(String filename) throws ClassNotFoundException, IOException, SQLException
+	{
+		db = new DBConnection(filename);
+	}	
+	
 	@Override
-	public void messageReceived(String message) {
-		// TODO Auto-generated method stub
+	public void messageReceived(Message message) {
+		String className = message.getClassName();
+		String queryEffect = message.getQuery();
+		Boolean isUpdate = message.isUpdate();
+		
+		
 		
 	}
 
@@ -105,6 +129,8 @@ public class Server implements Controller {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public 
 
 	
 }
