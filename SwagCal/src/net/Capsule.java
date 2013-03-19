@@ -77,7 +77,10 @@ public class Capsule {
 		return this.classname;
 	}
 	
-	
+	public void setCondition(String condition) {
+		this.condition = condition;
+		
+	}
 
 	public void setSendObject(Object sendObject) {
 		this.sendObject = sendObject;

@@ -1,9 +1,12 @@
 package net.test;
 
 import model.Group;
+import model.Person;
 import net.Capsule;
 
 import com.google.gson.Gson;
+
+import db.DatabaseFactory;
 
 public class RandomTesting {
 	
@@ -26,15 +29,14 @@ public class RandomTesting {
 //		System.out.println(p1after.friends.get(0).name);
 	//	PersonTest p22 = gson.fromJson(ps2, PersonTest.class);
 	//	System.out.println(p12.friends);
-		Capsule cap = new Capsule("Group", "INSERT");
-		cap.setSendObject(new Group(10, "gruppen"));
+		Capsule cap = new Capsule("Message", "INSERT", "Person", false);
+		cap.setSendObject(new Person(10, "per", 12345678, "#per", "perword"));
 		String toSend = cap.pack();
 		System.out.println(toSend);
-		Capsule cap2 = new Gson().fromJson(toSend, Capsule.class);
-		Group g = (Group)cap.getSendObject();
-		System.out.println(g);
 		
-		String toSend2 = cap2.pack();
-		System.out.println(toSend2);
+		
+		DatabaseFactory df = new DatabaseFactory(toSend);
+		System.out.println(df);
+		
 	}
 }

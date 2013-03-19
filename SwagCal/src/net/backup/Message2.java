@@ -1,4 +1,5 @@
-package net;
+package net.backup;
+
 
 public class Message2 {
 
