@@ -63,6 +63,7 @@ public class ClientGUI extends JFrame {
 	private Person user;
 	private JTextField txtGruppeNavn;
 	private JTextField textEksternNavn;
+	private EventRenderer eventRenderer;
 
 
 	public ClientGUI(Person user, Client client) {
@@ -192,37 +193,46 @@ public class ClientGUI extends JFrame {
 		
 		JScrollPane scrollMandag = new JScrollPane();
 		
+		eventRenderer = new EventRenderer();
+		
 		JList jLMandag = new JList();
+		jLMandag.setCellRenderer(eventRenderer);
 		scrollMandag.setViewportView(jLMandag);
 		
 		JScrollPane scrollTirsdag = new JScrollPane();
 		
 		JList jLTirsdag = new JList();
+		jLTirsdag.setCellRenderer(eventRenderer);
 		scrollTirsdag.setViewportView(jLTirsdag);
 		
 		JScrollPane scrollOnsdag = new JScrollPane();
 		
 		JList jLOnsdag = new JList();
+		jLOnsdag.setCellRenderer(eventRenderer);
 		scrollOnsdag.setViewportView(jLOnsdag);
 		
 		JScrollPane scrollTorsdag = new JScrollPane();
 		
 		JList jLTorsdag = new JList();
+		jLTorsdag.setCellRenderer(eventRenderer);
 		scrollTorsdag.setViewportView(jLTorsdag);
 		
 		JScrollPane scrollFredag = new JScrollPane();
 		
 		JList jLFredag = new JList();
+		jLFredag.setCellRenderer(eventRenderer);
 		scrollFredag.setViewportView(jLFredag);
 		
 		JScrollPane scrollLordag = new JScrollPane();
 		
 		JList jLLordag = new JList();
+		jLLordag.setCellRenderer(eventRenderer);
 		scrollLordag.setViewportView(jLLordag);
 		
 		JScrollPane scrollSondag = new JScrollPane();
 		
 		JList jLSondag = new JList();
+		jLSondag.setCellRenderer(eventRenderer);
 		scrollSondag.setViewportView(jLSondag);
 		
 		JLabel lblVelgUke = new JLabel("Velg Uke:");

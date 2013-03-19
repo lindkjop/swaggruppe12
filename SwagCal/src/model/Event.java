@@ -11,6 +11,7 @@ import tools.dateTime;
 import controller.Controller;
 
 public class Event implements Databaseable {
+	
 	private int eventID;
 	
 	private dateTime dateFrom;
@@ -22,6 +23,10 @@ public class Event implements Databaseable {
 	private Person creator;
 	private Room room;
 	private Group group;
+	
+
+
+	private String title;
 	
 	
 	private ArrayList<Person> invited;
@@ -99,6 +104,14 @@ public class Event implements Databaseable {
 	}
 	public void setCreator(Person creator) {
 		this.creator = creator;
+	}
+	
+	//Title setter/getter
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	//Invited listen
