@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import controller.Controller;
 
-public class Person {
+public class Person implements Databaseable {
 	private int personID;
 	private String navn;
 	private int phoneNumber;

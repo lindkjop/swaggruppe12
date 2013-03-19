@@ -116,6 +116,17 @@ public class ClientGUI extends JFrame {
 		panel_8.add(btnNewButton);
 		
 		txtNavn_1 = new JTextField();
+		txtNavn_1.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent arg0) {
+				if(txtNavn_1.getText().equals("Person navn"))
+					txtNavn_1.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtNavn_1.getText().equals(""))
+					txtNavn_1.setText("Person navn");
+			}
+		});
 		txtNavn_1.setText("Person navn");
 		txtNavn_1.setBounds(10, 36, 145, 20);
 		panel_8.add(txtNavn_1);
@@ -138,6 +149,17 @@ public class ClientGUI extends JFrame {
 		panel_8.add(label);
 		
 		txtGruppeNavn = new JTextField();
+		txtGruppeNavn.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent arg0) {
+				if(txtGruppeNavn.getText().equals("Gruppe navn"))
+					txtGruppeNavn.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtGruppeNavn.getText().equals(""))
+					txtGruppeNavn.setText("Gruppe navn");
+			}
+		});
 		txtGruppeNavn.setText("Gruppe navn");
 		txtGruppeNavn.setColumns(10);
 		txtGruppeNavn.setBounds(10, 95, 145, 20);
@@ -378,13 +400,13 @@ public class ClientGUI extends JFrame {
 		txtNavn.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtNavn.getText().equals("navn"))
+				if(txtNavn.getText().equals("Person navn"))
 					txtNavn.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
 				if(txtNavn.getText().equals(""))
-					txtNavn.setText("navn");
+					txtNavn.setText("Person navn");
 			}
 		});
 		txtNavn.setText("Person navn");
@@ -408,13 +430,13 @@ public class ClientGUI extends JFrame {
 		txtRomNavn_1.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtRomNavn_1.getText().equals("navn"))
+				if(txtRomNavn_1.getText().equals("Rom navn"))
 					txtRomNavn_1.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
 				if(txtRomNavn_1.getText().equals(""))
-					txtRomNavn_1.setText("navn");
+					txtRomNavn_1.setText("Rom navn");
 			}
 		});
 		txtRomNavn_1.setText("Rom navn");
@@ -446,13 +468,13 @@ public class ClientGUI extends JFrame {
 		txtRomNavn.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtRomNavn.getText().equals("navn"))
+				if(txtRomNavn.getText().equals("Rom navn"))
 					txtRomNavn.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
 				if(txtRomNavn.getText().equals(""))
-					txtRomNavn.setText("navn");
+					txtRomNavn.setText("Rom navn");
 			}
 		});
 		txtRomNavn.setText("Rom navn");
@@ -469,7 +491,7 @@ public class ClientGUI extends JFrame {
 		panel_1.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(586, 11, 74, 14);
+		lblBeskrivelse.setBounds(570, 11, 74, 14);
 		panel_1.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -477,10 +499,7 @@ public class ClientGUI extends JFrame {
 		panel_1.add(scrollPane_2);
 		
 		JTextPane txtpnTekst = new JTextPane();
-		txtpnTekst.addFocusListener(new FocusAdapter() {
-		});
 		scrollPane_2.setViewportView(txtpnTekst);
-		txtpnTekst.setText("tekst");
 		
 		JButton btnEndre = new JButton("Endre avtale");
 		btnEndre.setBounds(777, 250, 130, 23);

@@ -22,7 +22,8 @@ public class LoggOn {
 	}
 	
 	public boolean getSucsess(){
-		return this.sucsess;
+		//return this.sucsess;
+		return true;
 	}
 	
 
