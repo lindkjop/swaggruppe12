@@ -30,7 +30,7 @@ public class OLDListenThread extends Thread {
 			System.out.println("WAITING FOR MESSAGE FROM CLIENT");
 			while (true) {
 //				System.out.println(socket.isConnected());
-				String stringFromClient = fromClient.readLine();
+				Message stringFromClient = fromClient.readLine();
 				controller.messageReceived(stringFromClient);
 //				System.out.println("MESSAGE FROM CLIENT: "+stringFromClient);
 				}
