@@ -499,10 +499,7 @@ public class ClientGUI extends JFrame {
 		panel_1.add(scrollPane_2);
 		
 		JTextPane txtpnTekst = new JTextPane();
-		txtpnTekst.addFocusListener(new FocusAdapter() {
-		});
 		scrollPane_2.setViewportView(txtpnTekst);
-		txtpnTekst.setText("tekst");
 		
 		JButton btnEndre = new JButton("Endre avtale");
 		btnEndre.setBounds(777, 250, 130, 23);
