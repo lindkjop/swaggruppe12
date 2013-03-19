@@ -130,12 +130,35 @@ public class dateTime {
 		
 		
 		String result = sSec;
-		result += String.valueOf(pointInTime.get(Calendar.MINUTE));
-		result += String.valueOf(pointInTime.get(Calendar.HOUR_OF_DAY));
+		result += sMin;
+		result += sHour;
 		return result;
 	}
 	
-	
+	public String getDate(){
+		
+		int day = pointInTime.get(Calendar.DATE);
+		int month = pointInTime.get(Calendar.MONTH);
+		int year = pointInTime.get(Calendar.YEAR);
+		String sDay;
+		if(day<10){
+			sDay = "0"+ String.valueOf(day);
+		}else{
+			sDay = String.valueOf(day);
+		}
+		
+		String sMonth;
+		if(month<10){
+			sMonth = "0"+ String.valueOf(month);
+		}else{
+			sMonth = String.valueOf(month);
+		}
+		
+		String result = sDay;
+		result += sMonth;
+		result += year;
+		return result;
+	}
 	
 	
 	public void setSec(int sec){
