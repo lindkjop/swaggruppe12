@@ -27,11 +27,9 @@ public class dateTime_Test {
 		dateTime point31 = new dateTime("002518","12032013");
 		dateTime point32 = new dateTime("003518","12032013");
 
-
 		assertFalse(point11.isAfter(point12));
 		assertTrue(point11.isBefore(point12));
 
-		
 		assertFalse(dateTime.intersects(point11,point12,point21,point22));
 		assertTrue(dateTime.intersects(point11,point12,point31,point32));
 		assertTrue(dateTime.intersects(point21,point22,point31,point32));

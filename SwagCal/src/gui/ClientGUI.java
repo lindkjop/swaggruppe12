@@ -41,6 +41,8 @@ import javax.swing.DefaultComboBoxModel;
 import tools.dateTime;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextArea;
 
 public class ClientGUI extends JFrame {
 
@@ -75,45 +77,45 @@ public class ClientGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel.setBounds(10, 11, 320, 320);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel NotificationPanel = new JPanel();
+		NotificationPanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		NotificationPanel.setBounds(10, 11, 320, 320);
+		contentPane.add(NotificationPanel);
+		NotificationPanel.setLayout(null);
 		
-		JLabel lblAvsel = new JLabel("Varsler");
-		lblAvsel.setBounds(10, 11, 46, 14);
-		panel.add(lblAvsel);
+		JLabel lblVarsel = new JLabel("Varsler");
+		lblVarsel.setBounds(10, 11, 46, 14);
+		NotificationPanel.add(lblVarsel);
 		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(10, 36, 300, 272);
-		panel.add(tabbedPane_1);
+		JTabbedPane NotificationTab = new JTabbedPane(JTabbedPane.TOP);
+		NotificationTab.setBounds(10, 36, 300, 272);
+		NotificationPanel.add(NotificationTab);
 		
-		JPanel panel_5 = new JPanel();
-		tabbedPane_1.addTab("mottatt", null, panel_5, null);
+		JPanel Motatt = new JPanel();
+		NotificationTab.addTab("Mottatt", null, Motatt, null);
 		
-		JPanel panel_4 = new JPanel();
-		tabbedPane_1.addTab("sendt", (Icon) null, panel_4, null);
-		tabbedPane_1.setBackgroundAt(1, Color.WHITE);
+		JPanel Sendt = new JPanel();
+		NotificationTab.addTab("Sendt", (Icon) null, Sendt, null);
+		NotificationTab.setBackgroundAt(1, Color.WHITE);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel_2.setBounds(10, 341, 1404, 510);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
+		JPanel StorUnderpanel = new JPanel();
+		StorUnderpanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		StorUnderpanel.setBounds(10, 341, 1404, 510);
+		contentPane.add(StorUnderpanel);
+		StorUnderpanel.setLayout(null);
 		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBounds(10, 11, 300, 488);
-		panel_2.add(panel_8);
-		panel_8.setLayout(null);
+		JPanel LeggTilPersonPanel = new JPanel();
+		LeggTilPersonPanel.setBounds(10, 11, 300, 488);
+		StorUnderpanel.add(LeggTilPersonPanel);
+		LeggTilPersonPanel.setLayout(null);
 		
 		JLabel lblLeggTilPersoner = new JLabel("Legg til personer i kalenderen");
 		lblLeggTilPersoner.setBounds(10, 11, 195, 14);
-		panel_8.add(lblLeggTilPersoner);
+		LeggTilPersonPanel.add(lblLeggTilPersoner);
 		
 		JButton btnNewButton = new JButton("Legg til");
 		btnNewButton.setBounds(178, 36, 89, 23);
-		panel_8.add(btnNewButton);
+		LeggTilPersonPanel.add(btnNewButton);
 		
 		txtNavn_1 = new JTextField();
 		txtNavn_1.addFocusListener(new FocusAdapter() {
@@ -129,24 +131,24 @@ public class ClientGUI extends JFrame {
 		});
 		txtNavn_1.setText("Person navn");
 		txtNavn_1.setBounds(10, 36, 145, 20);
-		panel_8.add(txtNavn_1);
+		LeggTilPersonPanel.add(txtNavn_1);
 		txtNavn_1.setColumns(10);
 		
 		JLabel lblPersonerIKalenderen = new JLabel("Personer i kalenderen");
 		lblPersonerIKalenderen.setBounds(10, 234, 259, 14);
-		panel_8.add(lblPersonerIKalenderen);
+		LeggTilPersonPanel.add(lblPersonerIKalenderen);
 		
 		JScrollPane scrollPane_4 = new JScrollPane();
 		scrollPane_4.setBounds(10, 259, 280, 185);
-		panel_8.add(scrollPane_4);
+		LeggTilPersonPanel.add(scrollPane_4);
 		
 		JButton btnFjernPerson = new JButton("Fjern person");
 		btnFjernPerson.setBounds(10, 455, 108, 23);
-		panel_8.add(btnFjernPerson);
+		LeggTilPersonPanel.add(btnFjernPerson);
 		
 		JLabel label = new JLabel("Legg til en gruppe");
 		label.setBounds(10, 70, 195, 14);
-		panel_8.add(label);
+		LeggTilPersonPanel.add(label);
 		
 		txtGruppeNavn = new JTextField();
 		txtGruppeNavn.addFocusListener(new FocusAdapter() {
@@ -163,15 +165,15 @@ public class ClientGUI extends JFrame {
 		txtGruppeNavn.setText("Gruppe navn");
 		txtGruppeNavn.setColumns(10);
 		txtGruppeNavn.setBounds(10, 95, 145, 20);
-		panel_8.add(txtGruppeNavn);
+		LeggTilPersonPanel.add(txtGruppeNavn);
 		
 		JButton button_2 = new JButton("Legg til");
 		button_2.setBounds(178, 95, 89, 23);
-		panel_8.add(button_2);
+		LeggTilPersonPanel.add(button_2);
 		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(322, 11, 1074, 488);
-		panel_2.add(panel_9);
+		JPanel KalenderPanel = new JPanel();
+		KalenderPanel.setBounds(322, 11, 1074, 488);
+		StorUnderpanel.add(KalenderPanel);
 		
 		JLabel lblMandag = new JLabel("Mandag");
 		
@@ -234,100 +236,160 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		comboBox.setToolTipText("Velg ukenummer");
-		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
-		gl_panel_9.setHorizontalGroup(
-			gl_panel_9.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addGap(50)
-					.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(59)
-					.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
-					.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
-					.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
-					.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
-					.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
-					.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addGap(10)
-					.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addGap(12)
-					.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+		
+		JLabel lblMandagDato = new JLabel("New label");
+		
+		JLabel lblTirsdagDato = new JLabel("New label");
+		
+		JLabel lblOnsdagDato = new JLabel("New label");
+		
+		JLabel lblTorsdagDato = new JLabel("New label");
+		
+		JLabel lblFredagDato = new JLabel("New label");
+		
+		JLabel lblLordagDato = new JLabel("New label");
+		
+		JLabel lblSondagDato = new JLabel("New label");
+		GroupLayout gl_KalenderPanel = new GroupLayout(KalenderPanel);
+		gl_KalenderPanel.setHorizontalGroup(
+			gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_KalenderPanel.createSequentialGroup()
+					.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(10)
+									.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addContainerGap()
+									.addComponent(lblMandagDato)))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTirsdagDato))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblOnsdagDato))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTorsdagDato))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblFredagDato))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblLordagDato))
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblSondagDato))
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(50)
+							.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(59)
+							.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(69)
+							.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(69)
+							.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(69)
+							.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(69)
+							.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(69)
+							.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6))
 		);
-		gl_panel_9.setVerticalGroup(
-			gl_panel_9.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addGap(6)
-					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
-					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(2)
-							.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_9.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+		gl_KalenderPanel.setVerticalGroup(
+			gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_KalenderPanel.createSequentialGroup()
+					.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(6)
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.BASELINE)
+									.addComponent(lblTirsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+									.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+							.addGap(31)
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollMandag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollTirsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollOnsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollTorsdag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollFredag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollLordag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(2)
+									.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_KalenderPanel.createSequentialGroup()
+									.addGap(4)
+									.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblMandagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblTirsdagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblOnsdagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblTorsdagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblFredagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblLordagDato))
+						.addGroup(gl_KalenderPanel.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblSondagDato)))
+					.addContainerGap(33, Short.MAX_VALUE))
 		);
-		panel_9.setLayout(gl_panel_9);
+		KalenderPanel.setLayout(gl_KalenderPanel);
 		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		panel_6.setBounds(334, 11, 1080, 320);
-		contentPane.add(panel_6);
-		panel_6.setLayout(null);
+		JPanel EventPanel = new JPanel();
+		EventPanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		EventPanel.setBounds(334, 11, 1080, 320);
+		contentPane.add(EventPanel);
+		EventPanel.setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 1080, 320);
-		panel_6.add(tabbedPane);
-		tabbedPane.setBackground(Color.WHITE);
-		tabbedPane.setToolTipText("");
-		tabbedPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		JTabbedPane EventTab = new JTabbedPane(JTabbedPane.TOP);
+		EventTab.setBounds(0, 0, 1080, 320);
+		EventPanel.add(EventTab);
+		EventTab.setBackground(Color.WHITE);
+		EventTab.setToolTipText("");
+		EventTab.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Avtale", null, panel_1, null);
-		tabbedPane.setEnabledAt(0, true);
-		panel_1.setLayout(null);
+		JPanel AvtaleTab = new JPanel();
+		EventTab.addTab("Avtale", null, AvtaleTab, null);
+		EventTab.setEnabledAt(0, true);
+		AvtaleTab.setLayout(null);
 		
 		JLabel lblAvtaletittel = new JLabel("AvtaleTittel");
 		lblAvtaletittel.setBounds(10, 11, 63, 14);
-		panel_1.add(lblAvtaletittel);
+		AvtaleTab.add(lblAvtaletittel);
 		
 		txtEventTittel = new JTextField();
 		txtEventTittel.addFocusListener(new FocusAdapter() {
@@ -343,12 +405,12 @@ public class ClientGUI extends JFrame {
 		});
 		txtEventTittel.setText("tittel");
 		txtEventTittel.setBounds(126, 8, 147, 20);
-		panel_1.add(txtEventTittel);
+		AvtaleTab.add(txtEventTittel);
 		txtEventTittel.setColumns(10);
 		
 		JLabel lblDato = new JLabel("Dato");
 		lblDato.setBounds(10, 38, 63, 14);
-		panel_1.add(lblDato);
+		AvtaleTab.add(lblDato);
 		
 		txtEventDato = new JTextField();
 		txtEventDato.addFocusListener(new FocusAdapter() {
@@ -366,35 +428,38 @@ public class ClientGUI extends JFrame {
 		txtEventDato.setText("dato");
 		txtEventDato.setColumns(10);
 		txtEventDato.setBounds(126, 39, 147, 20);
-		panel_1.add(txtEventDato);
+		AvtaleTab.add(txtEventDato);
 
 		JLabel lblTidspunkt = new JLabel("Tidspunkt");
 		lblTidspunkt.setBounds(10, 74, 63, 14);
-		panel_1.add(lblTidspunkt);
+		AvtaleTab.add(lblTidspunkt);
 
 		txtFraTid = new JTextField();
 		txtFraTid.setText("fra");
 		txtFraTid.setColumns(10);
 		txtFraTid.setBounds(126, 70, 64, 20);
-		panel_1.add(txtFraTid);
+		AvtaleTab.add(txtFraTid);
 		
 		txtTilTid = new JTextField();
 		txtTilTid.setText("til");
 		txtTilTid.setColumns(10);
 		txtTilTid.setBounds(210, 71, 63, 20);
-		panel_1.add(txtTilTid);
+		AvtaleTab.add(txtTilTid);
 		
 		JLabel lblInvitertePersoner = new JLabel("Inviterte personer");
 		lblInvitertePersoner.setBounds(10, 99, 106, 14);
-		panel_1.add(lblInvitertePersoner);
+		AvtaleTab.add(lblInvitertePersoner);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(126, 105, 147, 95);
-		panel_1.add(scrollPane);
+		AvtaleTab.add(scrollPane);
+		
+		JList invitertePersonerListe = new JList();
+		scrollPane.setViewportView(invitertePersonerListe);
 		
 		JLabel lblLeggTilAnsatt = new JLabel("Legg til person");
 		lblLeggTilAnsatt.setBounds(10, 216, 97, 14);
-		panel_1.add(lblLeggTilAnsatt);
+		AvtaleTab.add(lblLeggTilAnsatt);
 		
 		txtNavn = new JTextField();
 		txtNavn.addFocusListener(new FocusAdapter() {
@@ -411,7 +476,7 @@ public class ClientGUI extends JFrame {
 		});
 		txtNavn.setText("Person navn");
 		txtNavn.setBounds(106, 211, 94, 20);
-		panel_1.add(txtNavn);
+		AvtaleTab.add(txtNavn);
 		txtNavn.setColumns(10);
 		
 		JButton btnLeggTilPersonTilEvent = new JButton("Legg til");
@@ -420,11 +485,11 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		btnLeggTilPersonTilEvent.setBounds(200, 211, 73, 23);
-		panel_1.add(btnLeggTilPersonTilEvent);
+		AvtaleTab.add(btnLeggTilPersonTilEvent);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
 		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
-		panel_1.add(lblLeggTilEkstern);
+		AvtaleTab.add(lblLeggTilEkstern);
 		
 		txtRomNavn_1 = new JTextField();
 		txtRomNavn_1.addFocusListener(new FocusAdapter() {
@@ -442,27 +507,30 @@ public class ClientGUI extends JFrame {
 		txtRomNavn_1.setText("Rom navn");
 		txtRomNavn_1.setColumns(10);
 		txtRomNavn_1.setBounds(106, 238, 94, 20);
-		panel_1.add(txtRomNavn_1);
+		AvtaleTab.add(txtRomNavn_1);
 		
 		JButton btnLeggTilRomTilEvent = new JButton("Legg til");
 		btnLeggTilRomTilEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLeggTilRomTilEvent.setBounds(442, 182, 73, 23);
-		panel_1.add(btnLeggTilRomTilEvent);
+		btnLeggTilRomTilEvent.setBounds(512, 156, 73, 23);
+		AvtaleTab.add(btnLeggTilRomTilEvent);
 		
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
 		lblLedigeRom.setBounds(313, 11, 76, 14);
-		panel_1.add(lblLedigeRom);
+		AvtaleTab.add(lblLedigeRom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(383, 38, 202, 95);
-		panel_1.add(scrollPane_1);
+		scrollPane_1.setBounds(383, 11, 202, 95);
+		AvtaleTab.add(scrollPane_1);
+		
+		JList ledigRomListe = new JList();
+		scrollPane_1.setViewportView(ledigRomListe);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(313, 164, 63, 14);
-		panel_1.add(lblLeggTilRom);
+		lblLeggTilRom.setBounds(313, 137, 63, 14);
+		AvtaleTab.add(lblLeggTilRom);
 		
 		txtRomNavn = new JTextField();
 		txtRomNavn.addFocusListener(new FocusAdapter() {
@@ -479,8 +547,8 @@ public class ClientGUI extends JFrame {
 		});
 		txtRomNavn.setText("Rom navn");
 		txtRomNavn.setColumns(10);
-		txtRomNavn.setBounds(383, 164, 132, 20);
-		panel_1.add(txtRomNavn);
+		txtRomNavn.setBounds(383, 137, 202, 20);
+		AvtaleTab.add(txtRomNavn);
 		
 		JButton btnLeggTilEksternTilEvent = new JButton("Legg til");
 		btnLeggTilEksternTilEvent.addActionListener(new ActionListener() {
@@ -488,99 +556,119 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		btnLeggTilEksternTilEvent.setBounds(200, 237, 73, 23);
-		panel_1.add(btnLeggTilEksternTilEvent);
+		AvtaleTab.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(570, 11, 74, 14);
-		panel_1.add(lblBeskrivelse);
+		lblBeskrivelse.setBounds(621, 11, 74, 14);
+		AvtaleTab.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(649, 11, 402, 214);
-		panel_1.add(scrollPane_2);
+		scrollPane_2.setBounds(687, 11, 369, 168);
+		AvtaleTab.add(scrollPane_2);
 		
-		JTextPane txtpnTekst = new JTextPane();
-		scrollPane_2.setViewportView(txtpnTekst);
-		
-		JButton btnEndre = new JButton("Endre avtale");
-		btnEndre.setBounds(777, 250, 130, 23);
-		panel_1.add(btnEndre);
-		
-		JButton btnLalala = new JButton("Ny Avtale");
-		btnLalala.setBounds(931, 250, 130, 23);
-		panel_1.add(btnLalala);
+		JTextPane textPane = new JTextPane();
+		scrollPane_2.setViewportView(textPane);
 		
 		JButton btnVelgRom = new JButton("Velg rom");
-		btnVelgRom.setBounds(442, 132, 73, 23);
-		panel_1.add(btnVelgRom);
+		btnVelgRom.setBounds(512, 103, 73, 23);
+		AvtaleTab.add(btnVelgRom);
 		
 		JLabel lblValgtRom = new JLabel("Valgt rom");
-		lblValgtRom.setBounds(313, 216, 97, 14);
-		panel_1.add(lblValgtRom);
+		lblValgtRom.setBounds(313, 186, 97, 14);
+		AvtaleTab.add(lblValgtRom);
 		
-		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("Alarm", null, panel_3, null);
-		panel_3.setLayout(null);
+		JButton btnOppdaterAvtale = new JButton("Oppdater avtale");
+		btnOppdaterAvtale.setBounds(974, 237, 89, 23);
+		AvtaleTab.add(btnOppdaterAvtale);
+		
+		JButton btnNyAvtale = new JButton("Ny avtale");
+		btnNyAvtale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNyAvtale.setBounds(875, 237, 89, 23);
+		AvtaleTab.add(btnNyAvtale);
+		
+		JButton btnSlettAvtale = new JButton("Slett avtale");
+		btnSlettAvtale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnSlettAvtale.setBounds(776, 237, 89, 23);
+		AvtaleTab.add(btnSlettAvtale);
+		
+		JLabel lblValtRom = new JLabel("Ingen");
+		lblValtRom.setBounds(383, 186, 202, 14);
+		AvtaleTab.add(lblValtRom);
+		
+		JPanel AlarmTab = new JPanel();
+		EventTab.addTab("Alarm", null, AlarmTab, null);
+		AlarmTab.setLayout(null);
 		
 		JLabel lblAlarmer = new JLabel("Alarmer");
-		lblAlarmer.setBounds(32, 37, 46, 14);
-		panel_3.add(lblAlarmer);
+		lblAlarmer.setBounds(32, 11, 46, 14);
+		AlarmTab.add(lblAlarmer);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(32, 62, 123, 217);
-		panel_3.add(scrollPane_3);
+		scrollPane_3.setBounds(32, 36, 123, 217);
+		AlarmTab.add(scrollPane_3);
 		
 		JLabel lblTittel = new JLabel("Tittel");
-		lblTittel.setBounds(185, 37, 46, 14);
-		panel_3.add(lblTittel);
+		lblTittel.setBounds(185, 11, 46, 14);
+		AlarmTab.add(lblTittel);
 		
 		txtTittel_1 = new JTextField();
 		txtTittel_1.setText("tittel");
-		txtTittel_1.setBounds(257, 34, 86, 20);
-		panel_3.add(txtTittel_1);
+		txtTittel_1.setBounds(257, 8, 86, 20);
+		AlarmTab.add(txtTittel_1);
 		txtTittel_1.setColumns(10);
 		
 		JLabel lblDato_1 = new JLabel("Dato");
-		lblDato_1.setBounds(185, 70, 46, 14);
-		panel_3.add(lblDato_1);
+		lblDato_1.setBounds(185, 39, 46, 14);
+		AlarmTab.add(lblDato_1);
 		
 		txtDato_1 = new JTextField();
 		txtDato_1.setText("dato");
 		txtDato_1.setColumns(10);
-		txtDato_1.setBounds(257, 67, 86, 20);
-		panel_3.add(txtDato_1);
+		txtDato_1.setBounds(257, 36, 86, 20);
+		AlarmTab.add(txtDato_1);
 		
 		JLabel lblTidspunkt_1 = new JLabel("Tidspunkt");
-		lblTidspunkt_1.setBounds(185, 107, 62, 14);
-		panel_3.add(lblTidspunkt_1);
+		lblTidspunkt_1.setBounds(185, 70, 62, 14);
+		AlarmTab.add(lblTidspunkt_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setText("12:00");
 		textField_2.setColumns(10);
-		textField_2.setBounds(257, 104, 86, 20);
-		panel_3.add(textField_2);
+		textField_2.setBounds(257, 67, 86, 20);
+		AlarmTab.add(textField_2);
 		
 		JLabel lblBeskrivelse_1 = new JLabel("Beskrivelse");
-		lblBeskrivelse_1.setBounds(185, 132, 62, 14);
-		panel_3.add(lblBeskrivelse_1);
+		lblBeskrivelse_1.setBounds(185, 95, 62, 14);
+		AlarmTab.add(lblBeskrivelse_1);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_7.setBounds(257, 135, 203, 94);
-		panel_3.add(panel_7);
+		panel_7.setBounds(257, 98, 203, 131);
+		AlarmTab.add(panel_7);
 		panel_7.setLayout(null);
 		
 		JTextPane txtpnTekst_1 = new JTextPane();
-		txtpnTekst_1.setBounds(6, 16, 191, 71);
+		txtpnTekst_1.setBounds(0, 0, 203, 131);
 		panel_7.add(txtpnTekst_1);
 		txtpnTekst_1.setText("tekst");
 		
-		JButton btnEndreAlarm = new JButton("Endre Alarm");
-		btnEndreAlarm.setBounds(257, 240, 106, 23);
-		panel_3.add(btnEndreAlarm);
+		JButton btnOppdaterAlarm = new JButton("Endre Alarm");
+		btnOppdaterAlarm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnOppdaterAlarm.setBounds(257, 228, 106, 23);
+		AlarmTab.add(btnOppdaterAlarm);
 		
 		JButton btnNyAlarm = new JButton("Ny Alarm");
-		btnNyAlarm.setBounds(373, 240, 89, 23);
-		panel_3.add(btnNyAlarm);
+		btnNyAlarm.setBounds(974, 240, 89, 23);
+		AlarmTab.add(btnNyAlarm);
 		
 		
 		
