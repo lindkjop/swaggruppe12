@@ -24,8 +24,8 @@ public class OLDClientThread extends Thread{
 			fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("WAITING FOR MESSAGE FROM SERVER");
 			while (true) {
-				String StringFromServer = fromServer.readLine();
-				controller.messageReceived(StringFromServer);
+				Message stringFromServer = fromServer.readLine();
+				controller.messageReceived(stringFromServer);
 //				System.out.println("MESSAGE FROM SERVER: "+StringFromServer);
 				}
 			
