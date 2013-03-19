@@ -536,7 +536,7 @@ public class ClientGUI extends JFrame {
 		scrollPane_1.setViewportView(ledigRomListe);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(313, 137, 63, 14);
+		lblLeggTilRom.setBounds(313, 140, 93, 14);
 		AvtaleTab.add(lblLeggTilRom);
 		
 		txtRomNavn = new JTextField();
@@ -609,6 +609,18 @@ public class ClientGUI extends JFrame {
 		AvtaleTab.add(lblValtRom);
 		
 		textEksternNavn = new JTextField();
+		textEksternNavn.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(textEksternNavn.getText().equals("Ekstern navn"))
+					textEksternNavn.setText(null);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(textEksternNavn.getText().equals(""))
+					textEksternNavn.setText("Ekstern navn");
+			}
+		});
 		textEksternNavn.setText("Ekstern navn");
 		textEksternNavn.setBounds(126, 238, 147, 20);
 		AvtaleTab.add(textEksternNavn);
