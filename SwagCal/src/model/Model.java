@@ -38,6 +38,10 @@ public class Model {
 	public void addEvent(Event e) {
 		events.add(e);
 	}
+	
+	public ArrayList<Event> getEvents() {
+		return events;
+	}
 			
 	public void addNotification(Notification n) {
 		notifications.add(n);
