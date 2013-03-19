@@ -57,8 +57,9 @@ public class Room implements Databaseable {
 
 	@Override
 	public Map getArguments() {
-		// TODO Auto-generated method stub
-		return null;
+	createArguments();
+	return attributes;
+	
 	}
 
 	@Override
@@ -69,6 +70,8 @@ public class Room implements Databaseable {
 		attributes.put("roomSize", Integer.toString(size));
 		
 	}
+	
+
 	
 	
 	

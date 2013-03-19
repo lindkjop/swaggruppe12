@@ -79,8 +79,8 @@ public class Notification implements Databaseable {
 
 	@Override
 	public Map getArguments() {
-		// TODO Auto-generated method stub
-		return null;
+		createArguments();
+		return arguments;
 	}
 
 	@Override

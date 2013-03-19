@@ -16,7 +16,7 @@ public class CapsuleTest {
 	@Test
 	public void test() {
 		Person p = new Person(4, "Daniel", 842984, "danielso", "Tulling!" );
-		Capsule c = new Capsule("DATABASE", "INSERT", "Person", true);
+		Capsule c = new Capsule("DATABASE", "UPDATE", "Person", true);
 		c.setSendObject(p);
 		
 		Gson g = new Gson();
