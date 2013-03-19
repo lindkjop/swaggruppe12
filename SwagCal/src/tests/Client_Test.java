@@ -18,7 +18,6 @@ public class Client_Test {
 		new Client(model);
 		new Client(model);
 		
-		
 	}
 
 }

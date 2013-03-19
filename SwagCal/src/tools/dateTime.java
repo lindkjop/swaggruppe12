@@ -98,6 +98,20 @@ public class dateTime {
 		this.setMonth(Integer.parseInt(input.substring(2, 4)));
 		this.setYear(Integer.parseInt(input.substring(4)));
 	}
+	public String getTime(){
+		int sec = pointInTime.get(Calendar.SECOND);
+		int min = pointInTime.get(Calendar.MINUTE);
+		int hour = pointInTime.get(Calendar.HOUR_OF_DAY);
+		if(sec<10){
+			sec
+		}
+		
+		
+		String result = String.valueOf();
+		result += String.valueOf(pointInTime.get(Calendar.MINUTE));
+		result += String.valueOf(pointInTime.get(Calendar.HOUR_OF_DAY));
+		return result;
+	}
 	
 	
 	public void setSec(int sec){
