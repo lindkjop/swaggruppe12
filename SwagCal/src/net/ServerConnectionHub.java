@@ -23,7 +23,7 @@ public class ServerConnectionHub {
 		this.serverController = serverController;
 		
 		try {	
-			serverSocket = new ServerSocket(this.serverPort,50,InetAddress.getByName(this.serverAdress));
+			serverSocket = new ServerSocket(this.serverPort,50);
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {
@@ -32,10 +32,6 @@ public class ServerConnectionHub {
 				newClient.start();
 				newClient.send("Connection successful, server is listening");
 				System.out.println("New client connected, current client count: "+connectedClients.size());
-				if (connectedClients.size() == 3) {
-					sendToAll("3!");
-					sendToAll("DISC");
-				}
 			}
 		} 
 		catch (IOException e) {
