@@ -58,7 +58,7 @@ public class Event /*implements Databaseable */{
 		this.startTime = from;
 	}
 	public void setTo(dateTime to){
-		this.startTime = to;
+		this.endTime = to;
 	}
 	public dateTime getFrom(){
 		return this.startTime;
