@@ -24,11 +24,9 @@ public class CapsuleTest {
 		
 		DatabaseFactory df = new DatabaseFactory(fizzle);
 		System.out.println(df);
-		df.extractObjectFromCapsule();
-	
+		df.extractArgumentsFromObject();
 		
-		new Capsule("MESSAGE", "UPDATE");
-	
+		
 	}
 
 }
