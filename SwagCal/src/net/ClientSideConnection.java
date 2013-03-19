@@ -44,7 +44,7 @@ public class ClientSideConnection {
 	
 	//steng connection
 	public void disconnect() {
-		
+		send()
 	}
 		
 }

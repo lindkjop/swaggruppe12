@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import net.Message;
+import net.ServerConnectionHub;
 
 import com.google.gson.Gson;
+import net.ServerConnectionHub;
 
 
 import db.Factory;
@@ -18,6 +20,7 @@ import net.Message;
 
 public class Server implements Controller {
 	private Factory factory;
+	private ServerConnectionHub server;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -36,24 +39,25 @@ public class Server implements Controller {
 	
 	public Server() throws ClassNotFoundException, IOException, SQLException {
 	factory = new Factory("./src/db/Properties.properties");
+	server = new ServerConnectionHub("127.0.0.1",7899, this);
 	}
 	
 	
 	@Override
 	public void messageReceived(Message message) {
 		String className = message.getClassName();
-		String queryEffect = message.getQuery();
+		String query = message.getQuery();
 		Boolean isUpdate = message.isUpdateMessage();
 		
-		if(isUpdate) {
+		if(isUpdate) {factory.doUpdate(query);}
+		else {factory.doQuery(query);}
 			
 		}
-		
-		
-		
-	}
+	
 	
 	public void sendMessage(Message message) {
+	server.sendToAll(message);
+	
 		
 	}
 	
