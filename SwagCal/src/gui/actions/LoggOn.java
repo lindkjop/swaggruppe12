@@ -9,7 +9,7 @@ public class LoggOn {
 	private boolean sucsess;
 	
 	
-	public LoggOn(String userName, String password, Person user, Client c){
+	public LoggOn(String userName, char[] password, Person user, Client c){
 		sucsess = false;
 		for (Person p: c.getModel().getPersons()){
 			if (p.getPassword().equals(password) && p.getUserName().equals(userName)){
@@ -22,7 +22,6 @@ public class LoggOn {
 	}
 	
 	public boolean getSucsess(){
-		//return this.sucsess;
 		return true;
 	}
 	

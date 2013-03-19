@@ -52,7 +52,7 @@ public class ClientGUI extends JFrame {
 	private JTextField txtFraTid;
 	private JTextField txtTilTid;
 	private JTextField txtNavn;
-	private JTextField txtRomNavn_1;
+	private JTextField txtPerson_extern;
 	private JTextField txtRomNavn;
 	private JTextField txtTittel_1;
 	private JTextField txtDato_1;
@@ -426,29 +426,25 @@ public class ClientGUI extends JFrame {
 		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
 		panel_1.add(lblLeggTilEkstern);
 		
-		txtRomNavn_1 = new JTextField();
-		txtRomNavn_1.addFocusListener(new FocusAdapter() {
+		txtPerson_extern = new JTextField();
+		txtPerson_extern.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtRomNavn_1.getText().equals("Rom navn"))
-					txtRomNavn_1.setText(null);
+				if(txtPerson_extern.getText().equals("Person navn"))
+					txtPerson_extern.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(txtRomNavn_1.getText().equals(""))
-					txtRomNavn_1.setText("Rom navn");
+				if(txtPerson_extern.getText().equals(""))
+					txtPerson_extern.setText("Person navn");
 			}
 		});
-		txtRomNavn_1.setText("Rom navn");
-		txtRomNavn_1.setColumns(10);
-		txtRomNavn_1.setBounds(106, 238, 94, 20);
-		panel_1.add(txtRomNavn_1);
+		txtPerson_extern.setText("Person navn");
+		txtPerson_extern.setColumns(10);
+		txtPerson_extern.setBounds(106, 238, 94, 20);
+		panel_1.add(txtPerson_extern);
 		
 		JButton btnLeggTilRomTilEvent = new JButton("Legg til");
-		btnLeggTilRomTilEvent.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnLeggTilRomTilEvent.setBounds(442, 182, 73, 23);
 		panel_1.add(btnLeggTilRomTilEvent);
 		
