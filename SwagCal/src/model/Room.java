@@ -7,7 +7,7 @@ import java.util.Date;
 
 import controller.Controller;
 
-public class Room {
+public class Room implements Databaseable {
 	private int roomNumber;
 	private String roomName;
 	private int size;

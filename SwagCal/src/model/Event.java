@@ -3,21 +3,31 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 import tools.dateTime;
 import controller.Controller;
 
-public class Event {
+public class Event implements Databaseable {
 	private int eventID;
-	private dateTime from;
-	private dateTime to;
+	
+	private dateTime dateFrom;
+	private dateTime dateTo;
+	private dateTime startTime;
+	private dateTime endTime;
 	private String description;
 	private String location;
 	private Person creator;
+	private Room room;
+	private Group group;
+	
+	
 	private ArrayList<Person> invited;
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
-	private Room room;
+	private Map arguments;
 	
 	
 	
@@ -119,6 +129,28 @@ public class Event {
 	//Konflikt med andre events-logikk
 	public boolean conflictsWith(Event e) {
 		return dateTime.intersects(from, to, e.getFrom(), e.getTo());
+	}
+
+	@Override
+	public Set getArguments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createArguments() {
+		Map arguments = new HashMap<String, String>();
+		arguments.put("EventID", eventID);
+		arguments.put("dateTo", dateTo.);
+		arguments.put("dateFrom", value);
+		arguments.put("timeFrom", value);
+		arguments.put("timeTo", value);
+		arguments.put("description", description);
+		arguments.put("location", location);
+		arguments.put("ownerID", creator.getPersonID());
+		arguments.put("roomNR", room);
+		arguments.put("groupsID", group.getID());
+		
 	}
 	
  

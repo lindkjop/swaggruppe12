@@ -7,7 +7,7 @@ import controller.Controller;
 
 import tools.dateTime;
 
-public class Notification {
+public class Notification implements Databaseable {
 	private int id;
 	private String message;
 	private boolean isActive;
