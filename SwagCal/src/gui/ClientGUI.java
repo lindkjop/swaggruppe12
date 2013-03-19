@@ -1,5 +1,7 @@
 package gui;
 
+import gui.actions.SelectWeek;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -61,12 +63,23 @@ public class ClientGUI extends JFrame {
 	private JTextField textAlarmTidspunkt;
 	private JTextField txtNavn_1;
 	private Person user;
+	private Client client;
+	private ClientGUI clientGUI;
 	private JTextField txtGruppeNavn;
 	private JTextField textEksternNavn;
+	private JLabel lblLordagDato;
+	private JLabel lblOnsdagDato;
+	private JLabel lblTirsdagDato;
+	private JLabel lblTorsdagDato;
+	private JLabel lblSondagDato;
+	private JLabel lblFredagDato;
+	private JLabel lblMandagDato;
+	private JComboBox comboBoxWeek;
 
 
 	public ClientGUI(Person user, Client client) {
 		this.user = user;
+		this.client = client;
 		
 		
 		getContentPane().setLayout(null);
@@ -227,30 +240,32 @@ public class ClientGUI extends JFrame {
 		
 		JLabel lblVelgUke = new JLabel("Velg Uke:");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"}));
-		comboBox.setSelectedItem(String.valueOf(dateTime.now().getCalendarObj().get(Calendar.WEEK_OF_YEAR)));
-		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-				
-				
+		comboBoxWeek = new JComboBox();
+		comboBoxWeek.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"}));
+		
+		comboBoxWeek.setToolTipText("Velg ukenummer");
+		
+		lblMandagDato = new JLabel("New label");
+		
+		lblTirsdagDato = new JLabel("New label");
+		
+		lblOnsdagDato = new JLabel("New label");
+		
+		lblTorsdagDato = new JLabel("New label");
+		
+		lblFredagDato = new JLabel("New label");
+		
+		lblLordagDato = new JLabel("New label");
+		
+		lblSondagDato = new JLabel("New label");
+		
+		JButton btnUpdateWeek = new JButton("Update");
+		btnUpdateWeek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new SelectWeek(getClientGUI(),getClient().getModel(), Integer.parseInt((String)getComboBoxWeek().getSelectedItem()));
+
 			}
 		});
-		comboBox.setToolTipText("Velg ukenummer");
-		
-		JLabel lblMandagDato = new JLabel("New label");
-		
-		JLabel lblTirsdagDato = new JLabel("New label");
-		
-		JLabel lblOnsdagDato = new JLabel("New label");
-		
-		JLabel lblTorsdagDato = new JLabel("New label");
-		
-		JLabel lblFredagDato = new JLabel("New label");
-		
-		JLabel lblLordagDato = new JLabel("New label");
-		
-		JLabel lblSondagDato = new JLabel("New label");
 		GroupLayout gl_KalenderPanel = new GroupLayout(KalenderPanel);
 		gl_KalenderPanel.setHorizontalGroup(
 			gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
@@ -282,10 +297,14 @@ public class ClientGUI extends JFrame {
 							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_KalenderPanel.createSequentialGroup()
 									.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-									.addGap(12)
+									.addPreferredGap(ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
 									.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
 								.addComponent(lblSondagDato))
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(comboBoxWeek, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnUpdateWeek, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
 						.addGroup(gl_KalenderPanel.createSequentialGroup()
 							.addGap(50)
 							.addComponent(lblMandag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
@@ -343,8 +362,11 @@ public class ClientGUI extends JFrame {
 									.addComponent(scrollSondag, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_KalenderPanel.createSequentialGroup()
 									.addGap(4)
-									.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
-								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+									.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblVelgUke, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+										.addComponent(comboBoxWeek, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnUpdateWeek))))
 						.addGroup(gl_KalenderPanel.createSequentialGroup()
 							.addGap(40)
 							.addComponent(lblMandagDato))
@@ -667,7 +689,39 @@ public class ClientGUI extends JFrame {
 		AlarmTab.add(textAlarmBeskrivelse);
 		
 		
-		
-		
+	}
+	public Person getUser() {
+		return user;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public ClientGUI getClientGUI() {
+		return this;
+	}
+	
+	public JLabel getLblLordagDato() {
+		return lblLordagDato;
+	}
+	public JLabel getLblOnsdagDato() {
+		return lblOnsdagDato;
+	}
+	public JLabel getLblTirsdagDato() {
+		return lblTirsdagDato;
+	}
+	public JLabel getLblTorsdagDato() {
+		return lblTorsdagDato;
+	}
+	public JLabel getLblSondagDato() {
+		return lblSondagDato;
+	}
+	public JLabel getLblFredagDato() {
+		return lblFredagDato;
+	}
+	public JLabel getLblMandagDato() {
+		return lblMandagDato;
+	}
+	public JComboBox getComboBoxWeek() {
+		return comboBoxWeek;
 	}
 }

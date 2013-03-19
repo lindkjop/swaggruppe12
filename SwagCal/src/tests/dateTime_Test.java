@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+
+import org.joda.time.Interval;
 import org.junit.Test;
 
 import tools.dateTime;
@@ -19,7 +22,7 @@ public class dateTime_Test {
 		assertFalse(temp1.isSimultaneousWith(temp2));
 
 		dateTime point11 = new dateTime("002018","12032013");
-		dateTime point12 = new dateTime("003018","12032013");
+		dateTime point12 = new dateTime("002918","12032013");
 
 		dateTime point21 = new dateTime("003018","12032013");
 		dateTime point22 = new dateTime("004018","12032013");
@@ -30,11 +33,16 @@ public class dateTime_Test {
 		assertFalse(point11.isAfter(point12));
 		assertTrue(point11.isBefore(point12));
 
-		assertFalse(dateTime.intersects(point11,point12,point21,point22));
-		assertTrue(dateTime.intersects(point11,point12,point31,point32));
-		assertTrue(dateTime.intersects(point21,point22,point31,point32));
-		System.out.println(point11.getTime());
-		System.out.println(point11.getDate());
+		Interval intrv1 = dateTime.interval(point11,point12);
+		Interval intrv2 = dateTime.interval(point21,point22);
+		Interval intrv3 = dateTime.interval(point31,point32);
+
+		assertFalse(dateTime.intersects(intrv1,intrv2));
+		assertTrue(dateTime.intersects(intrv2,intrv3));
+		assertTrue(dateTime.intersects(intrv2,intrv3));
+		
+		assertEquals(point11.getTime(),"002018");
+		assertEquals(point11.getDate(),"12032013");
 	}
 	
 }

@@ -13,10 +13,8 @@ import controller.Controller;
 public class Event implements Databaseable {
 	private int eventID;
 	
-	private dateTime dateFrom;
-	private dateTime dateTo;
-	private dateTime startTime;
-	private dateTime endTime;
+	private dateTime from;
+	private dateTime to;
 	private String description;
 	private String location;
 	private Person creator;
@@ -143,10 +141,10 @@ public class Event implements Databaseable {
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
 		arguments.put("EventID", Integer.toString(eventID));
-		arguments.put("dateTo", dateTo.getDate());
-		arguments.put("dateFrom", dateFrom.getDate());
-		arguments.put("timeFrom", startTime.getTime());
-		arguments.put("timeTo", endTime.getTime());
+		arguments.put("dateTo", to.getDate());
+		arguments.put("dateFrom", from.getDate());
+		arguments.put("timeFrom", from.getTime());
+		arguments.put("timeTo", to.getTime());
 		arguments.put("description", description);
 		arguments.put("location", location);
 		arguments.put("ownerID", Integer.toString(creator.getPersonID()));

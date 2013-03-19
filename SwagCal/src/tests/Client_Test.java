@@ -16,6 +16,7 @@ public class Client_Test {
 		model = new Model();
 		model.addPerson(dude);
 		new Client(model);
+		System.out.println("Ferdig");
 		new Client(model);
 		
 	}

@@ -31,7 +31,7 @@ public class Person implements Databaseable {
 	}
 	
 	//Konstruktør
-	public Person(int id, String navn, int phoneNumber,String userName, String password) {
+	public Person(int id, String name, int phoneNumber,String userName, String password) {
 		this.personID = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -55,10 +55,10 @@ public class Person implements Databaseable {
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}
-	public String getNavn() {
+	public String getName() {
 		return name;
 	}
-	public void setNavn(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public int getPhoneNumber() {

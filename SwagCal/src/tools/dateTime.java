@@ -5,6 +5,14 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeField;
+import org.joda.time.Interval;
+import org.joda.time.JodaTimePermission;
+import org.joda.time.MutableDateTime;
+import org.joda.time.ReadWritableDateTime;
+import org.junit.experimental.theories.PotentialAssignment;
+
 
 /*
  * SWAGCODER TIB MADE THIS SHEEiT. 
@@ -13,81 +21,80 @@ import java.util.Date;
  * 
  */
 public class dateTime {
-	private Calendar pointInTime;
-	//
-    // String format below will add leading zeros (the %0 syntax) 
-    // to the number above. The length of the formatted string will 
-    // be 7 characters.
-    //
-    String formatted; 
-	
+	private MutableDateTime pointInTime;
 	
 	//Konstruktører
 	public dateTime(){
-		this.pointInTime = dateTime.now().getCalendarObj();
+		pointInTime = new MutableDateTime();
 		
 	}
 	
-	public dateTime(Calendar c){
-		this.pointInTime = c;
+	public dateTime(MutableDateTime dt){
+		this.pointInTime = dt;
 	}
-
+	
+	
 	public dateTime(String ssmmhhddmmyyyy){
 		new dateTime(ssmmhhddmmyyyy.substring(0,6),ssmmhhddmmyyyy.substring(6));
 	}
 	
 	public dateTime(String ssmmhh,String ddmmyyyy){
-		this.pointInTime = new dateTime().getCalendarObj();
-		this.pointInTime.set(Calendar.SECOND, Integer.parseInt(ssmmhh.substring(0, 2)));
-		this.pointInTime.set(Calendar.MINUTE, Integer.parseInt(ssmmhh.substring(2, 4)));
-		this.pointInTime.set(Calendar.HOUR_OF_DAY,  Integer.parseInt(ssmmhh.substring(4)));
-		this.pointInTime.set(Calendar.DATE, Integer.parseInt(ddmmyyyy.substring(0,2)));
-		this.pointInTime.set(Calendar.MONTH, Integer.parseInt(ddmmyyyy.substring(2,4)));
-		this.pointInTime.set(Calendar.YEAR, Integer.parseInt(ddmmyyyy.substring(4)));
+		int sec = Integer.parseInt(ssmmhh.substring(0, 2));
+		int min = Integer.parseInt(ssmmhh.substring(2, 4));
+		int hour = Integer.parseInt(ssmmhh.substring(4));
+		int day = Integer.parseInt(ddmmyyyy.substring(0,2));
+		int month = Integer.parseInt(ddmmyyyy.substring(2,4));
+		int year = Integer.parseInt(ddmmyyyy.substring(4));
+		pointInTime = new MutableDateTime();
+		pointInTime.setSecondOfMinute(sec);
+		pointInTime.setMinuteOfHour(min);
+		pointInTime.setHourOfDay(hour);
+		pointInTime.setDayOfMonth(day);
+		pointInTime.setMonthOfYear(month);
+		pointInTime.setYear(year);
 		
 	}
 
 	
 	//Funksjoner til endring av den underliggende objekttypen
-	public Calendar getCalendarObj(){
-		if (pointInTime == null){
-			pointInTime = Calendar.getInstance();
-		}
+	public MutableDateTime getDateTimeObj(){
 		return pointInTime;
 	}
 	
 	
 	//Finn nåtid
 	public static dateTime now(){
-		return new dateTime(Calendar.getInstance());
+		return new dateTime();
 	}
+	
 	
 	//Legge sammen to tidspunkt
 	public dateTime add(dateTime duration){
-		dateTime result = new dateTime(duration.getCalendarObj());
-		result.getCalendarObj().add(Calendar.DATE, this.getCalendarObj().get(Calendar.DATE));
-		result.getCalendarObj().add(Calendar.MONTH, this.getCalendarObj().get(Calendar.MONTH));
-		result.getCalendarObj().add(Calendar.YEAR, this.getCalendarObj().get(Calendar.YEAR));
-		result.getCalendarObj().add(Calendar.SECOND, this.getCalendarObj().get(Calendar.SECOND));
-		result.getCalendarObj().add(Calendar.MINUTE, this.getCalendarObj().get(Calendar.MINUTE));
-		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
+		dateTime result = new dateTime().now();
+		result.getDateTimeObj().addSeconds(duration.getDateTimeObj().getSecondOfMinute());
+		result.getDateTimeObj().addMinutes(duration.getDateTimeObj().getMinuteOfHour());
+		result.getDateTimeObj().addHours(duration.getDateTimeObj().getHourOfDay());
+		result.getDateTimeObj().addDays(duration.getDateTimeObj().getDayOfMonth());
+		result.getDateTimeObj().addMonths(duration.getDateTimeObj().getMonthOfYear());
+		result.getDateTimeObj().addYears(duration.getDateTimeObj().getYear());
 		return result;
 	}
 	
 	
 	//Hente en periodelengde
-	public dateTime getDuration(dateTime til){
-		dateTime result = new dateTime(til.getCalendarObj());
-		result.getCalendarObj().add(Calendar.DATE, -this.getCalendarObj().get(Calendar.DATE));
-		result.getCalendarObj().add(Calendar.MONTH, -this.getCalendarObj().get(Calendar.MONTH));
-		result.getCalendarObj().add(Calendar.YEAR, -this.getCalendarObj().get(Calendar.YEAR));
-		result.getCalendarObj().add(Calendar.SECOND, -this.getCalendarObj().get(Calendar.SECOND));
-		result.getCalendarObj().add(Calendar.MINUTE, -this.getCalendarObj().get(Calendar.MINUTE));
-		result.getCalendarObj().add(Calendar.HOUR_OF_DAY, -this.getCalendarObj().get(Calendar.HOUR_OF_DAY));
-		return result;
+	public dateTime getDuration(dateTime from, dateTime to){
+		MutableDateTime result = to.getDateTimeObj();
+		result.addSeconds(-this.getDateTimeObj().getSecondOfMinute());
+		result.addMinutes(-this.getDateTimeObj().getMinuteOfHour());
+		result.addHours(-this.getDateTimeObj().getHourOfDay());
+		result.addDays(-this.getDateTimeObj().getDayOfMonth());
+		result.addMonths(-this.getDateTimeObj().getMonthOfYear());
+		result.addYears(-this.getDateTimeObj().getYear());
+		return new dateTime(result);
 	}
-	public static dateTime getDuration(dateTime from, dateTime to){
-		return from.getDuration(to);
+	
+	public dateTime getDuration(dateTime to){
+		return new dateTime(this.getDuration(this, to).getDateTimeObj());
 	}
 	
 	
@@ -104,9 +111,9 @@ public class dateTime {
 		this.setYear(Integer.parseInt(ddmmyyyy.substring(4)));
 	}
 	public String getTime(){
-		int sec = pointInTime.get(Calendar.SECOND);
-		int min = pointInTime.get(Calendar.MINUTE);
-		int hour = pointInTime.get(Calendar.HOUR_OF_DAY);
+		int sec = pointInTime.getSecondOfMinute();
+		int min = pointInTime.getMinuteOfHour();
+		int hour = pointInTime.getHourOfDay();
 		String sSec;
 		if(sec<10){
 			sSec = "0"+ String.valueOf(sec);
@@ -137,9 +144,9 @@ public class dateTime {
 	
 	public String getDate(){
 		
-		int day = pointInTime.get(Calendar.DATE);
-		int month = pointInTime.get(Calendar.MONTH);
-		int year = pointInTime.get(Calendar.YEAR);
+		int day = pointInTime.getDayOfMonth();
+		int month = pointInTime.getMonthOfYear();
+		int year = pointInTime.getYear();
 		String sDay;
 		if(day<10){
 			sDay = "0"+ String.valueOf(day);
@@ -160,78 +167,84 @@ public class dateTime {
 		return result;
 	}
 	
+	public String getDateFormatedForWeekView(){
+		String a = this.getDate();
+		return a.substring(0,2)+"."+a.substring(2,4)+"."+a.substring(4);
+		
+	}
+	
+	
+	public void setWeek(int weeknumber){
+		this.getDateTimeObj().setWeekyear(weeknumber);
+	}
+	
+	public void setWeekDay(int weekday){
+		this.getDateTimeObj().setDayOfWeek(weekday);
+	}
 	
 	public void setSec(int sec){
-		this.getCalendarObj().set(Calendar.SECOND, sec);
+		this.getDateTimeObj().setSecondOfMinute(sec);
 	}
 	public int getSec(){
-		return this.getCalendarObj().get(Calendar.SECOND);
+		return this.getDateTimeObj().getSecondOfMinute();
 	}
 	
 	public void setMin(int min){
-		this.getCalendarObj().set(Calendar.MINUTE, min);
+		this.getDateTimeObj().setMinuteOfHour(min);
 	}
 	public int getMin(){
-		return this.getCalendarObj().get(Calendar.MINUTE);
+		return this.getDateTimeObj().getMinuteOfHour();
 	}
 	
 	public void setHour(int hour){
-		this.getCalendarObj().set(Calendar.HOUR_OF_DAY, hour);
+		this.getDateTimeObj().setHourOfDay(hour);
 	}
 	public int getHour(){
-		return this.getCalendarObj().get(Calendar.HOUR_OF_DAY);
+		return this.getDateTimeObj().getHourOfDay();
 	}
 	
 	public void setDay(int day){
-		this.getCalendarObj().set(Calendar.DATE, day);
+		this.getDateTimeObj().setDayOfMonth(day);
 	}
 	public int getDay(){
-		return this.getCalendarObj().get(Calendar.DATE);
+		return this.getDateTimeObj().getDayOfMonth();
 	}
 	
 	public void setMonth(int month){
-		this.getCalendarObj().set(Calendar.MONTH, month);
+		this.getDateTimeObj().setMonthOfYear(month);
 	}
 	public int getMonth(){
-		return this.getCalendarObj().get(Calendar.MONTH);
+		return this.getDateTimeObj().getMonthOfYear();
 	}
 	
 	public void setYear(int year){
-		this.getCalendarObj().set(Calendar.YEAR, year);
+		this.getDateTimeObj().setYear(year);
 	}
 	public int getYear(){
-		return this.getCalendarObj().get(Calendar.YEAR);
+		return this.getDateTimeObj().getYear();
 	}
 
 	
 	//Sammenligning
-	public boolean intersects(dateTime duration, dateTime compareToStart, dateTime compareToDuration){
-		//Sjekker om compareTo starter før this slutter
-		boolean startsBefore = compareToStart.getCalendarObj().before(this.add(duration).getCalendarObj());
-		
-		//Sjekker om compareTo slutter før this starter
-		boolean endsAfter = compareToStart.add(compareToDuration).getCalendarObj().after(this.getCalendarObj());
-		
-		return startsBefore && endsAfter;
+	public static Interval interval(dateTime from, dateTime to){
+		return new Interval(from.getDateTimeObj(),to.getDateTimeObj());
 	}
 	
-	public static boolean intersects(dateTime from, dateTime to, dateTime compareFrom, dateTime compareTo){
-		return from.intersects(from.getDuration(to), compareFrom, compareTo);
+	public static boolean intersects(Interval interval, Interval otherInterval){
+		return interval.overlaps(otherInterval);
 	}
-	
-	
 	
 	public boolean isSimultaneousWith(dateTime compareTo){
-		return this.getCalendarObj().equals(compareTo.getCalendarObj());
+		return this.getDateTimeObj().equals(compareTo.getDateTimeObj());
 	}
 	
 	public boolean isBefore(dateTime dt){
-		return this.getCalendarObj().before(dt.getCalendarObj());
+		return this.getDateTimeObj().isBefore(dt.getDateTimeObj());
 	}
 	public boolean isAfter(dateTime dt){
-		return this.getCalendarObj().after(dt.getCalendarObj());
+		return this.getDateTimeObj().isAfter(dt.getDateTimeObj());
 	}
 	public boolean hasPassed(){
-		return this.getCalendarObj().before(dateTime.now());
+		return this.getDateTimeObj().isBefore(dateTime.now().getDateTimeObj());
 	}
 }

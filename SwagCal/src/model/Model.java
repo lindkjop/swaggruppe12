@@ -26,6 +26,7 @@ public class Model {
 		rooms = new ArrayList<Room>();
 		persons = new ArrayList<Person> ();
 	}
+	
 	public void addPerson(Person p){
 		persons.add(p);
 	}

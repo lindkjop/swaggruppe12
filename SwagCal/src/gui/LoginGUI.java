@@ -64,7 +64,7 @@ public class LoginGUI extends JFrame {
 		JButton LoggOnButton = new JButton("Logg p\u00E5");
 		LoggOnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LoggOn lg = new LoggOn(usernameField.getText(),passwordField.getPassword(),user,client);
+				LoggOn lg = new LoggOn(usernameField.getText(),String.valueOf(passwordField.getPassword()),user,client);
 				if(lg.getSucsess()){
 					System.out.println("DU HAR LOGGET INN, I DONT CARE");
 					client.setWorkFrame();
