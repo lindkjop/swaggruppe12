@@ -1,7 +1,5 @@
 package net.test;
 
-import model.Person;
-
 import com.google.gson.Gson;
 
 public class RandomTesting {
@@ -19,6 +17,8 @@ public class RandomTesting {
 	//	String ps2 = gson.toJson(p2);
 		System.out.println(ps1);
 		
+		randomINt ri = gson.fromJson(ps1, randomINt.class);
+		System.out.println("interface: "+ri);
 		PersonTest p1after = gson.fromJson(ps1, PersonTest.class);
 		System.out.println(p1after.friends.get(0).name);
 	//	PersonTest p22 = gson.fromJson(ps2, PersonTest.class);
