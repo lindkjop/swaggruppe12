@@ -9,13 +9,14 @@ import java.net.UnknownHostException;
 import controller.Controller;
 
 
-public class ClientSideConnection {
+public class ClientSideConnection implements Connection {
 
 	private String serverAdress;
 	private int serverPort;
 	private Socket clientSocket;
 	private PrintWriter toServer;
 	private Controller clientController;
+	private ListenThread listener;
 	 
 	public ClientSideConnection(String serverAdress, int serverPort, Controller clientController) {
 		this.serverAdress = serverAdress;
@@ -26,7 +27,8 @@ public class ClientSideConnection {
 			clientSocket = new Socket(InetAddress.getByName(this.serverAdress),this.serverPort);
 			System.out.println("CONNECTED TO SERVER");
 			toServer = new PrintWriter(clientSocket.getOutputStream(), true);
-			new ListenThread(clientSocket, this.clientController).start();
+			listener = new ListenThread(clientSocket, this.clientController, this);
+			listener.start();
 		
 		}	
 		catch (UnknownHostException e) {
@@ -44,7 +46,15 @@ public class ClientSideConnection {
 	
 	//steng connection
 	public void disconnect() {
-		send()
+		send("DISCONNECT_MESSAGE");
+		try {
+			listener.getReader().close();
+			listener.interrupt();
+			clientSocket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 }

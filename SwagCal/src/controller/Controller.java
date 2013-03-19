@@ -4,9 +4,9 @@ import net.Message;
 
 public interface Controller {
 	
-	public void messageReceived(Message message);
+	public void messageReceived(String message);
 	
-	public void sendMessage(Message message);
+	public void sendMessage(String message);
 	
 	
 }

@@ -44,19 +44,19 @@ public class Server implements Controller {
 	
 	
 	@Override
-	public void messageReceived(Message message) {
-		String className = message.getClassName();
-		String query = message.getQuery();
-		Boolean isUpdate = message.isUpdateMessage();
-		
-		if(isUpdate) {factory.doUpdate(query);}
-		else {factory.doQuery(query);}
+	public void messageReceived(String message) {
+//		String className = message.getClassName();
+//		String query = message.getQuery();
+//		Boolean isUpdate = message.isUpdateMessage();
+//		
+//		if(isUpdate) {factory.doUpdate(query);}
+//		else {factory.doQuery(query);}
 			
 		}
 	
 	
-	public void sendMessage(Message message) {
-	server.sendToAll(message);
+	public void sendMessage(String message) {
+		server.sendToAll(message);
 	
 		
 	}

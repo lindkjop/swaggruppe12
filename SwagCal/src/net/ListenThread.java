@@ -14,11 +14,13 @@ public class ListenThread extends Thread {
 	private Socket socket;
 	private BufferedReader fromConnection;
 	private Controller controller;
+	private Connection connection;
     
-	public ListenThread(Socket socket, Controller controller) {
+	public ListenThread(Socket socket, Controller controller, Connection connection) {
 		super("ListenThread");
 		this.socket = socket;
 		this.controller = controller;
+		this.connection = connection;
 	}
 	
 	public void run() {
@@ -26,8 +28,11 @@ public class ListenThread extends Thread {
 		try {
 			fromConnection = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			while (true) {
-				String stringFromClient = fromConnection.readLine();
-				controller.messageReceived(new Message());
+				String stringFromConnection = fromConnection.readLine();
+				if (isDisconnect(stringFromConnection)) {
+					connection.disconnect();
+				}
+				controller.messageReceived(stringFromConnection);
 				}
 			
 		    }
@@ -36,4 +41,11 @@ public class ListenThread extends Thread {
 			}
 	}
 	
+	public BufferedReader getReader() {
+		return fromConnection;
+	}
+	
+	private boolean isDisconnect(String s) {
+		return false;
+	}
 } 

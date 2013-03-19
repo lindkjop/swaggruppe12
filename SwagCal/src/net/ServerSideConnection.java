@@ -8,13 +8,15 @@ import java.net.Socket;
 
 import controller.Controller;
 
-public class ServerSideConnection extends Thread{
+public class ServerSideConnection extends Thread implements Connection{
 	private Socket socket;
 	private BufferedReader fromClient;
 	private PrintWriter toClient;
 	private Controller controller;
+	private ServerConnectionHub hub;
+	private ListenThread listener;
 
-    public ServerSideConnection(Socket socket, Controller serverController) {
+    public ServerSideConnection(Socket socket, Controller serverController, ServerConnectionHub hub) {
     	super("ServerSideConnectionThread");
     	this.socket = socket;
     	this.controller = serverController;
@@ -27,7 +29,8 @@ public class ServerSideConnection extends Thread{
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
-    	new ListenThread(socket, controller).start();
+    	listener = new ListenThread(socket, controller, this);
+    	listener.start();
 	}
     
     public void send(String message) {
@@ -40,4 +43,21 @@ public class ServerSideConnection extends Thread{
     	}
     	toClient.println(message);
     }
+
+	@Override
+	public void disconnect() {
+		try {
+			listener.getReader().close();
+			listener.interrupt();
+			hub.removeConnectedClient(this);
+			socket.close();
+			this.interrupt();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
