@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import controller.Controller;
 
-public class Group {
+public class Group implements Databaseable  {
 	private int id;
 	private String groupName;
 	private ArrayList<Person> members;
