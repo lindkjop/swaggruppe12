@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -17,14 +18,17 @@ import model.Person;
 
 import controller.Client;
 import controller.Controller;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class LoginGUI extends JFrame {
-	private JTextField passwordField;
 	private JTextField usernameField;
 	private JTextField statusField;
 	private Person user;
 	private Client client;
+	private JPasswordField passwordField;
 	
 	
 	public LoginGUI(final Person user, Client c) {
@@ -34,13 +38,20 @@ public class LoginGUI extends JFrame {
 		this.setSize(500, 300);
 		getContentPane().setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("CALENDAR");
+		lblNewLabel_1.setForeground(new Color(0, 0, 128));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(10, 137, 464, 29);
+		getContentPane().add(lblNewLabel_1);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(mkIcon("swagLogo.png"));
 		lblNewLabel.setBounds(10, 11, 464, 126);
 		getContentPane().add(lblNewLabel);
 		
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		passwordField.setBounds(265, 196, 209, 20);
 		getContentPane().add(passwordField);
 		passwordField.setColumns(10);
@@ -53,11 +64,14 @@ public class LoginGUI extends JFrame {
 		JButton LoggOnButton = new JButton("Logg p\u00E5");
 		LoggOnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LoggOn lg = new LoggOn(usernameField.getText(),passwordField.getText(),user,client);
+				LoggOn lg = new LoggOn(usernameField.getText(),passwordField.getPassword(),user,client);
 				if(lg.getSucsess()){
 					System.out.println("DU HAR LOGGET INN, I DONT CARE");
 					client.setWorkFrame();
 					dispose();
+				}
+				else{
+					statusField.setText("Feil brukernavn eller passord, du er dum");
 				}
 			}
 		});
@@ -72,19 +86,13 @@ public class LoginGUI extends JFrame {
 		lblBrukernavn.setBounds(158, 168, 97, 14);
 		getContentPane().add(lblBrukernavn);
 		
-		JLabel lblNewLabel_1 = new JLabel("CALENDAR");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(10, 137, 464, 14);
-		getContentPane().add(lblNewLabel_1);
-		
 		JLabel lblNewLabel_2 = new JLabel("Status");
 		lblNewLabel_2.setBounds(10, 231, 46, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		statusField = new JTextField();
 		statusField.setEditable(false);
-		statusField.setBounds(45, 228, 209, 20);
+		statusField.setBounds(50, 228, 246, 20);
 		getContentPane().add(statusField);
 		statusField.setColumns(10);
 		

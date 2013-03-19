@@ -14,11 +14,18 @@ import java.util.Date;
  */
 public class dateTime {
 	private Calendar pointInTime;
+	//
+    // String format below will add leading zeros (the %0 syntax) 
+    // to the number above. The length of the formatted string will 
+    // be 7 characters.
+    //
+    String formatted; 
 	
 	
 	//Konstruktører
 	public dateTime(){
 		this.pointInTime = dateTime.now().getCalendarObj();
+		
 	}
 	
 	public dateTime(Calendar c){
@@ -86,30 +93,70 @@ public class dateTime {
 	
 	//Hente/sette enkelt-ting.
 	
-	public void setTime(int ssmmhh){
-		String input = String.valueOf(ssmmhh);
-		this.setSec(Integer.parseInt(input.substring(0, 2)));
-		this.setMin(Integer.parseInt(input.substring(2, 4)));
-		this.setHour(Integer.parseInt(input.substring(4)));
+	public void setTime(String ssmmhh){
+		this.setSec(Integer.parseInt(ssmmhh.substring(0, 2)));
+		this.setMin(Integer.parseInt(ssmmhh.substring(2, 4)));
+		this.setHour(Integer.parseInt(ssmmhh.substring(4)));
 	}
-	public void setDate(int ddmmyyyy){
-		String input = String.valueOf(ddmmyyyy);
-		this.setDay(Integer.parseInt(input.substring(0, 2)));
-		this.setMonth(Integer.parseInt(input.substring(2, 4)));
-		this.setYear(Integer.parseInt(input.substring(4)));
+	public void setDate(String ddmmyyyy){
+		this.setDay(Integer.parseInt(ddmmyyyy.substring(0, 2)));
+		this.setMonth(Integer.parseInt(ddmmyyyy.substring(2, 4)));
+		this.setYear(Integer.parseInt(ddmmyyyy.substring(4)));
 	}
 	public String getTime(){
 		int sec = pointInTime.get(Calendar.SECOND);
 		int min = pointInTime.get(Calendar.MINUTE);
 		int hour = pointInTime.get(Calendar.HOUR_OF_DAY);
+		String sSec;
 		if(sec<10){
-			sec
+			sSec = "0"+ String.valueOf(sec);
+		}else{
+			sSec = String.valueOf(sec);
+		}
+		
+		String sMin;
+		if(min<10){
+			sMin = "0"+ String.valueOf(min);
+		}else{
+			sMin = String.valueOf(min);
+		}
+		
+		String sHour;
+		if(hour<10){
+			sHour = "0"+ String.valueOf(hour);
+		}else{
+			sHour = String.valueOf(hour);
 		}
 		
 		
-		String result = String.valueOf();
-		result += String.valueOf(pointInTime.get(Calendar.MINUTE));
-		result += String.valueOf(pointInTime.get(Calendar.HOUR_OF_DAY));
+		String result = sSec;
+		result += sMin;
+		result += sHour;
+		return result;
+	}
+	
+	public String getDate(){
+		
+		int day = pointInTime.get(Calendar.DATE);
+		int month = pointInTime.get(Calendar.MONTH);
+		int year = pointInTime.get(Calendar.YEAR);
+		String sDay;
+		if(day<10){
+			sDay = "0"+ String.valueOf(day);
+		}else{
+			sDay = String.valueOf(day);
+		}
+		
+		String sMonth;
+		if(month<10){
+			sMonth = "0"+ String.valueOf(month);
+		}else{
+			sMonth = String.valueOf(month);
+		}
+		
+		String result = sDay;
+		result += sMonth;
+		result += year;
 		return result;
 	}
 	

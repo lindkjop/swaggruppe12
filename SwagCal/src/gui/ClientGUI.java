@@ -54,14 +54,15 @@ public class ClientGUI extends JFrame {
 	private JTextField txtFraTid;
 	private JTextField txtTilTid;
 	private JTextField txtNavn;
-	private JTextField txtRomNavn_1;
+	private JTextField txtPerson_extern;
 	private JTextField txtRomNavn;
-	private JTextField txtTittel_1;
-	private JTextField txtDato_1;
-	private JTextField textField_2;
+	private JTextField txtAlarmTittel;
+	private JTextField txtAlarmDato;
+	private JTextField textAlarmTidspunkt;
 	private JTextField txtNavn_1;
 	private Person user;
 	private JTextField txtGruppeNavn;
+	private JTextField textEksternNavn;
 
 
 	public ClientGUI(Person user, Client client) {
@@ -475,7 +476,7 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		txtNavn.setText("Person navn");
-		txtNavn.setBounds(106, 211, 94, 20);
+		txtNavn.setBounds(126, 211, 147, 20);
 		AvtaleTab.add(txtNavn);
 		txtNavn.setColumns(10);
 		
@@ -484,30 +485,26 @@ public class ClientGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLeggTilPersonTilEvent.setBounds(200, 211, 73, 23);
+		btnLeggTilPersonTilEvent.setBounds(272, 211, 73, 23);
 		AvtaleTab.add(btnLeggTilPersonTilEvent);
 		
 		JLabel lblLeggTilEkstern = new JLabel("Legg til ekstern");
 		lblLeggTilEkstern.setBounds(10, 241, 94, 14);
 		AvtaleTab.add(lblLeggTilEkstern);
 		
-		txtRomNavn_1 = new JTextField();
-		txtRomNavn_1.addFocusListener(new FocusAdapter() {
+		txtPerson_extern = new JTextField();
+		txtPerson_extern.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtRomNavn_1.getText().equals("Rom navn"))
-					txtRomNavn_1.setText(null);
+				if(txtPerson_extern.getText().equals("Person navn"))
+					txtPerson_extern.setText(null);
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(txtRomNavn_1.getText().equals(""))
-					txtRomNavn_1.setText("Rom navn");
+				if(txtPerson_extern.getText().equals(""))
+					txtPerson_extern.setText("Person navn");
 			}
 		});
-		txtRomNavn_1.setText("Rom navn");
-		txtRomNavn_1.setColumns(10);
-		txtRomNavn_1.setBounds(106, 238, 94, 20);
-		AvtaleTab.add(txtRomNavn_1);
 		
 		JButton btnLeggTilRomTilEvent = new JButton("Legg til");
 		btnLeggTilRomTilEvent.addActionListener(new ActionListener() {
@@ -516,7 +513,7 @@ public class ClientGUI extends JFrame {
 		});
 		btnLeggTilRomTilEvent.setBounds(512, 156, 73, 23);
 		AvtaleTab.add(btnLeggTilRomTilEvent);
-		
+
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
 		lblLedigeRom.setBounds(313, 11, 76, 14);
 		AvtaleTab.add(lblLedigeRom);
@@ -555,7 +552,7 @@ public class ClientGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLeggTilEksternTilEvent.setBounds(200, 237, 73, 23);
+		btnLeggTilEksternTilEvent.setBounds(272, 237, 73, 23);
 		AvtaleTab.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
@@ -601,6 +598,12 @@ public class ClientGUI extends JFrame {
 		lblValtRom.setBounds(383, 186, 202, 14);
 		AvtaleTab.add(lblValtRom);
 		
+		textEksternNavn = new JTextField();
+		textEksternNavn.setText("Ekstern navn");
+		textEksternNavn.setBounds(126, 238, 147, 20);
+		AvtaleTab.add(textEksternNavn);
+		textEksternNavn.setColumns(10);
+		
 		JPanel AlarmTab = new JPanel();
 		EventTab.addTab("Alarm", null, AlarmTab, null);
 		AlarmTab.setLayout(null);
@@ -609,66 +612,59 @@ public class ClientGUI extends JFrame {
 		lblAlarmer.setBounds(32, 11, 46, 14);
 		AlarmTab.add(lblAlarmer);
 		
-		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(32, 36, 123, 217);
-		AlarmTab.add(scrollPane_3);
+		JScrollPane scrollPaneAlarmListe = new JScrollPane();
+		scrollPaneAlarmListe.setBounds(32, 36, 123, 217);
+		AlarmTab.add(scrollPaneAlarmListe);
 		
 		JLabel lblTittel = new JLabel("Tittel");
 		lblTittel.setBounds(185, 11, 46, 14);
 		AlarmTab.add(lblTittel);
 		
-		txtTittel_1 = new JTextField();
-		txtTittel_1.setText("tittel");
-		txtTittel_1.setBounds(257, 8, 86, 20);
-		AlarmTab.add(txtTittel_1);
-		txtTittel_1.setColumns(10);
+		txtAlarmTittel = new JTextField();
+		txtAlarmTittel.setText("tittel");
+		txtAlarmTittel.setBounds(257, 8, 86, 20);
+		AlarmTab.add(txtAlarmTittel);
+		txtAlarmTittel.setColumns(10);
 		
 		JLabel lblDato_1 = new JLabel("Dato");
 		lblDato_1.setBounds(185, 39, 46, 14);
 		AlarmTab.add(lblDato_1);
 		
-		txtDato_1 = new JTextField();
-		txtDato_1.setText("dato");
-		txtDato_1.setColumns(10);
-		txtDato_1.setBounds(257, 36, 86, 20);
-		AlarmTab.add(txtDato_1);
+		txtAlarmDato = new JTextField();
+		txtAlarmDato.setText("dato");
+		txtAlarmDato.setColumns(10);
+		txtAlarmDato.setBounds(257, 36, 86, 20);
+		AlarmTab.add(txtAlarmDato);
 		
 		JLabel lblTidspunkt_1 = new JLabel("Tidspunkt");
 		lblTidspunkt_1.setBounds(185, 70, 62, 14);
 		AlarmTab.add(lblTidspunkt_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setText("12:00");
-		textField_2.setColumns(10);
-		textField_2.setBounds(257, 67, 86, 20);
-		AlarmTab.add(textField_2);
+		textAlarmTidspunkt = new JTextField();
+		textAlarmTidspunkt.setText("12:00");
+		textAlarmTidspunkt.setColumns(10);
+		textAlarmTidspunkt.setBounds(257, 67, 86, 20);
+		AlarmTab.add(textAlarmTidspunkt);
 		
 		JLabel lblBeskrivelse_1 = new JLabel("Beskrivelse");
 		lblBeskrivelse_1.setBounds(185, 95, 62, 14);
 		AlarmTab.add(lblBeskrivelse_1);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_7.setBounds(257, 98, 203, 131);
-		AlarmTab.add(panel_7);
-		panel_7.setLayout(null);
-		
-		JTextPane txtpnTekst_1 = new JTextPane();
-		txtpnTekst_1.setBounds(0, 0, 203, 131);
-		panel_7.add(txtpnTekst_1);
-		txtpnTekst_1.setText("tekst");
-		
-		JButton btnOppdaterAlarm = new JButton("Endre Alarm");
+		JButton btnOppdaterAlarm = new JButton("Oppdater Alarm");
 		btnOppdaterAlarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOppdaterAlarm.setBounds(257, 228, 106, 23);
+		btnOppdaterAlarm.setBounds(368, 240, 131, 23);
 		AlarmTab.add(btnOppdaterAlarm);
 		
 		JButton btnNyAlarm = new JButton("Ny Alarm");
 		btnNyAlarm.setBounds(974, 240, 89, 23);
 		AlarmTab.add(btnNyAlarm);
+		
+		JTextArea textAlarmBeskrivelse = new JTextArea();
+		textAlarmBeskrivelse.setBounds(257, 98, 238, 122);
+		AlarmTab.add(textAlarmBeskrivelse);
 		
 		
 		

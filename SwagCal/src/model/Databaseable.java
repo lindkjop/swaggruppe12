@@ -6,6 +6,5 @@ public interface Databaseable {
 
 public Set getArguments();
 public void createArguments();
-public String getClassName();
 
 }
