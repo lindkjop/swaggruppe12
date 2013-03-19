@@ -33,7 +33,7 @@ public class Person implements Databaseable {
 	//Konstruktør
 	public Person(int id, String navn, int phoneNumber,String userName, String password) {
 		this.personID = id;
-		this.navn = navn;
+		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.userName = userName;
 		this.password = password;
@@ -56,10 +56,10 @@ public class Person implements Databaseable {
 		this.personID = personID;
 	}
 	public String getNavn() {
-		return navn;
+		return name;
 	}
-	public void setNavn(String navn) {
-		this.navn = navn;
+	public void setNavn(String name) {
+		this.name = name;
 	}
 	public int getPhoneNumber() {
 		return phoneNumber;
@@ -104,6 +104,11 @@ public class Person implements Databaseable {
 		arguments.put("userName", this.userName);
 		arguments.put("passWord", this.password);
 }
+
+	@Override
+	public Map getArguments() {
+	return arguments;
+	}
 	
 	
 }

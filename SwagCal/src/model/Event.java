@@ -135,7 +135,7 @@ public class Event implements Databaseable {
 	}
 
 	@Override
-	public Set getArguments() {
+	public Map getArguments() {
 		return this.arguments;
 	}
 

@@ -33,12 +33,12 @@ public class Notification implements Databaseable {
 	public void setController(Controller c){
 		this.contr = c;
 	}
-	public Notification(int id, Event event, String message, Boolean isActive, dateTime start, dateTime alarm, Person owner) {
+	public Notification(int id, Event event, String message, Boolean isActive, dateTime alarm, Person owner) {
 		this.message = message;
 		this.isActive = isActive;
-		this.start = start;
 		this.owner = owner;
 		this.event = event;
+		//this.start = start;
 	}
 	
 	
@@ -54,12 +54,7 @@ public class Notification implements Databaseable {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public dateTime getStart() {
-		return start;
-	}
-	public void setStart(dateTime start) {
-		this.start = start;
-	}
+
 	public Person getOwner() {
 		return owner;
 	}
@@ -74,7 +69,7 @@ public class Notification implements Databaseable {
 	}
 	
 	public boolean isDue() {
-		return this.start.hasPassed();
+	return false;
 	}
 
 	@Override

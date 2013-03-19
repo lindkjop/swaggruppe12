@@ -64,7 +64,9 @@ public class Room implements Databaseable {
 	@Override
 	public void createArguments() {
 		attributes = new HashMap<String,String>();
-		
+		attributes.put("roomNR", Integer.toString(this.roomNumber));
+		attributes.put("roomName", roomName);
+		attributes.put("roomSize", Integer.toString(size));
 		
 	}
 	
