@@ -10,7 +10,8 @@ import java.util.Map;
 import tools.dateTime;
 import controller.Controller;
 
-public class Event implements Databaseable {
+public class Event /*implements Databaseable */{
+	
 	private int eventID;
 	
 	private dateTime dateFrom;
@@ -22,14 +23,12 @@ public class Event implements Databaseable {
 	private Person creator;
 	private Room room;
 	private Group group;
-	
+	private String title;
 	
 	private ArrayList<Person> invited;
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
 	private Map<String,String> arguments;
-	
-	
 	
 	//Event listener support
 	private PropertyChangeSupport pcs;
@@ -40,8 +39,8 @@ public class Event implements Databaseable {
 	
 	//Konstruktør
 	public Event(dateTime from, dateTime to, String description, String location,Person creator, Room room){
-		this.from = from;
-		this.to = to;
+		this.startTime = from;
+		this.endTime = to;
 		this.description = description;
 		this.location = location;
 		this.creator = creator;
@@ -52,20 +51,34 @@ public class Event implements Databaseable {
 	
 	//Tidspunkt
 	public dateTime getDuration() {
-		return dateTime.getDuration(this.from, this.to);
+		return dateTime.getDuration(this.startTime, this.endTime);
 	}
 	
 	public void setFrom(dateTime from){
-		this.from = from;
+		this.startTime = from;
 	}
 	public void setTo(dateTime to){
-		this.from = to;
+		this.startTime = to;
 	}
 	public dateTime getFrom(){
-		return this.from;
+		return this.startTime;
 	}
 	public dateTime getTo(){
-		return this.to;
+		return this.endTime;
+	}
+	
+	//Dato
+	public dateTime getDateFrom() {
+		return dateFrom;
+	}
+	public void setDateFrom(dateTime dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+	public dateTime getDateTo() {
+		return dateTo;
+	}
+	public void setDateTo(dateTime dateTo) {
+		this.dateTo = dateTo;
 	}
 	
 	public int getID() {
@@ -85,6 +98,7 @@ public class Event implements Databaseable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 	//Rom
 	public Room getRoom() {
 		return room;
@@ -99,6 +113,14 @@ public class Event implements Databaseable {
 	}
 	public void setCreator(Person creator) {
 		this.creator = creator;
+	}
+	
+	//Title setter/getter
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	//Invited listen
@@ -131,15 +153,14 @@ public class Event implements Databaseable {
 	
 	//Konflikt med andre events-logikk
 	public boolean conflictsWith(Event e) {
-		return dateTime.intersects(from, to, e.getFrom(), e.getTo());
+		return dateTime.intersects(this.getFrom(), this.getTo(), e.getFrom(), e.getTo());
 	}
 
-	@Override
+
 	public Map getArguments() {
 		return this.arguments;
 	}
 
-	@Override
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
 		arguments.put("EventID", Integer.toString(eventID));
