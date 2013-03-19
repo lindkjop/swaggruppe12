@@ -23,7 +23,9 @@ public class ServerConnectionHub {
 		this.serverController = serverController;
 		
 		try {	
+
 			serverSocket = new ServerSocket(this.serverPort,50);
+
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {

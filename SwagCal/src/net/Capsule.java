@@ -13,57 +13,77 @@ import model.Room;
 
 import com.google.gson.Gson;
 
+/**
+ * 
+ * @author Daniel
+ * 
+ */
+
 public class Capsule {
 
-String type;
-String operation;
-String classname;
-Boolean doReturnObject;
-String condition;
-Object sendObject;
-Map values = new HashMap<String, String>();
+	/**
+	 * type - type of capsule. Can be either "MESSAGE" or "DATABASE" operation -
+	 * Operation that can be performed. For "DATABASE" it can be either
+	 * "SELECT", "DELETE", "INSERT" or "UPDATE". for "MESSAGE" it can be...
+	 */
 
-Gson capsulePackage;
+	String type;
+	String operation;
+	String classname;
+	Boolean doReturnObject;
+	String condition;
+	Object sendObject;
+	Map values = new HashMap<String, String>();
 
-public String pack() {
-Gson packagedObject = new Gson();
-return packagedObject.toJson(this);
+	Gson capsulePackage;
+
+	public String pack() {
+		Gson packagedObject = new Gson();
+		return packagedObject.toJson(this);
+
+	}
+
+	public Capsule(String type, String operation, String classname,
+			Boolean doReturnObject) {
+
+		this.type = type;
+		this.operation = operation;
+		this.classname = classname;
+		this.doReturnObject = doReturnObject;
+	}
+
+	public Capsule(String type, String operation) {
+		this.type = type;
+		this.operation = operation;
+	}
 	
+	public String getType() {
+		return this.type;
+	}
+	
+	public String getOperation() {
+		return this.operation;
+	}
+	
+	public String getCondition() {
+		return this.condition;
+	}
+	
+	public Boolean doReturnObject() {
+		return this.doReturnObject;
+	}
+	
+	public String getClassName() {
+		return this.classname;
+	}
+	
+	
+
+	public void setSendObject(Object sendObject) {
+		this.sendObject = sendObject;
+	}
+
+	public Object getSendObject() {
+		return sendObject;
+	}
 }
-
-public Capsule(String type, String operation, String classname, Boolean doReturnObject) {
-this.type = type;
-this.operation = operation;
-this.classname = classname;
-this.doReturnObject = doReturnObject;
-}
-
-public Capsule(String type, String operation) {
-	this.type = type;
-	this.operation = operation;
-}
-
-
-public void setSendObject(Object sendObject) {
-	this.sendObject = sendObject;
-}
-
-
-public Object getSendObject() {
-return sendObject;
-
-/* if(classname.equals("Person")) { l = h.fromJson(sendObject, Person.class);}
-if(classname.equals("Event")) {  l = h.fromJson(sendObject, Event.class);}
-if(classname.equals("Group")) { l = h.fromJson(sendObject, Group.class);}
-if(classname.equals("Room")) { l = h.fromJson(sendObject, Room.class);}
-if(classname.equals("Notification")) {  l = h.fromJson(sendObject, Notification.class);}
-else { l = null; }
-return l; */
-
-
-
-
-}
-}
-
-
