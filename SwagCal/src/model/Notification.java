@@ -33,7 +33,7 @@ public class Notification implements Databaseable {
 	public void setController(Controller c){
 		this.contr = c;
 	}
-	public Notification(int id, Event event, String message, Boolean isActive, dateTime alarm, Person owner) {
+	public Notification(Event event, String message, Boolean isActive, dateTime alarm, Person owner) {
 		this.message = message;
 		this.isActive = isActive;
 		this.owner = owner;
@@ -48,6 +48,11 @@ public class Notification implements Databaseable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public int getID() {
+		return id;
+	}
+	
 	public boolean isActive() {
 		return isActive;
 	}
@@ -74,8 +79,8 @@ public class Notification implements Databaseable {
 
 	@Override
 	public Map getArguments() {
-		// TODO Auto-generated method stub
-		return null;
+		createArguments();
+		return arguments;
 	}
 
 	@Override

@@ -61,8 +61,8 @@ public class Group implements Databaseable  {
 
 	@Override
 	public Map getArguments() {
-		// TODO Auto-generated method stub
-		return this.arguments;
+	createArguments();
+	return arguments;
 	}
 
 	@Override

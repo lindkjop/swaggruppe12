@@ -73,6 +73,9 @@ public class Person implements Databaseable {
 	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
 	}
+	public void addEvent(Event event) {
+		events.add(event);
+	}
 	public ArrayList<Notification> getNotifications() {
 		return notifications;
 	}
@@ -107,6 +110,7 @@ public class Person implements Databaseable {
 
 	@Override
 	public Map getArguments() {
+	createArguments();
 	return arguments;
 	}
 	

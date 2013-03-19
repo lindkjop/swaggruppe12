@@ -13,7 +13,7 @@ public class ServerConnectionHub {
 	private int serverPort;
 	private ServerSocket serverSocket;
 	private Controller serverController;
-	public ArrayList<ServerSideConnection> connectedClients;
+	private ArrayList<ServerSideConnection> connectedClients;
 	private PrintWriter toClient;
 	
 	public ServerConnectionHub(String serverAdress, int serverPort, Controller serverController) {
@@ -23,7 +23,9 @@ public class ServerConnectionHub {
 		this.serverController = serverController;
 		
 		try {	
-			serverSocket = new ServerSocket(this.serverPort,50,InetAddress.getByName(this.serverAdress));
+
+			serverSocket = new ServerSocket(this.serverPort,50);
+
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {

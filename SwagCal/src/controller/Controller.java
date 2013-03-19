@@ -1,6 +1,6 @@
 package controller;
 
-import net.Message;
+import net.backup.Message;
 
 public interface Controller {
 	
