@@ -87,6 +87,8 @@ public class LoginGUI extends JFrame {
 		statusField.setBounds(45, 228, 209, 20);
 		getContentPane().add(statusField);
 		statusField.setColumns(10);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	protected ImageIcon mkIcon (String path) {
