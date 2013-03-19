@@ -20,6 +20,7 @@ public class ServerSideConnection extends Thread implements Connection{
     	super("ServerSideConnectionThread");
     	this.socket = socket;
     	this.controller = serverController;
+    	this.hub = hub;
     }
 
     public void run() {

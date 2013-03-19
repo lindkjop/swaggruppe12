@@ -13,7 +13,7 @@ public class ServerConnectionHub {
 	private int serverPort;
 	private ServerSocket serverSocket;
 	private Controller serverController;
-	public ArrayList<ServerSideConnection> connectedClients;
+	private ArrayList<ServerSideConnection> connectedClients;
 	private PrintWriter toClient;
 	
 	public ServerConnectionHub(String serverAdress, int serverPort, Controller serverController) {
@@ -32,6 +32,10 @@ public class ServerConnectionHub {
 				newClient.start();
 				newClient.send("Connection successful, server is listening");
 				System.out.println("New client connected, current client count: "+connectedClients.size());
+				if (connectedClients.size() == 3) {
+					sendToAll("3!");
+					sendToAll("DISC");
+				}
 			}
 		} 
 		catch (IOException e) {

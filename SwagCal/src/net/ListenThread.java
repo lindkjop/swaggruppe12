@@ -31,6 +31,7 @@ public class ListenThread extends Thread {
 				String stringFromConnection = fromConnection.readLine();
 				if (isDisconnect(stringFromConnection)) {
 					connection.disconnect();
+					break;
 				}
 				controller.messageReceived(stringFromConnection);
 				}
@@ -46,6 +47,7 @@ public class ListenThread extends Thread {
 	}
 	
 	private boolean isDisconnect(String s) {
-		return false;
+		return (s == null || s.equals("DISC"));
+			
 	}
 } 

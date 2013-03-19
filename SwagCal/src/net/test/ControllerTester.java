@@ -15,13 +15,14 @@ public class ControllerTester implements Controller {
 	}
 	
 	@Override
-	public void messageReceived(Message message) {
+	public void messageReceived(String message) {
+		System.out.println("RECEIVED AT "+name+". Message: "+message);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendMessage(Message message) {
+	public void sendMessage(String message) {
 		// TODO Auto-generated method stub
 		
 	}
