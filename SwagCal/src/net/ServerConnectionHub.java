@@ -24,6 +24,7 @@ public class ServerConnectionHub {
 		
 		try {	
 			serverSocket = new ServerSocket(this.serverPort,50,InetAddress.getByName(this.serverAdress));
+
 			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
 			
 			while (true) {

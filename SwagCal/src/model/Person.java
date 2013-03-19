@@ -31,7 +31,7 @@ public class Person implements Databaseable {
 	}
 	
 	//Konstruktør
-	public Person(int id, String navn, int phoneNumber,String userName, String password) {
+	public Person(int id, String name, int phoneNumber,String userName, String password) {
 		this.personID = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
