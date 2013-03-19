@@ -16,13 +16,10 @@ public class LoggOn {
 				sucsess = true;
 			}
 		}
-		if(!sucsess){
-			System.out.println("Feil brukernavn eller passord, du er dum");
-		}
 	}
 	
 	public boolean getSucsess(){
-		return true;
+		return this.sucsess;
 	}
 	
 
