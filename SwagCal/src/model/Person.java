@@ -107,6 +107,7 @@ public class Person implements Databaseable {
 
 	@Override
 	public Map getArguments() {
+	createArguments();
 	return arguments;
 	}
 	

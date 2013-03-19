@@ -158,6 +158,7 @@ public class Event /*implements Databaseable */{
 
 
 	public Map getArguments() {
+		createArguments();
 		return this.arguments;
 	}
 
