@@ -3,12 +3,14 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.Controller;
 
 public class Person implements Databaseable {
 	private int personID;
-	private String navn;
+	private String name;
 	private int phoneNumber;
 	private String userName;
 	private String password;
@@ -16,7 +18,7 @@ public class Person implements Databaseable {
 	private ArrayList<Notification> notifications;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
-	
+	private Map<String,String> arguments;
 	
 	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -93,6 +95,15 @@ public class Person implements Databaseable {
 	public void deleteEvent(Event e) {
 		events.remove(e);
 	}
+	
+	public void createArguments() {
+		arguments = new HashMap<String, String>();
+		arguments.put("personID", Integer.toString(personID));
+		arguments.put("name", this.name);
+		arguments.put("phoneNumber", Integer.toString(phoneNumber));
+		arguments.put("userName", this.userName);
+		arguments.put("passWord", this.password);
+}
 	
 	
 }

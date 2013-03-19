@@ -4,6 +4,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.Controller;
 
@@ -14,7 +16,7 @@ public class Room implements Databaseable {
 	private ArrayList<Date> booked;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
-	
+	private Map<String, String> attributes;
 	
 	//Setter propertychange listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -52,5 +54,20 @@ public class Room implements Databaseable {
 	public void setSize(int size) {
 		this.size = size;
 	}
+
+	@Override
+	public Map getArguments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createArguments() {
+		attributes = new HashMap<String,String>();
+		
+		
+	}
+	
+	
 	
 }

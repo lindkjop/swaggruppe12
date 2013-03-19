@@ -2,6 +2,8 @@ package model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.Controller;
 
@@ -11,12 +13,15 @@ public class Notification implements Databaseable {
 	private int id;
 	private String message;
 	private boolean isActive;
-	private dateTime start;
-	private dateTime alarm;
+	private dateTime dateCreated;
+	private dateTime timeCreated;
+	private dateTime alarmDate;
+	private dateTime alarmTime;
 	private Person owner;
 	private Event event;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
+	private Map<String,String> arguments;
 	
 	
 	//Setter propertychange listener
@@ -70,6 +75,27 @@ public class Notification implements Databaseable {
 	
 	public boolean isDue() {
 		return this.start.hasPassed();
+	}
+
+	@Override
+	public Map getArguments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+		public void createArguments() {
+			arguments = new HashMap<String, String>();
+			arguments.put("notificationID", Integer.toString(id));
+			arguments.put("EventID", Integer.toString(event.getID()));
+			arguments.put("messageText", message);
+			arguments.put("isRead", Boolean.toString(isActive));
+			arguments.put("dateCreated", dateCreated.getDate());
+			arguments.put("timeCreated", timeCreated.getTime());
+			arguments.put("alarmDate", alarmDate.getDate());
+			arguments.put("alarmTime", alarmTime.getTime());
+			arguments.put("ownerID", Integer.toString(owner.getPersonID()));
+		
 	}
 	
 }

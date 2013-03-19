@@ -3,6 +3,9 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import controller.Controller;
 
@@ -13,6 +16,7 @@ public class Group implements Databaseable  {
 	private ArrayList<Event> events;
 	private PropertyChangeSupport pcs;
 	private Controller contr;
+	private Map<String, String> arguments;
 	
 	
 	//Setter propertychange listener
@@ -53,6 +57,19 @@ public class Group implements Databaseable  {
 	public Group(int id, String groupName) {
 		this.id = id;
 		this.groupName = groupName;
+	}
+
+	@Override
+	public Set getArguments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createArguments() {
+	arguments = new HashMap<String, String>();
+	arguments.put("GroupsID", Integer.toString(id));
+	arguments.put("groupName", groupName);
 	}
 	
 	

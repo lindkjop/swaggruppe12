@@ -1,10 +1,10 @@
 package model;
 
-import java.util.Set;
+import java.util.Map;
 
 public interface Databaseable {
 
-public Set getArguments();
+public Map getArguments();
 public void createArguments();
 
 }

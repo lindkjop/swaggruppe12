@@ -27,7 +27,7 @@ public class Event implements Databaseable {
 	private ArrayList<Person> invited;
 	private ArrayList<Person> accepted;
 	private ArrayList<Person> declined;
-	private Map arguments;
+	private Map<String,String> arguments;
 	
 	
 	
@@ -68,6 +68,9 @@ public class Event implements Databaseable {
 		return this.to;
 	}
 	
+	public int getID() {
+		return this.eventID;
+	}
 	
 	//Tekstlig beskrivelse av eventen
 	public String getDescription() {
@@ -133,23 +136,22 @@ public class Event implements Databaseable {
 
 	@Override
 	public Set getArguments() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.arguments;
 	}
 
 	@Override
 	public void createArguments() {
-		Map arguments = new HashMap<String, String>();
-		arguments.put("EventID", eventID);
-		arguments.put("dateTo", dateTo.);
-		arguments.put("dateFrom", value);
-		arguments.put("timeFrom", value);
-		arguments.put("timeTo", value);
+		arguments = new HashMap<String, String>();
+		arguments.put("EventID", Integer.toString(eventID));
+		arguments.put("dateTo", dateTo.getDate());
+		arguments.put("dateFrom", dateFrom.getDate());
+		arguments.put("timeFrom", startTime.getTime());
+		arguments.put("timeTo", endTime.getTime());
 		arguments.put("description", description);
 		arguments.put("location", location);
-		arguments.put("ownerID", creator.getPersonID());
-		arguments.put("roomNR", room);
-		arguments.put("groupsID", group.getID());
+		arguments.put("ownerID", Integer.toString(creator.getPersonID()));
+		arguments.put("roomNR", Integer.toString(room.getRoomNumber()));
+		arguments.put("groupsID", Integer.toString(group.getID()));
 		
 	}
 	
