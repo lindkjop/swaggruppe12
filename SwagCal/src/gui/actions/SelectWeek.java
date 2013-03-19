@@ -1,8 +1,8 @@
 package gui.actions;
 
-import tools.dateTime;
 import gui.ClientGUI;
 import model.Model;
+import tools.dateTime;
 
 public class SelectWeek {
 	ClientGUI mainFrame;
@@ -58,7 +58,7 @@ public class SelectWeek {
 		this.son.setYear(dateTime.now().getYear());
 		
 		updateWeekDayDates();
-//		updateWeekDayEvents();
+		new FillWeekWithEvents(clientGUI);
 	}
 
 	private void updateWeekDayEvents() {

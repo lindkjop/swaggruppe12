@@ -234,6 +234,12 @@ public class dateTime {
 		return interval.overlaps(otherInterval);
 	}
 	
+	public static boolean intersects(dateTime from, dateTime to, dateTime otherFrom, dateTime otherTo){
+		Interval intr1 = dateTime.interval(from, to);
+		Interval intr2 = dateTime.interval(otherFrom, otherTo);
+		return dateTime.intersects(intr1, intr2);
+	}
+	
 	public boolean isSimultaneousWith(dateTime compareTo){
 		return this.getDateTimeObj().equals(compareTo.getDateTimeObj());
 	}
@@ -247,4 +253,13 @@ public class dateTime {
 	public boolean hasPassed(){
 		return this.getDateTimeObj().isBefore(dateTime.now().getDateTimeObj());
 	}
+
+	public int getWeek() {
+		return this.getDateTimeObj().getWeekOfWeekyear();
+	}
+
+	public int getDayOfWeek() {
+		return this.getDateTimeObj().getDayOfWeek();
+	}
+
 }
