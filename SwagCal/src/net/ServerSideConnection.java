@@ -8,6 +8,11 @@ import java.net.Socket;
 
 import controller.Controller;
 
+/**
+ * Klasse som representerer en forbindelse til klienten på andre siden av socketen.
+ * Lytter etter mottatte meldinger via en lyttetråd, og kan sende meldinger vha send-metoden.
+ */
+
 public class ServerSideConnection extends Thread implements Connection{
 	private Socket socket;
 	private BufferedReader fromClient;
@@ -16,6 +21,8 @@ public class ServerSideConnection extends Thread implements Connection{
 	private ServerConnectionHub hub;
 	private ListenThread listener;
 
+//	Konstruktør, tar imot den aktuelle socketen det kommuniseres gjennom, samt referanser til Controller-objektet og ServerConnectionHub-objektet
+//	som styrer de forskjellieg forbindelsene.
     public ServerSideConnection(Socket socket, Controller serverController, ServerConnectionHub hub) {
     	super("ServerSideConnectionThread");
     	this.socket = socket;
@@ -23,6 +30,7 @@ public class ServerSideConnection extends Thread implements Connection{
     	this.hub = hub;
     }
 
+//    Metoden som kalles når tråden starter, oppretter lyttetråd
     public void run() {
 
     	try {
@@ -34,6 +42,7 @@ public class ServerSideConnection extends Thread implements Connection{
     	listener.start();
 	}
     
+//    Metode for å sende meldinger til klienten på andre siden av socketen.
     public void send(String message) {
     	if (toClient == null) {
     		try {
@@ -45,6 +54,7 @@ public class ServerSideConnection extends Thread implements Connection{
     	toClient.println(message);
     }
 
+//    Metode for å rydde opp etter en klient har koblet seg fra.
 	@Override
 	public void disconnect() {
 		try {

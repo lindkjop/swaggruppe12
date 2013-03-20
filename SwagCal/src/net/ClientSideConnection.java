@@ -11,6 +11,11 @@ import controller.Controller;
 
 public class ClientSideConnection implements Connection {
 
+/**
+* Klasse som representerer forbindelse til serveren.
+* Lytter etter mottatte meldinger via en lyttetråd, og kan sende meldinger vha send-metoden.
+*/
+	
 	private String serverAdress;
 	private int serverPort;
 	private Socket clientSocket;
@@ -18,6 +23,7 @@ public class ClientSideConnection implements Connection {
 	private Controller clientController;
 	private ListenThread listener;
 	 
+//	Konstruktør, tar imot adressen og portnummeret til serveren man vil koble seg til (serverAdress, serverPort), samt referanse til den ansvarlige kontrolleren.
 	public ClientSideConnection(String serverAdress, int serverPort, Controller clientController) {
 		this.serverAdress = serverAdress;
 		this.serverPort = serverPort;
@@ -39,12 +45,12 @@ public class ClientSideConnection implements Connection {
 		}
 	}
 		
-	//send til server
+	//Metode for å sende meldinger til serveren.
 	public void send(String message) {
 		toServer.println(message);
 	}
 	
-	//steng connection
+	//Metode for å disconnecte fra server.
 	public void disconnect() {
 		send("DISCONNECT_MESSAGE");
 		try {

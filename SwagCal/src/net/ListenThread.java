@@ -10,12 +10,20 @@ import com.google.gson.GsonBuilder;
 
 import controller.Controller;
 
+/**
+ * Klasse som hele tiden lytter på meldinger fra klienten/serveren på andre siden av socketen.
+ * Mottatte meldinger sendes videre til den ansvarlige kontrolleren ved hjelp av et kall til
+ * messageReceived(String message) i det respektive objektet.
+ *
+ */
+
 public class ListenThread extends Thread {
 	private Socket socket;
 	private BufferedReader fromConnection;
 	private Controller controller;
 	private Connection connection;
     
+//	Konstruktør, tar inn socketen tråden skal lytte på, den ansvarlige controlleren samt connectionen den tilhører.
 	public ListenThread(Socket socket, Controller controller, Connection connection) {
 		super("ListenThread");
 		this.socket = socket;
@@ -23,6 +31,9 @@ public class ListenThread extends Thread {
 		this.connection = connection;
 	}
 	
+//	Metode som kalles når tråden starter, lytter hele tiden etter meldinger sendt fra andre siden av socketen.
+//	Når det mottas en melding skjer en av to ting: hvis meldingen er en disconnect-beskjed frakobles den
+//	tilhørende connectionen. Ellers videresendes meldingen til kontrolleren via messageReceived-kallet.
 	public void run() {
 
 		try {
@@ -42,12 +53,14 @@ public class ListenThread extends Thread {
 			}
 	}
 	
+//	Metode som sjekker om en melding er en beskjed om å disconnecte.
+	private boolean isDisconnect(String s) {
+		return (s == null || s.equals("DISC"));
+		
+	}
+	
 	public BufferedReader getReader() {
 		return fromConnection;
 	}
 	
-	private boolean isDisconnect(String s) {
-		return (s == null || s.equals("DISC"));
-			
-	}
 } 
