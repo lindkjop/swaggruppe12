@@ -171,7 +171,7 @@ public class Event /*implements Databaseable */{
 		arguments.put("timeTo", endTime.getTime());
 		arguments.put("description", description);
 		arguments.put("location", location);
-		arguments.put("ownerID", Integer.toString(creator.getPersonID()));
+		arguments.put("ownerID", "'" +Integer.toString(creator.getPersonID()));
 		arguments.put("roomNR", Integer.toString(room.getRoomNumber()));
 		arguments.put("groupsID", Integer.toString(group.getID()));
 		

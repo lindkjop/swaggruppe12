@@ -32,7 +32,7 @@ public class DatabaseFactory {
 	
 	
 	public DatabaseFactory(String objectString) {
-
+		
 	
 	capsuleObject = gSonObject.fromJson(objectString, Capsule.class);
 	className = capsuleObject.getClassName();
@@ -132,10 +132,10 @@ public class DatabaseFactory {
 	
 		
 		
-		
+
 	}
-	
-	
+
+
 	public String toString() {
 		return ("This capsule is a " + type + " command" +
 				"\nIt contains the operation " + operation +
