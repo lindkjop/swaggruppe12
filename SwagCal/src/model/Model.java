@@ -26,6 +26,7 @@ public class Model {
 		rooms = new ArrayList<Room>();
 		persons = new ArrayList<Person> ();
 	}
+	
 	public void addPerson(Person p){
 		persons.add(p);
 	}
@@ -33,10 +34,14 @@ public class Model {
 	public ArrayList<Person> getPersons(){
 		return persons;
 	}
-	
+
 	
 	public void addEvent(Event e) {
 		events.add(e);
+	}
+	
+	public ArrayList<Event> getEvents() {
+		return events;
 	}
 			
 	public void addNotification(Notification n) {
@@ -59,6 +64,51 @@ public class Model {
 	public void updateNotification(Notification oldN, Notification newN) {
 		notifications.remove(oldN);
 		notifications.add(newN);
+	}
+	
+	public Person findPerson(int id) {
+		for (Person p : persons) {
+			if (p.getPersonID() == id) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public Event findEvent(int id) {
+		for (Event e : events) {
+			if (e.getID() == id) {
+				return e;
+			}
+		}
+		return null;
+	}
+	
+	public Notification findNotification(int id) {
+		for (Notification n : notifications) {
+			if (n.getID() == id) {
+				return n;
+			}
+		}
+		return null;
+	}
+	
+	public Group findGroup(int id) {
+		for (Group g : groups) {
+			if (g.getID() == id) {
+				return g;
+			}
+		}
+		return null;
+	}
+	
+	public Room findRoom(int nr) {
+		for (Room r : rooms) {
+			if (r.getRoomNumber() == nr) {
+				return r;
+			}
+		}
+		return null;
 	}
 	
 //	public void initialize() {

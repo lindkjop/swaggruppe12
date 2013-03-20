@@ -55,10 +55,10 @@ public class Person implements Databaseable {
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}
-	public String getNavn() {
+	public String getName() {
 		return name;
 	}
-	public void setNavn(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public int getPhoneNumber() {
@@ -72,6 +72,9 @@ public class Person implements Databaseable {
 	}
 	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
+	}
+	public void addEvent(Event event) {
+		events.add(event);
 	}
 	public ArrayList<Notification> getNotifications() {
 		return notifications;

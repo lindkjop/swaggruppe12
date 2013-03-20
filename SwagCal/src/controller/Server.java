@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import net.Message;
 import net.ServerConnectionHub;
 
 import com.google.gson.Gson;
@@ -16,7 +15,7 @@ import net.ServerConnectionHub;
 
 import db.Factory;
 
-import net.Message;
+import net.backup.Message;
 
 public class Server implements Controller {
 	private Factory factory;

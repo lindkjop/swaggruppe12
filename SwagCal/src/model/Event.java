@@ -1,23 +1,20 @@
 package model;
 
+import java.awt.Component;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import tools.dateTime;
-import controller.Controller;
 
-public class Event /*implements Databaseable */{
+public class Event extends Component/*implements Databaseable */{
 	
 	private int eventID;
 	
-	private dateTime dateFrom;
-	private dateTime dateTo;
-	private dateTime startTime;
-	private dateTime endTime;
+	private dateTime start;
+	private dateTime end;
 	private String description;
 	private String location;
 	private Person creator;
@@ -39,8 +36,8 @@ public class Event /*implements Databaseable */{
 	
 	//Konstruktør
 	public Event(dateTime from, dateTime to, String description, String location,Person creator, Room room){
-		this.startTime = from;
-		this.endTime = to;
+		this.start = from;
+		this.end = to;
 		this.description = description;
 		this.location = location;
 		this.creator = creator;
@@ -49,36 +46,11 @@ public class Event /*implements Databaseable */{
 	
 	//GET & SET
 	
-	//Tidspunkt
-	public dateTime getDuration() {
-		return dateTime.getDuration(this.startTime, this.endTime);
-	}
-	
-	public void setFrom(dateTime from){
-		this.startTime = from;
-	}
-	public void setTo(dateTime to){
-		this.startTime = to;
-	}
 	public dateTime getFrom(){
-		return this.startTime;
+		return this.start;
 	}
 	public dateTime getTo(){
-		return this.endTime;
-	}
-	
-	//Dato
-	public dateTime getDateFrom() {
-		return dateFrom;
-	}
-	public void setDateFrom(dateTime dateFrom) {
-		this.dateFrom = dateFrom;
-	}
-	public dateTime getDateTo() {
-		return dateTo;
-	}
-	public void setDateTo(dateTime dateTo) {
-		this.dateTo = dateTo;
+		return this.end;
 	}
 	
 	public int getID() {
@@ -92,7 +64,8 @@ public class Event /*implements Databaseable */{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getLocation() {
+
+	public String getEventLocation() {
 		return location;
 	}
 	public void setLocation(String location) {
@@ -165,10 +138,10 @@ public class Event /*implements Databaseable */{
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
 		arguments.put("EventID", Integer.toString(eventID));
-		arguments.put("dateTo", dateTo.getDate());
-		arguments.put("dateFrom", dateFrom.getDate());
-		arguments.put("timeFrom", startTime.getTime());
-		arguments.put("timeTo", endTime.getTime());
+		arguments.put("dateTo", end.getDate());
+		arguments.put("dateFrom", start.getDate());
+		arguments.put("timeFrom", start.getTime());
+		arguments.put("timeTo", end.getTime());
 		arguments.put("description", description);
 		arguments.put("location", location);
 		arguments.put("ownerID", "'" +Integer.toString(creator.getPersonID()));
