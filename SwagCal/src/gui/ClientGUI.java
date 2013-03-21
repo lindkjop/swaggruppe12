@@ -792,10 +792,9 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 		return btnUpdateWeek;
 	}
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if(evt.getPropertyName()=="personsArray"){
-			dlm.removeAllElements();
-			for 
-		}
+	public void propertyChange(PropertyChangeEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
+
 }
