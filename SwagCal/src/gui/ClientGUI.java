@@ -7,10 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,15 +36,8 @@ import model.Person;
 import tools.dateTime;
 import controller.Client;
 
-/*
- * 
- * @author Window Builder
- * This code is the result of drag'n'dropping elements in window builder
- * and is all the GUI elements for the whole program except the login screen.
- *
- */
+public class ClientGUI extends JFrame implements PropertyChangeListener {
 
-public class ClientGUI extends JFrame {
 
 	private JPanel contentPane;
 	private static int JFRAME_WIDTH = 1440;
@@ -78,7 +75,11 @@ public class ClientGUI extends JFrame {
 	private JList jLLordag;
 	private JList jLSondag;
 	private JButton btnUpdateWeek;
+	
+	private DefaultListModel dlm;
 
+	private DefaultListSelectionModel dlsm;
+	
 
 	public ClientGUI(Person user, Client client) {
 		this.user = user;
@@ -158,6 +159,10 @@ public class ClientGUI extends JFrame {
 		JScrollPane scrollPane_4 = new JScrollPane();
 		scrollPane_4.setBounds(10, 259, 280, 185);
 		LeggTilPersonPanel.add(scrollPane_4);
+		
+		JList listPerson = new JList();
+		listPerson.setCellRenderer(new PersonRenderer());
+		scrollPane_4.setViewportView(listPerson);
 		
 		JButton btnFjernPerson = new JButton("Fjern person");
 		btnFjernPerson.setBounds(10, 455, 108, 23);
@@ -721,7 +726,10 @@ public class ClientGUI extends JFrame {
 		this.getBtnUpdateWeek().doClick();
 	}
 	
-	
+	public void addPersonToPersonList(Person p){
+		dlm.addElement(p);
+	}
+
 	public Person getUser() {
 		return user;
 	}
@@ -782,5 +790,12 @@ public class ClientGUI extends JFrame {
 	
 	public JButton getBtnUpdateWeek() {
 		return btnUpdateWeek;
+	}
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if(evt.getPropertyName()=="personsArray"){
+			dlm.removeAllElements();
+			for 
+		}
 	}
 }

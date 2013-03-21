@@ -9,7 +9,16 @@ import java.util.Map;
 
 import controller.Controller;
 
+
+/**
+ * Klasse som representerer et møterom.
+ * Inneholder informasjon om navn, nummer og størrelse,
+ * samt en liste over når rommet er booket.
+ */
+
+
 public class Room {
+
 	private int roomNumber;
 	private String roomName;
 	private int size;
@@ -54,25 +63,4 @@ public class Room {
 	public void setSize(int size) {
 		this.size = size;
 	}
-
-
-	public Map getArguments() {
-	createArguments();
-	return attributes;
-	
-	}
-
-
-	public void createArguments() {
-		attributes = new HashMap<String,String>();
-		attributes.put("roomNR", Integer.toString(this.roomNumber));
-		attributes.put("roomName", roomName);
-		attributes.put("roomSize", Integer.toString(size));
-		
-	}
-	
-
-	
-	
-	
 }
