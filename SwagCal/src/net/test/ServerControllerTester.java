@@ -2,15 +2,15 @@ package net.test;
 
 import net.ServerConnectionHub;
 
-public class ServerControllerTester {
+public class ServerControllerTester /*For testing -->*/extends Thread /*<--For testing*/{
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ControllerTester serverController = new ControllerTester("ServerController");
-		ServerConnectionHub sConn = new ServerConnectionHub(7899, serverController);
+	public ControllerTester serverController;
+	public ServerConnectionHub sConn;
+	
+	public void run() {
+		
+		serverController = new ControllerTester("ServerController");
+		sConn = new ServerConnectionHub(7899, serverController);
 		
 
 	}
