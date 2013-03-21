@@ -1,1 +1,18 @@
-dfgdfg
+Dette er en kort forklaring av den koden vi har laget, og hvordan den var tenkt å fungere.
+
+På både klient- og serversiden av programmet finnes det en Controller som startes opp og setter igang resten av programmene. 
+Disse finnes i controller-pakken, og heter henholdsvis Client og Server (begge implementerer Controller-interfacet). På 
+klientsiden vil main-metoden i Client starte en oppkobling mot serveren(se net-pakken) og starte opp et login-vindu (se 
+LoginGUI-klassen i gui-pakken), samt hente inn all data fra databasen og fylle inn klientens modell (se model-pakken). 
+Dette skjer idet klienten først kobler seg opp mot serveren, den vil da automatisk sende hele modellen den har hos seg til 
+klienten vha informasjonskapsler (se Capsule-klassen i net-pakken). Når disse pakkene mottas hos klienten er det 
+ClientFactory i db-pakken sin oppgave sørge for at modellen hos klienten blir korrekt oppbygd.
+
+Ved vellykket pålogging åpnes selve kalendervinduet (se ClientGUI-klassen). Det er herfra brukeren skal få opp all 
+informasjon og legge inn info selv. Når brukeren gjør en endring, f.eks legger til en avtale i kalenderen, gjøres den 
+tilsvarende endringen i brukerens modell, samtidig som det dannes et Capsule-objekt i ClientFactory som så sendes 
+gjennom en Connection (se net-pakken) til serveren og til DatabaseFactory. DatabaseFactory er en spesiallaget klasse for 
+å gjøre forandringer på Databasen. Den benytter seg av Capsule og dens meldingssystem til å konstruere databasekommandoer. 
+Ved hjelp av et sett attributter og en Map tar den inn kommandoer som deretter omtolkes til MySQL-kommandoer. 
+Map-feltet inneholder i denne sammenhengen alle felt i en valgt klasse (spesifisert med classNavn-variabelen) og en kommando 
+for hvordan disse skal manipuleres i databasen. (Mulige valg er “INSERT”, “SELECT”, “UPDATE”, “DELETE”.  
