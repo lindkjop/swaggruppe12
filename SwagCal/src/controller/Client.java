@@ -8,7 +8,7 @@ import java.awt.EventQueue;
 import model.Model;
 import model.Person;
 
-public class Client {
+public class Client implements Controller {
 	
 	private Person user;
 	private Client client;
@@ -40,6 +40,18 @@ public class Client {
 	public void setWorkFrame(){
 		ClientGUI frame = new ClientGUI(user,this);
 		frame.setVisible(true);
+	}
+
+	@Override
+	public void messageReceived(String message) {
+		
+		
+	}
+
+	@Override
+	public void sendMessage(String message) {
+		
+		
 	}
 	
 
