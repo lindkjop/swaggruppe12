@@ -9,7 +9,16 @@ import java.util.Map;
 
 import controller.Controller;
 
-public class Room implements Databaseable {
+
+/**
+ * Klasse som representerer et møterom.
+ * Inneholder informasjon om navn, nummer og størrelse,
+ * samt en liste over når rommet er booket.
+ */
+
+
+public class Room {
+
 	private int roomNumber;
 	private String roomName;
 	private int size;
@@ -55,14 +64,13 @@ public class Room implements Databaseable {
 		this.size = size;
 	}
 
-	@Override
 	public Map getArguments() {
 	createArguments();
 	return attributes;
 	
 	}
 
-	@Override
+//	Metode som fyller arguments-hashmappet med felter/verdier fra dette objektet.
 	public void createArguments() {
 		attributes = new HashMap<String,String>();
 		attributes.put("roomNR", Integer.toString(this.roomNumber));
@@ -70,9 +78,4 @@ public class Room implements Databaseable {
 		attributes.put("roomSize", Integer.toString(size));
 		
 	}
-	
-
-	
-	
-	
 }
