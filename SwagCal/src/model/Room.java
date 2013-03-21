@@ -9,13 +9,16 @@ import java.util.Map;
 
 import controller.Controller;
 
+
 /**
  * Klasse som representerer et møterom.
  * Inneholder informasjon om navn, nummer og størrelse,
  * samt en liste over når rommet er booket.
  */
 
-public class Room  {
+
+public class Room {
+
 	private int roomNumber;
 	private String roomName;
 	private int size;

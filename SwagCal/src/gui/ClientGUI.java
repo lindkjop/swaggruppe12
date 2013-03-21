@@ -32,6 +32,14 @@ import model.Person;
 import tools.dateTime;
 import controller.Client;
 
+/*
+ * 
+ * @author Window Builder
+ * This code is the result of drag'n'dropping elements in window builder
+ * and is all the GUI elements for the whole program except the login screen.
+ *
+ */
+
 public class ClientGUI extends JFrame {
 
 	private JPanel contentPane;
