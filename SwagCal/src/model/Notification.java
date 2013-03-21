@@ -9,7 +9,7 @@ import controller.Controller;
 
 import tools.dateTime;
 
-public class Notification implements Databaseable {
+public class Notification {
 	private int id;
 	private String message;
 	private boolean isActive;
@@ -77,13 +77,13 @@ public class Notification implements Databaseable {
 	return false;
 	}
 
-	@Override
+
 	public Map getArguments() {
 		createArguments();
 		return arguments;
 	}
 
-	@Override
+
 		public void createArguments() {
 			arguments = new HashMap<String, String>();
 			arguments.put("notificationID", Integer.toString(id));

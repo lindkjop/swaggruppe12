@@ -9,7 +9,7 @@ import java.util.Map;
 
 import controller.Controller;
 
-public class Room implements Databaseable {
+public class Room {
 	private int roomNumber;
 	private String roomName;
 	private int size;
@@ -55,14 +55,14 @@ public class Room implements Databaseable {
 		this.size = size;
 	}
 
-	@Override
+
 	public Map getArguments() {
 	createArguments();
 	return attributes;
 	
 	}
 
-	@Override
+
 	public void createArguments() {
 		attributes = new HashMap<String,String>();
 		attributes.put("roomNR", Integer.toString(this.roomNumber));
