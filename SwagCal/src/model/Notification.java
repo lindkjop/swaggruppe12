@@ -7,10 +7,16 @@ import java.util.Map;
 
 import controller.Controller;
 
+import tools.Stringify;
 import tools.dateTime;
 
+<<<<<<< HEAD
+public class Notification implements Databaseable {
+	private int id = -1;
+=======
 public class Notification {
 	private int id;
+>>>>>>> 669a9a727e2416aa3c06d809275b5776cdc13571
 	private String message;
 	private boolean isActive;
 	private dateTime dateCreated;
@@ -41,7 +47,7 @@ public class Notification {
 		//this.start = start;
 	}
 	
-	
+	//set/get-metoder
 	public String getMessage() {
 		return message;
 	}
@@ -86,14 +92,14 @@ public class Notification {
 
 		public void createArguments() {
 			arguments = new HashMap<String, String>();
-			arguments.put("notificationID", Integer.toString(id));
+			arguments.put("notificationID", "#ID#");
 			arguments.put("EventID", Integer.toString(event.getID()));
-			arguments.put("messageText", message);
+			arguments.put("messageText", Stringify.makeString(message));
 			arguments.put("isRead", Boolean.toString(isActive));
-			arguments.put("dateCreated", dateCreated.getDate());
-			arguments.put("timeCreated", timeCreated.getTime());
-			arguments.put("alarmDate", alarmDate.getDate());
-			arguments.put("alarmTime", alarmTime.getTime());
+			arguments.put("dateCreated", Stringify.makeString(dateCreated.getDate()));
+			arguments.put("timeCreated", Stringify.makeString(timeCreated.getTime()));
+			arguments.put("alarmDate", Stringify.makeString(alarmDate.getDate()));
+			arguments.put("alarmTime", Stringify.makeString(alarmTime.getTime()));
 			arguments.put("ownerID", Integer.toString(owner.getPersonID()));
 		
 	}

@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import tools.Stringify;
+
 import controller.Controller;
 
 public class Group   {
@@ -54,8 +56,7 @@ public class Group   {
 		return this.id;
 	}
 	
-	public Group(int id, String groupName) {
-		this.id = id;
+	public Group(String groupName) {
 		this.groupName = groupName;
 	}
 
@@ -63,11 +64,12 @@ public class Group   {
 	createArguments();
 	return arguments;
 	}
-
+	
+	//Lager et hashmap som lagres som et felt som sendes til Capsule
 	public void createArguments() {
 	arguments = new HashMap<String, String>();
-	arguments.put("GroupsID", Integer.toString(id));
-	arguments.put("groupName", groupName);
+	arguments.put("GroupsID", "#ID#");
+	arguments.put("groupName", Stringify.makeString(groupName));
 	}
 	
 	

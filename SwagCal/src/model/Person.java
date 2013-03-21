@@ -6,7 +6,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.Stringify;
+
 import controller.Controller;
+
+/**
+ * Klasse som representerer en person/bruker.
+ * Inneholder personinfo som navn og telefonnummer,
+ * og systeminfo som brukernavn og passord.
+ * Inneholder også lister med avtaler personen
+ * er invitert til, og tilhørende varsler.
+ */
 
 public class Person  {
 	private int personID;
@@ -31,12 +41,12 @@ public class Person  {
 	}
 	
 	//Konstruktør
-	public Person(int id, String name, int phoneNumber,String userName, String password) {
-		this.personID = id;
+	public Person(String name, int phoneNumber,String userName, String password) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.userName = userName;
 		this.password = password;
+		createArguments();
 	}
 	
 	//GET & Set
@@ -64,6 +74,10 @@ public class Person  {
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
+	public Map getArguments() {
+		createArguments();
+		return arguments;
+	}
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
@@ -83,6 +97,7 @@ public class Person  {
 		this.notifications = notifications;
 	}
 	
+//	Metode som sjekker en persons avtaler, og returnerer en liste over alle avtalene som kolliderer med minst en annen av personens avtale.
 	public ArrayList<Event> getConflictingEvents(){
 		ArrayList<Event> result = new ArrayList<Event>();
 		for (Event a:events){
@@ -95,24 +110,30 @@ public class Person  {
 		return result;
 	}
 	
+//	Metode for å slette avtale fra personens liste.
 	public void deleteEvent(Event e) {
 		events.remove(e);
 	}
 	
+//	Metode som fyller arguments-hashmappet med felter/verdier fra dette objektet.
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
-		arguments.put("personID", Integer.toString(personID));
-		arguments.put("name", this.name);
+		arguments.put("personID", "#ID#");
+		arguments.put("name", Stringify.makeString(this.name));
 		arguments.put("phoneNumber", Integer.toString(phoneNumber));
-		arguments.put("userName", this.userName);
-		arguments.put("passWord", this.password);
+		arguments.put("userName", Stringify.makeString(this.userName));
+		arguments.put("passWord", Stringify.makeString(this.password));
 }
 
-
-	public Map getArguments() {
+<<<<<<< HEAD
+	@Override
+	public Map<String,String> getArguments() {
 	createArguments();
 	return arguments;
 	}
+=======
+
+>>>>>>> 669a9a727e2416aa3c06d809275b5776cdc13571
 	
 	
 }

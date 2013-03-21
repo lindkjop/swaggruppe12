@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.Stringify;
+
 import controller.Controller;
 
 
@@ -62,5 +64,19 @@ public class Room {
 	}
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+	public Map getArguments() {
+	createArguments();
+	return attributes;
+	
+	}
+
+//	Metode som fyller arguments-hashmappet med felter/verdier fra dette objektet.
+	public void createArguments() {
+		attributes = new HashMap<String,String>();
+		attributes.put("roomName", Stringify.makeString(roomName));
+		attributes.put("roomSize", Integer.toString(size));
+		
 	}
 }
