@@ -44,7 +44,6 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 	private static int JFRAME_WIDTH = 1440;
 	private static int JFRAME_HEIGHT = 900;
 	
-	private JPanel contentPane;
 	
 	private JTextField txtEventTittel;
 	private JTextField txtEventDato;
@@ -802,7 +801,6 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(evt.getPropertyName()=="personsArray"){
 			dlm.removeAllElements();
-			for 
 		}
 	}
 }
