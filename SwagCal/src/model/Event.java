@@ -9,7 +9,7 @@ import java.util.Map;
 
 import tools.dateTime;
 
-public class Event extends Component/*implements Databaseable */{
+public class Event/*implements Databaseable */{
 	
 	private int eventID;
 	
