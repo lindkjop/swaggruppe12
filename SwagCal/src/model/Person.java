@@ -8,6 +8,14 @@ import java.util.Map;
 
 import controller.Controller;
 
+/**
+ * Klasse som representerer en person/bruker.
+ * Inneholder personinfo som navn og telefonnummer,
+ * og systeminfo som brukernavn og passord.
+ * Inneholder også lister med avtaler personen
+ * er invitert til, og tilhørende varsler.
+ */
+
 public class Person  {
 	private int personID;
 	private String name;
@@ -64,6 +72,10 @@ public class Person  {
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
+	public Map getArguments() {
+		createArguments();
+		return arguments;
+	}
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
@@ -83,6 +95,7 @@ public class Person  {
 		this.notifications = notifications;
 	}
 	
+//	Metode som sjekker en persons avtaler, og returnerer en liste over alle avtalene som kolliderer med minst en annen av personens avtale.
 	public ArrayList<Event> getConflictingEvents(){
 		ArrayList<Event> result = new ArrayList<Event>();
 		for (Event a:events){
@@ -95,10 +108,12 @@ public class Person  {
 		return result;
 	}
 	
+//	Metode for å slette avtale fra personens liste.
 	public void deleteEvent(Event e) {
 		events.remove(e);
 	}
 	
+//	Metode som fyller arguments-hashmappet med felter/verdier fra dette objektet.
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
 		arguments.put("personID", Integer.toString(personID));
@@ -109,10 +124,6 @@ public class Person  {
 }
 
 
-	public Map getArguments() {
-	createArguments();
-	return arguments;
-	}
 	
 	
 }
