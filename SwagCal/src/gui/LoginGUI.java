@@ -1,11 +1,9 @@
 package gui;
 
 import gui.actions.LoggOn;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,15 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import model.Person;
-
 import controller.Client;
-import controller.Controller;
 import java.awt.Color;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
+/*
+ *This is, just like ClientGUI, the result from drag'n'dropping
+ *elements in window builder, and it's our login screen.
+ */
 
 public class LoginGUI extends JFrame {
 	private JTextField usernameField;
