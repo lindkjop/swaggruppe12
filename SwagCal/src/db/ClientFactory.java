@@ -11,6 +11,13 @@ import controller.Client;
 
 public class ClientFactory {
 	
+/**
+ * Klasse som fungerer som et mellomledd mellom endringer i den lokale modellen og endringer i databasen, og motsatt.
+ * Inneholder en rekke metoder som lager Capsule-objekter som representerer endringer i modellen,
+ * og metoder som gjør endringer i modellen på bakgrunn av beskjed om endringer gjort i databasen.
+ * Metodenavnene forklarer hver metodes funksjon.
+ */
+	
 	private Client client;
 	
 	public ClientFactory(Client client) {

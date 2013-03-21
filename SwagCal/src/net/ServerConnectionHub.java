@@ -8,16 +8,24 @@ import java.util.ArrayList;
 
 import controller.Controller;
 
+/**
+ * Klasse som sørger for og tar seg av tilkobling til serveren fra klienter.
+ * Lytter på tilkoblinger, og for hver klient som kobler seg til opprettes 
+ * det en egen ServerSideConnection som tar seg av videre kommunikasjon med akkurat den
+ * klienten. Tilkoblede klienter legges til i en liste, med mulighet for å sende
+ * meldinger til alle tilkoblede klienter. 
+ *
+ */
+
 public class ServerConnectionHub {
-	private String serverAdress;
 	private int serverPort;
 	private ServerSocket serverSocket;
 	private Controller serverController;
 	private ArrayList<ServerSideConnection> connectedClients;
 	private PrintWriter toClient;
 	
-	public ServerConnectionHub(String serverAdress, int serverPort, Controller serverController) {
-		this.serverAdress = serverAdress;
+//	Konstruktør, tar imot port det skal lyttes på (serverPort) og controller som "eier" ServerConnectionHub-objektet.
+	public ServerConnectionHub(int serverPort, Controller serverController) {
 		this.serverPort = serverPort;
 		this.connectedClients = new ArrayList<ServerSideConnection>();
 		this.serverController = serverController;
@@ -26,8 +34,9 @@ public class ServerConnectionHub {
 
 			serverSocket = new ServerSocket(this.serverPort,50);
 
-			System.out.println("WAITING FOR CONNECTIONS ON "+this.serverAdress+":"+this.serverPort);
+			System.out.println("WAITING FOR CONNECTIONS ON PORT "+this.serverPort);
 			
+//			Løkke som tar imot connection, legger til klient i liste og starter ny serverSideConnection-tråd.
 			while (true) {
 				ServerSideConnection newClient = new ServerSideConnection(serverSocket.accept(), this.serverController, this);
 				connectedClients.add(newClient);
@@ -41,12 +50,14 @@ public class ServerConnectionHub {
 		}
 	}
 
+//	Metode for å sende en melding til alle tilkoblede klienter.
 	public void sendToAll(String message) {
 		for (ServerSideConnection client : connectedClients) {
 				client.send(message);		
 		}
 	}
 	
+//	Metode som fjerner connections, brukes når klienter frakobler seg.
 	public void removeConnectedClient(ServerSideConnection client) {
 		connectedClients.remove(client);
 	}

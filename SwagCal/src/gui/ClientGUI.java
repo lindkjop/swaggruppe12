@@ -38,6 +38,7 @@ import controller.Client;
 
 public class ClientGUI extends JFrame implements PropertyChangeListener {
 
+
 	private JPanel contentPane;
 	private static int JFRAME_WIDTH = 1440;
 	private static int JFRAME_HEIGHT = 900;
@@ -553,7 +554,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 		AvtaleTab.add(btnLeggTilRomTilEvent);
 
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
-		lblLedigeRom.setBounds(313, 11, 76, 14);
+		lblLedigeRom.setBounds(298, 11, 76, 14);
 		AvtaleTab.add(lblLedigeRom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -564,7 +565,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 		scrollPane_1.setViewportView(ledigRomListe);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(313, 140, 93, 14);
+		lblLeggTilRom.setBounds(298, 140, 93, 14);
 		AvtaleTab.add(lblLeggTilRom);
 		
 		txtRomNavn = new JTextField();
@@ -594,7 +595,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 		AvtaleTab.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(621, 11, 74, 14);
+		lblBeskrivelse.setBounds(612, 11, 74, 14);
 		AvtaleTab.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -613,7 +614,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 		AvtaleTab.add(lblValgtRom);
 		
 		JButton btnOppdaterAvtale = new JButton("Oppdater avtale");
-		btnOppdaterAvtale.setBounds(974, 237, 89, 23);
+		btnOppdaterAvtale.setBounds(906, 238, 129, 23);
 		AvtaleTab.add(btnOppdaterAvtale);
 		
 		JButton btnNyAvtale = new JButton("Ny avtale");
@@ -621,7 +622,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNyAvtale.setBounds(875, 237, 89, 23);
+		btnNyAvtale.setBounds(805, 238, 89, 23);
 		AvtaleTab.add(btnNyAvtale);
 		
 		JButton btnSlettAvtale = new JButton("Slett avtale");
@@ -629,7 +630,7 @@ public class ClientGUI extends JFrame implements PropertyChangeListener {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSlettAvtale.setBounds(776, 237, 89, 23);
+		btnSlettAvtale.setBounds(687, 238, 113, 23);
 		AvtaleTab.add(btnSlettAvtale);
 		
 		JLabel lblValtRom = new JLabel("Ingen");

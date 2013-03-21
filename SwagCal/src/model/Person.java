@@ -8,7 +8,7 @@ import java.util.Map;
 
 import controller.Controller;
 
-public class Person implements Databaseable {
+public class Person  {
 	private int personID;
 	private String name;
 	private int phoneNumber;
@@ -108,7 +108,7 @@ public class Person implements Databaseable {
 		arguments.put("passWord", this.password);
 }
 
-	@Override
+
 	public Map getArguments() {
 	createArguments();
 	return arguments;
