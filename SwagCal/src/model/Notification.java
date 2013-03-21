@@ -41,7 +41,7 @@ public class Notification {
 		//this.start = start;
 	}
 	
-	
+	//set/get-metoder
 	public String getMessage() {
 		return message;
 	}
