@@ -10,13 +10,9 @@ import controller.Controller;
 import tools.Stringify;
 import tools.dateTime;
 
-<<<<<<< HEAD
-public class Notification implements Databaseable {
-	private int id = -1;
-=======
-public class Notification {
+
+	public class Notification {
 	private int id;
->>>>>>> 669a9a727e2416aa3c06d809275b5776cdc13571
 	private String message;
 	private boolean isActive;
 	private dateTime dateCreated;

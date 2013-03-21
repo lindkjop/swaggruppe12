@@ -63,12 +63,11 @@ public class LoginGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				LoggOn lg = new LoggOn(usernameField.getText(),String.valueOf(passwordField.getPassword()),user,client);
 				if(lg.getSucsess()){
-					System.out.println("DU HAR LOGGET INN, I DONT CARE");
 					client.setWorkFrame();
 					dispose();
 				}
 				else{
-					statusField.setText("Feil brukernavn eller passord, du er dum");
+					statusField.setText("Feil brukernavn eller passord");
 				}
 			}
 		});

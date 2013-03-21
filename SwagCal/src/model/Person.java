@@ -125,15 +125,7 @@ public class Person  {
 		arguments.put("passWord", Stringify.makeString(this.password));
 }
 
-<<<<<<< HEAD
-	@Override
-	public Map<String,String> getArguments() {
-	createArguments();
-	return arguments;
-	}
-=======
 
->>>>>>> 669a9a727e2416aa3c06d809275b5776cdc13571
 	
 	
 }

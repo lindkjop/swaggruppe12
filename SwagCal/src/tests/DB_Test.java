@@ -41,7 +41,7 @@ public class DB_Test {
 
 	
 	
-	//FUNKSJON SOM SLETTER HELE BÆSJEN
+	//FUNKSJON SOM SLETTER ALT
 	private void DB_EmptyTable(String tableName) throws ClassNotFoundException, SQLException {
 		db.initialize();
 		db.makeSingleUpdate(String.format("DELETE FROM %s",tableName));
@@ -58,7 +58,7 @@ public class DB_Test {
 	
 	//Prøver å sette inn en person i db og hente han ut etterpå
 	public void DB_Person() throws ClassNotFoundException, SQLException {
-		testPerson1 = new Person(1, "Geir Anus", 999996, "giera", "penis");
+		testPerson1 = new Person(1, "Geir Andersen", 999996, "giera", "giera");
 		f.addPersonToDB(testPerson1);
 		Person result = f.getPerson(testPerson1.getPersonID());
 		assertEquals(result.getPersonID(), testPerson1.getPersonID());
