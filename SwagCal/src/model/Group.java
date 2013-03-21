@@ -63,7 +63,8 @@ public class Group   {
 	createArguments();
 	return arguments;
 	}
-
+	
+	//Lager et hashmap som lagres som et felt som sendes til Capsule
 	public void createArguments() {
 	arguments = new HashMap<String, String>();
 	arguments.put("GroupsID", Integer.toString(id));
