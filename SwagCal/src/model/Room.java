@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.Stringify;
+
 import controller.Controller;
 
 public class Room implements Databaseable {
@@ -65,8 +67,7 @@ public class Room implements Databaseable {
 	@Override
 	public void createArguments() {
 		attributes = new HashMap<String,String>();
-		attributes.put("roomNR", Integer.toString(this.roomNumber));
-		attributes.put("roomName", roomName);
+		attributes.put("roomName", Stringify.makeString(roomName));
 		attributes.put("roomSize", Integer.toString(size));
 		
 	}

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.Stringify;
+
 import controller.Controller;
 
 public class Person implements Databaseable {
@@ -31,12 +33,12 @@ public class Person implements Databaseable {
 	}
 	
 	//Konstruktør
-	public Person(int id, String name, int phoneNumber,String userName, String password) {
-		this.personID = id;
+	public Person(String name, int phoneNumber,String userName, String password) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.userName = userName;
 		this.password = password;
+		createArguments();
 	}
 	
 	//GET & Set
@@ -101,15 +103,15 @@ public class Person implements Databaseable {
 	
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
-		arguments.put("personID", Integer.toString(personID));
-		arguments.put("name", this.name);
+		arguments.put("personID", "#ID#");
+		arguments.put("name", Stringify.makeString(this.name));
 		arguments.put("phoneNumber", Integer.toString(phoneNumber));
-		arguments.put("userName", this.userName);
-		arguments.put("passWord", this.password);
+		arguments.put("userName", Stringify.makeString(this.userName));
+		arguments.put("passWord", Stringify.makeString(this.password));
 }
 
 	@Override
-	public Map getArguments() {
+	public Map<String,String> getArguments() {
 	createArguments();
 	return arguments;
 	}

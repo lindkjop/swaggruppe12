@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.Stringify;
 import tools.dateTime;
 
 public class Event extends Component/*implements Databaseable */{
 	
-	private int eventID;
+	private int eventID = -1;
 	
 	private dateTime start;
 	private dateTime end;
@@ -136,14 +137,15 @@ public class Event extends Component/*implements Databaseable */{
 	}
 
 	public void createArguments() {
+		
 		arguments = new HashMap<String, String>();
-		arguments.put("EventID", Integer.toString(eventID));
-		arguments.put("dateTo", end.getDate());
-		arguments.put("dateFrom", start.getDate());
-		arguments.put("timeFrom", start.getTime());
-		arguments.put("timeTo", end.getTime());
-		arguments.put("description", description);
-		arguments.put("location", location);
+		arguments.put("EventID", "'#ID#'");
+		arguments.put("dateTo", Stringify.makeString(end.getDate()));
+		arguments.put("dateFrom", Stringify.makeString(start.getDate()));
+		arguments.put("timeFrom", Stringify.makeString(start.getTime()));
+		arguments.put("timeTo", Stringify.makeString(end.getTime()));
+		arguments.put("description", Stringify.makeString(description));
+		arguments.put("location", Stringify.makeString(location));
 		arguments.put("ownerID", "'" +Integer.toString(creator.getPersonID()));
 		arguments.put("roomNR", Integer.toString(room.getRoomNumber()));
 		arguments.put("groupsID", Integer.toString(group.getID()));
