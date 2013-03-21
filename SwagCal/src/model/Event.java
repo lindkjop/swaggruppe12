@@ -72,7 +72,7 @@ public class Event extends Component/*implements Databaseable */{
 		this.location = location;
 	}
 	
-	//Rom
+	//get/set Room
 	public Room getRoom() {
 		return room;
 	}
@@ -134,7 +134,8 @@ public class Event extends Component/*implements Databaseable */{
 		createArguments();
 		return this.arguments;
 	}
-
+	
+	//Lager et hashmap som lagres som et felt som sendes til Capsule
 	public void createArguments() {
 		arguments = new HashMap<String, String>();
 		arguments.put("EventID", Integer.toString(eventID));
