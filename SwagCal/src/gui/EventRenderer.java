@@ -18,8 +18,12 @@ import javax.swing.SpringLayout.Constraints;
 import org.junit.runners.ParentRunner;
 import model.Event;
 
-public class EventRenderer extends JPanel implements ListCellRenderer {
+/*
+ * This is only responsible for showing the eventTitle currently, instead of the eventID
+ */
 
+public class EventRenderer extends JPanel implements ListCellRenderer {
+	
 	private JLabel eventName, eventRoom, eventTime;
 	
 	public Component getListCellRendererComponent(
