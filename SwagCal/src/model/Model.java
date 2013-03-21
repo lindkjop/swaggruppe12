@@ -15,10 +15,13 @@ public class Model {
 	private ArrayList<Person> persons;
 	private ArrayList<Room> rooms;
 	
+	//Konstruktor
 	public Model(Factory f) {
 		this.factory = f;
 //		initialize();
 	}
+	
+	//Konstruktor
 	public Model(){
 		events = new ArrayList<Event>(); 
 		groups = new ArrayList<Group>();
@@ -27,6 +30,8 @@ public class Model {
 		persons = new ArrayList<Person> ();
 	}
 	
+	
+	//get/set-metoder
 	public void addPerson(Person p){
 		persons.add(p);
 	}
@@ -43,7 +48,8 @@ public class Model {
 	public ArrayList<Event> getEvents() {
 		return events;
 	}
-			
+	
+	//Legger til notification
 	public void addNotification(Notification n) {
 		notifications.add(n);
 	}
@@ -65,7 +71,7 @@ public class Model {
 		notifications.remove(oldN);
 		notifications.add(newN);
 	}
-	
+	//Finner person etter int id
 	public Person findPerson(int id) {
 		for (Person p : persons) {
 			if (p.getPersonID() == id) {
