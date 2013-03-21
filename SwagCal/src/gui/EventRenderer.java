@@ -22,11 +22,6 @@ public class EventRenderer extends JPanel implements ListCellRenderer {
 
 	private JLabel eventName, eventRoom, eventTime;
 	
-	
-	
-	
-	
-	
 	public Component getListCellRendererComponent(
 	JList list,
 	Object ASSvalue,         // value to display
