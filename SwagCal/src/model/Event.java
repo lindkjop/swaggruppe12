@@ -10,7 +10,7 @@ import java.util.Map;
 import tools.Stringify;
 import tools.dateTime;
 
-public class Event extends Component/*implements Databaseable */{
+public class Event/*implements Databaseable */{
 	
 	private int eventID = -1;
 	
@@ -73,7 +73,7 @@ public class Event extends Component/*implements Databaseable */{
 		this.location = location;
 	}
 	
-	//Rom
+	//get/set Room
 	public Room getRoom() {
 		return room;
 	}
@@ -135,7 +135,8 @@ public class Event extends Component/*implements Databaseable */{
 		createArguments();
 		return this.arguments;
 	}
-
+	
+	//Lager et hashmap som lagres som et felt som sendes til Capsule
 	public void createArguments() {
 		
 		arguments = new HashMap<String, String>();

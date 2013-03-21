@@ -1,31 +1,17 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.Box.Filler;
-import javax.swing.SpringLayout.Constraints;
-
-import org.junit.runners.ParentRunner;
 import model.Event;
 
-public class EventRenderer extends JPanel implements ListCellRenderer {
+/*
+ * This is only responsible for showing the eventTitle currently, instead of the eventID
+ */
 
-	private JLabel eventName, eventRoom, eventTime;
-	
-	
-	
-	
-	
+public class EventRenderer extends JLabel implements ListCellRenderer {
 	
 	public Component getListCellRendererComponent(
 	JList list,
@@ -34,28 +20,13 @@ public class EventRenderer extends JPanel implements ListCellRenderer {
 	boolean isSelected,      // is the cell selected
 	boolean cellHasFocus )   // the list and the cell have the focus
 	{
-		
+		//Casts the ASSvalue as the Event class
 		Event event = (Event)ASSvalue;
-		
-		this.setLayout(new GridBagLayout());	
-		this.setSize(this.getParent().getWidth(),eventName.getHeight()*3);
+		//makes it stand a little out
 		this.setBackground(Color.LIGHT_GRAY);
-		
-		
-		eventName.setText(event.getTitle());
-		eventRoom.setText(event.getRoom().getRoomName());
-		eventTime.setText(event.getFrom() + " " + event.getTo());
-		
-		
-		
-		this.add(eventName,GridBagConstraints.NORTH);
-		this.add(eventRoom,GridBagConstraints.CENTER);
-		this.add(eventTime,GridBagConstraints.SOUTH);
-		
-		
-		
-		
-		
+		//Displays the given eventName
+		this.setText(event.getTitle());
+
 		return this;
 	}
 

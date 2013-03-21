@@ -11,7 +11,7 @@ import tools.Stringify;
 
 import controller.Controller;
 
-public class Group implements Databaseable  {
+public class Group   {
 	private int id;
 	private String groupName;
 	private ArrayList<Person> members;
@@ -60,13 +60,12 @@ public class Group implements Databaseable  {
 		this.groupName = groupName;
 	}
 
-	@Override
 	public Map getArguments() {
 	createArguments();
 	return arguments;
 	}
-
-	@Override
+	
+	//Lager et hashmap som lagres som et felt som sendes til Capsule
 	public void createArguments() {
 	arguments = new HashMap<String, String>();
 	arguments.put("GroupsID", "#ID#");

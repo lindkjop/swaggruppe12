@@ -7,10 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,11 +36,15 @@ import model.Person;
 import tools.dateTime;
 import controller.Client;
 
-public class ClientGUI extends JFrame {
+public class ClientGUI extends JFrame implements PropertyChangeListener {
+
+
 
 	private JPanel contentPane;
 	private static int JFRAME_WIDTH = 1440;
 	private static int JFRAME_HEIGHT = 900;
+	
+	
 	private JTextField txtEventTittel;
 	private JTextField txtEventDato;
 	private JTextField txtFraTid;
@@ -48,11 +56,13 @@ public class ClientGUI extends JFrame {
 	private JTextField txtAlarmDato;
 	private JTextField textAlarmTidspunkt;
 	private JTextField txtNavn_1;
+	private JTextField txtGruppeNavn;
+	private JTextField textEksternNavn;
+	
 	private Person user;
 	private Client client;
 	private ClientGUI clientGUI;
-	private JTextField txtGruppeNavn;
-	private JTextField textEksternNavn;
+	
 	private JLabel lblLordagDato;
 	private JLabel lblOnsdagDato;
 	private JLabel lblTirsdagDato;
@@ -60,8 +70,17 @@ public class ClientGUI extends JFrame {
 	private JLabel lblSondagDato;
 	private JLabel lblFredagDato;
 	private JLabel lblMandagDato;
+	private JLabel lblMandag;
+	private JLabel lblTirsdag;
+	private JLabel lblOnsdag;
+	private JLabel lblTorsdag;
+	private JLabel lblFredag;
+	private JLabel lblLordag;
+	private JLabel lblSondag;
+	
 	private JComboBox comboBoxWeek;
 	private EventRenderer eventRenderer;
+	
 	private JList jLTorsdag;
 	private JList jLOnsdag;
 	private JList jLTirsdag;
@@ -69,8 +88,14 @@ public class ClientGUI extends JFrame {
 	private JList jLFredag;
 	private JList jLLordag;
 	private JList jLSondag;
+	
 	private JButton btnUpdateWeek;
+	
+	private DefaultListModel dlm;
 
+
+	private DefaultListSelectionModel dlsm;
+	
 
 	public ClientGUI(Person user, Client client) {
 		this.user = user;
@@ -151,6 +176,10 @@ public class ClientGUI extends JFrame {
 		scrollPane_4.setBounds(10, 259, 280, 185);
 		LeggTilPersonPanel.add(scrollPane_4);
 		
+		JList listPerson = new JList();
+		listPerson.setCellRenderer(new PersonRenderer());
+		scrollPane_4.setViewportView(listPerson);
+		
 		JButton btnFjernPerson = new JButton("Fjern person");
 		btnFjernPerson.setBounds(10, 455, 108, 23);
 		LeggTilPersonPanel.add(btnFjernPerson);
@@ -184,60 +213,53 @@ public class ClientGUI extends JFrame {
 		KalenderPanel.setBounds(322, 11, 1074, 488);
 		StorUnderpanel.add(KalenderPanel);
 		
-		JLabel lblMandag = new JLabel("Mandag");
-		
-		JLabel lblTirsdag = new JLabel("Tirsdag");
-		
-		JLabel lblOnsdag = new JLabel("Onsdag");
-		
-		JLabel lblTorsdag = new JLabel("Torsdag");
-		
-		JLabel lblFredag = new JLabel("Fredag");
-		
-		JLabel lblLrdag = new JLabel("L\u00F8rdag");
-		
-		JLabel lblSndag = new JLabel("S\u00F8ndag");
-		
-		JScrollPane scrollMandag = new JScrollPane();
-		
 		eventRenderer = new EventRenderer();
 		
+		//Calendar Mandag view
+		lblMandag = new JLabel("Mandag");
+		JScrollPane scrollMandag = new JScrollPane();
 		jLMandag = new JList();
 		jLMandag.setCellRenderer(eventRenderer);
 		scrollMandag.setViewportView(jLMandag);
 		
+		//Calendar Tirsdag view
+		lblTirsdag = new JLabel("Tirsdag");
 		JScrollPane scrollTirsdag = new JScrollPane();
-		
 		jLTirsdag = new JList();
 		jLTirsdag.setCellRenderer(eventRenderer);
 		scrollTirsdag.setViewportView(jLTirsdag);
 		
+		//Calendar Onsdag view
+		lblOnsdag = new JLabel("Onsdag");
 		JScrollPane scrollOnsdag = new JScrollPane();
-		
 		jLOnsdag = new JList();
 		jLOnsdag.setCellRenderer(eventRenderer);
 		scrollOnsdag.setViewportView(jLOnsdag);
 		
+		//Calendar Torsdag view
+		lblTorsdag = new JLabel("Torsdag");
 		JScrollPane scrollTorsdag = new JScrollPane();
-		
 		jLTorsdag = new JList();
 		jLTorsdag.setCellRenderer(eventRenderer);
 		scrollTorsdag.setViewportView(jLTorsdag);
 		
+		//Calendar Fredag view
+		lblFredag = new JLabel("Fredag");
 		JScrollPane scrollFredag = new JScrollPane();
-		
 		jLFredag = new JList();
 		jLFredag.setCellRenderer(eventRenderer);
 		scrollFredag.setViewportView(jLFredag);
 		
+		//Calendar Lordag view
+		lblLordag = new JLabel("L\u00F8rdag");
 		JScrollPane scrollLordag = new JScrollPane();
-		
 		jLLordag = new JList();
 		jLLordag.setCellRenderer(eventRenderer);
 		scrollLordag.setViewportView(jLLordag);
 		
+		//Calendar Sondag view
+		lblSondag = new JLabel("S\u00F8ndag");
 		JScrollPane scrollSondag = new JScrollPane();
-		
 		jLSondag = new JList();
 		jLSondag.setCellRenderer(eventRenderer);
 		scrollSondag.setViewportView(jLSondag);
@@ -250,17 +272,11 @@ public class ClientGUI extends JFrame {
 		comboBoxWeek.setToolTipText("Velg ukenummer");
 		
 		lblMandagDato = new JLabel("New label");
-		
 		lblTirsdagDato = new JLabel("New label");
-		
 		lblOnsdagDato = new JLabel("New label");
-		
 		lblTorsdagDato = new JLabel("New label");
-		
 		lblFredagDato = new JLabel("New label");
-		
 		lblLordagDato = new JLabel("New label");
-		
 		lblSondagDato = new JLabel("New label");
 		
 		btnUpdateWeek = new JButton("Update");
@@ -321,9 +337,9 @@ public class ClientGUI extends JFrame {
 							.addGap(69)
 							.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
 							.addGap(69)
-							.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblLordag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
 							.addGap(69)
-							.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(lblSondag, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
 					.addGap(6))
 		);
 		gl_KalenderPanel.setVerticalGroup(
@@ -339,8 +355,8 @@ public class ClientGUI extends JFrame {
 								.addComponent(lblOnsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblTorsdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblFredag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblLrdag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblSndag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblLordag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSondag, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
 							.addGap(31)
 							.addGroup(gl_KalenderPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_KalenderPanel.createSequentialGroup()
@@ -541,7 +557,7 @@ public class ClientGUI extends JFrame {
 		AvtaleTab.add(btnLeggTilRomTilEvent);
 
 		JLabel lblLedigeRom = new JLabel("Ledige rom");
-		lblLedigeRom.setBounds(313, 11, 76, 14);
+		lblLedigeRom.setBounds(298, 11, 76, 14);
 		AvtaleTab.add(lblLedigeRom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -552,7 +568,7 @@ public class ClientGUI extends JFrame {
 		scrollPane_1.setViewportView(ledigRomListe);
 		
 		JLabel lblLeggTilRom = new JLabel("Legg til rom");
-		lblLeggTilRom.setBounds(313, 140, 93, 14);
+		lblLeggTilRom.setBounds(298, 140, 93, 14);
 		AvtaleTab.add(lblLeggTilRom);
 		
 		txtRomNavn = new JTextField();
@@ -582,7 +598,7 @@ public class ClientGUI extends JFrame {
 		AvtaleTab.add(btnLeggTilEksternTilEvent);
 		
 		JLabel lblBeskrivelse = new JLabel("Beskrivelse");
-		lblBeskrivelse.setBounds(621, 11, 74, 14);
+		lblBeskrivelse.setBounds(612, 11, 74, 14);
 		AvtaleTab.add(lblBeskrivelse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -601,7 +617,7 @@ public class ClientGUI extends JFrame {
 		AvtaleTab.add(lblValgtRom);
 		
 		JButton btnOppdaterAvtale = new JButton("Oppdater avtale");
-		btnOppdaterAvtale.setBounds(974, 237, 89, 23);
+		btnOppdaterAvtale.setBounds(906, 238, 129, 23);
 		AvtaleTab.add(btnOppdaterAvtale);
 		
 		JButton btnNyAvtale = new JButton("Ny avtale");
@@ -609,7 +625,7 @@ public class ClientGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNyAvtale.setBounds(875, 237, 89, 23);
+		btnNyAvtale.setBounds(805, 238, 89, 23);
 		AvtaleTab.add(btnNyAvtale);
 		
 		JButton btnSlettAvtale = new JButton("Slett avtale");
@@ -617,7 +633,7 @@ public class ClientGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSlettAvtale.setBounds(776, 237, 89, 23);
+		btnSlettAvtale.setBounds(687, 238, 113, 23);
 		AvtaleTab.add(btnSlettAvtale);
 		
 		JLabel lblValtRom = new JLabel("Ingen");
@@ -713,7 +729,10 @@ public class ClientGUI extends JFrame {
 		this.getBtnUpdateWeek().doClick();
 	}
 	
-	
+	public void addPersonToPersonList(Person p){
+		dlm.addElement(p);
+	}
+
 	public Person getUser() {
 		return user;
 	}
@@ -726,6 +745,7 @@ public class ClientGUI extends JFrame {
 	public ClientGUI getClientGUI() {
 		return this;
 	}
+	
 	public JLabel getLblLordagDato() {
 		return lblLordagDato;
 	}
@@ -747,9 +767,11 @@ public class ClientGUI extends JFrame {
 	public JLabel getLblMandagDato() {
 		return lblMandagDato;
 	}
+	
 	public JComboBox getComboBoxWeek() {
 		return comboBoxWeek;
 	}
+	
 	public JList getJLTorsdag() {
 		return jLTorsdag;
 	}
@@ -774,5 +796,11 @@ public class ClientGUI extends JFrame {
 	
 	public JButton getBtnUpdateWeek() {
 		return btnUpdateWeek;
+	}
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if(evt.getPropertyName()=="personsArray"){
+			dlm.removeAllElements();
+		}
 	}
 }
