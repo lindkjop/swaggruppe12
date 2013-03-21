@@ -15,7 +15,6 @@ import net.ServerConnectionHub;
 
 import db.Factory;
 
-import net.backup.Message;
 
 public class Server implements Controller {
 	private Factory factory;
@@ -38,7 +37,7 @@ public class Server implements Controller {
 	
 	public Server() throws ClassNotFoundException, IOException, SQLException {
 	factory = new Factory("./src/db/Properties.properties");
-	server = new ServerConnectionHub("127.0.0.1",7899, this);
+	server = new ServerConnectionHub(7899, this);
 	}
 	
 	

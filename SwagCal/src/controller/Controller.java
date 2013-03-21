@@ -1,6 +1,6 @@
 package controller;
 
-import net.backup.Message;
+
 
 /**
  * Interface som definerer metodene som må implemeteres av klasser som skal fungere som en Controller.
