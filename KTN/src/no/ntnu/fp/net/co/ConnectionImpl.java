@@ -73,7 +73,19 @@ public class ConnectionImpl extends AbstractConnection {
      */
     public void connect(InetAddress remoteAddress, int remotePort) throws IOException,
             SocketTimeoutException {
-        throw new NotImplementedException();
+    	KtnDatagram data;
+    	
+    	data = constructInternalPacket(Flag.SYN);
+    	simplySendPacket(data);
+    	
+    	send(data);
+    	
+    	receiveAck();
+    	
+    	data = receive();
+    	
+    	
+    	
     }
 
     /**
@@ -99,7 +111,11 @@ public class ConnectionImpl extends AbstractConnection {
      * @see no.ntnu.fp.net.co.Connection#send(String)
      */
     public void send(String msg) throws ConnectException, IOException {
-        throw new NotImplementedException();
+    	
+    	KtnDatagram dataGram = new KtnDatagram();
+    	dataGram = constructInternalPacket(Flag.FIN);
+    	sendDataPacketWithRetransmit(dataGram);
+    	
     }
 
     /**
@@ -132,6 +148,11 @@ public class ConnectionImpl extends AbstractConnection {
      * @return true if packet is free of errors, false otherwise.
      */
     protected boolean isValid(KtnDatagram packet) {
-        throw new NotImplementedException();
+    	
+    	
+    		long checkSum = packet.getChecksum();
+    		long checkSum2 = packet.calculateChecksum();
+    		return (checkSum == checkSum2);	
+    	}
+    
     }
-}
