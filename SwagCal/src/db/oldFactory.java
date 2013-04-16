@@ -35,7 +35,7 @@ public class oldFactory {
 			rs.close();
 			db.close();
 
-			return new Person(id, name,telefon, username,password);
+			return new Person(name, telefon, username, password);
 		}
 		rs.close();
 		db.close();
@@ -169,10 +169,6 @@ public class oldFactory {
 		
 		
 
-	}
-
-
-	public ArrayList<Event> getEvents() {
 	}
 
 	public ArrayList<Person> getPersons() {

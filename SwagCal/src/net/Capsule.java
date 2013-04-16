@@ -31,7 +31,7 @@ public class Capsule {
 	String operation; // For "DATABASE"-typer sier operasjon hva slags databaseoperasjon som skal utføres.
 	String classname; // For "DATABASE"-typer sier classname hva slags database som skal endres.
 	Boolean doReturnObject; // En teoretisk variabel som aldri ble brukt, men som var tenkt å fortelle mottakeren om at sender forventet et svar
-	String condition; // For database-operasjoner ville condition være betingelser som måtte oppfylles: Eksempel: 'PersonID = 4' 
+	String condixtion; // For database-operasjoner ville condition være betingelser som måtte oppfylles: Eksempel: 'PersonID = 4' 
 	Object sendObject; // Det var usikkert om denne variabelen trengtes, (eller om alt kunne sendes gjennom arguments). Denne skulle kunne lagre et objekt og sende denne over nettet.
 	Map values = new HashMap<String, String>(); // Relevante verdier fra klassen som ble sendt. I "DATABASE"-typer vil denne inneholde alle felt som gjenspeiler databasedataene til objektet som blir definert i ClassName 
 
