@@ -13,8 +13,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import no.ntnu.fp.net.admin.Log;
 import no.ntnu.fp.net.cl.ClException;
 import no.ntnu.fp.net.cl.ClSocket;
@@ -81,16 +79,12 @@ public class ConnectionImpl extends AbstractConnection {
      */
     public void connect(InetAddress remoteAddress, int remotePort) throws IOException,
             SocketTimeoutException {
-    	KtnDatagram data = constructInternalPacket(Flag.SYN);
-    	
+    	KtnDatagram syn = constructInternalPacket(Flag.SYN);
     	try {
-			simplySendPacket(data);
-			socket.send(data);
-			receiveAck();
-			socket.receive(remotePort);
-			data = constructInternalPacket(Flag.ACK);
-			simplySendPacket(data);
-			socket.send(data);
+			simplySendPacket(syn);
+			KtnDatagram synAck = receiveAck();
+			
+			sendAck(synAck, false);
 		
     	} catch (ClException e) {
     		e.printStackTrace();
@@ -110,8 +104,7 @@ public class ConnectionImpl extends AbstractConnection {
     public Connection accept() throws IOException, SocketTimeoutException {
     	
     	receivePacket(false);
-    	constructInternalPacket(Flag.SYN_ACK);
-    	KtnDatagram data = new KtnDatagram();
+    	KtnDatagram data = constructInternalPacket(Flag.SYN_ACK);
     	try {
 			simplySendPacket(data);
 			receiveAck();
