@@ -35,7 +35,12 @@ import no.ntnu.fp.net.cl.KtnDatagram.Flag;
  * @see no.ntnu.fp.net.cl.ClSocket
  */
 public class ConnectionImpl extends AbstractConnection {
+	private KtnDatagram recivedDatagram;
+    private ClSocket socket = new ClSocket();
 
+	
+	
+	
     /** Keeps track of the used ports for each server port. */
     private static Map<Integer, Boolean> usedPorts = Collections.synchronizedMap(new HashMap<Integer, Boolean>());
 
@@ -46,7 +51,9 @@ public class ConnectionImpl extends AbstractConnection {
      *            - the local port to associate with this connection
      */
     public ConnectionImpl(int myPort) {
-        throw new NotImplementedException();
+        this.myPort = myPort;
+        this.myAddress = getIPv4Address();
+        this.state = State.CLOSED;
     }
 
     private String getIPv4Address() {

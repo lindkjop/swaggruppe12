@@ -29,6 +29,7 @@ public class Model {
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
+		
 	}
 	
 	
