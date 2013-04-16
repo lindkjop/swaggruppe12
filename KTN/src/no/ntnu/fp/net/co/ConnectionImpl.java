@@ -76,20 +76,27 @@ public class ConnectionImpl extends AbstractConnection {
      *             If there's an I/O error.
      * @throws java.net.SocketTimeoutException
      *             If timeout expires before connection is completed.
+     * @throws ClException 
      * @see Connection#connect(InetAddress, int)
      */
     public void connect(InetAddress remoteAddress, int remotePort) throws IOException,
             SocketTimeoutException {
-    	KtnDatagram data;
+    	KtnDatagram data = constructInternalPacket(Flag.SYN);
     	
-    	data = constructInternalPacket(Flag.SYN);
-    	simplySendPacket(data);
+    	try {
+			simplySendPacket(data);
+			socket.send(data);
+			receiveAck();
+			socket.receive(remotePort);
+			data = constructInternalPacket(Flag.ACK);
+			simplySendPacket(data);
+			socket.send(data);
+		
+    	} catch (ClException e) {
+    		e.printStackTrace();
+    		
+		}
     	
-    	send(data);
-    	
-    	receiveAck();
-    	
-    	data = receive();
     	
     	
     	
@@ -102,7 +109,21 @@ public class ConnectionImpl extends AbstractConnection {
      * @see Connection#accept()
      */
     public Connection accept() throws IOException, SocketTimeoutException {
-        throw new NotImplementedException();
+    	
+    	receivePacket(false);
+    	constructInternalPacket(Flag.SYN_ACK);
+    	KtnDatagram data = new KtnDatagram();
+    	try {
+			simplySendPacket(data);
+			receiveAck();
+		} catch (ClException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	return this;
+    	
+    	
     }
 
     /**
@@ -143,7 +164,28 @@ public class ConnectionImpl extends AbstractConnection {
      * @see Connection#close()
      */
     public void close() throws IOException {
-        throw new NotImplementedException();
+    	
+    	KtnDatagram data = constructInternalPacket(Flag.FIN);
+    	sendDataPacketWithRetransmit(data);
+    	try {
+			socket.send(data);
+			receiveAck();
+			socket.receive(remotePort);
+			
+			sendAck(data, true);
+			
+			constructInternalPacket(Flag.ACK);
+			socket.send(data);
+			
+			
+			
+		} catch (ClException e) {
+			
+			e.printStackTrace();
+		}
+    	
+    	
+    	
     }
 
     /**
