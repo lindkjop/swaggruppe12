@@ -119,8 +119,7 @@ public class ConnectionImpl extends AbstractConnection {
      */
     public void send(String msg) throws ConnectException, IOException {
     	
-    	KtnDatagram dataGram = new KtnDatagram();
-    	dataGram = constructInternalPacket(Flag.FIN);
+    	KtnDatagram dataGram  = constructDataPacket(msg);
     	sendDataPacketWithRetransmit(dataGram);
     	
     }
