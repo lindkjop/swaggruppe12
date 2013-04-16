@@ -78,14 +78,12 @@ public class ConnectionImpl extends AbstractConnection {
      *             If timeout expires before connection is completed.
      * @see Connection#connect(InetAddress, int)
      */
-    public void connect(InetAddress remoteAddress, int remotePort) throws IOException,
-            SocketTimeoutException {
+    public void connect(InetAddress remoteAddress, int remotePort) throws IOException, SocketTimeoutException {
     	KtnDatagram data;
-    	
     	data = constructInternalPacket(Flag.SYN);
     	simplySendPacket(data);
     	
-    	send(data);
+    	socket.send(data);
     	
     	receiveAck();
     	
@@ -134,10 +132,13 @@ public class ConnectionImpl extends AbstractConnection {
      * @see AbstractConnection#sendAck(KtnDatagram, boolean)
      */
     public String receive() throws ConnectException, IOException {
-        throw new NotImplementedException();
+    	KtnDatagram pckt = receivePacket(false);
+    	return (String) pckt.getPayload();
     }
 
-    /**
+
+
+	/**
      * Close the connection.
      * 
      * @see Connection#close()
@@ -155,11 +156,7 @@ public class ConnectionImpl extends AbstractConnection {
      * @return true if packet is free of errors, false otherwise.
      */
     protected boolean isValid(KtnDatagram packet) {
-    	
-    	
-    		long checkSum = packet.getChecksum();
-    		long checkSum2 = packet.calculateChecksum();
-    		return (checkSum == checkSum2);	
+    		return (packet.getChecksum() == packet.calculateChecksum());	
     	}
     
     }
