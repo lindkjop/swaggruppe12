@@ -79,9 +79,9 @@ public class ConnectionImpl extends AbstractConnection {
      */
     public void connect(InetAddress remoteAddress, int remotePort) throws IOException,
             SocketTimeoutException {
-    	KtnDatagram syn = constructInternalPacket(Flag.SYN);
+    	KtnDatagram packet = constructInternalPacket(Flag.SYN);
     	try {
-			simplySendPacket(syn);
+			simplySendPacket(packet);
 			KtnDatagram synAck = receiveAck();
 			
 			sendAck(synAck, false);
